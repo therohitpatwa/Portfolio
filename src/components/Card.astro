@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon/components";
+const { timeframe, title, description, url, tags, url_name, location, github_url, demo_url, blog_url } =
+  Astro.props;
+---
+
+<div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full md:w-112 lg:w-128 hover:shadow-lg transition-all my-4">
+  <div class="card-body">
+    <div class="grid grid-cols-3 gap-4 mb-2">
+      <div class="self-start col-span-2 justify-self-start text-left">
+        <h1 class="uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</h1>
+        {location && (
+          <div class="flex items-center mt-2">
+            <Icon name="carbon:location" class="w-4 h-4 mr-1" />
+            <p class="text-sm  font-light text-secondary">{location}</p>
+          </div>
+        )}
+      </div>
+
+      <div class="self-center justify-self-end">
+        {timeframe && (
+          <div class="badge w-max h-max text-center badge-outline inline-block align-middle shadow-md font-mono">
+            {timeframe}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 place-items-center">
+      <div class="self-start col-span-2 justify-self-start text-left">
+        <article class="prose text-secondary">
+          <Fragment set:html={description}></Fragment>
+        </article>
+        {Array.isArray(tags) && (
+          <div class="flex flex-wrap content-around gap-2 my-4">
+            {tags.map((item) => (
+              <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1" :key={item}>{item}</span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="self-center justify-self-end">
+        <div class="flex flex-col gap-2 items-end">
+          {github_url && (
+            <a href={github_url} target="_blank" class="link link-hover text-xs flex items-center gap-1">
+              <Icon name="carbon:logo-github" class="w-3 h-3" />
+              Source Code
+            </a>
+          )}
+          {demo_url && (
+            <a href={demo_url} target="_blank" class="link link-hover text-xs flex items-center gap-1">
+              <Icon name="carbon:play" class="w-3 h-3" />
+              Demo Video
+            </a>
+          )}
+          {blog_url && (
+            <a href={blog_url} target="_blank" class="link link-hover text-xs flex items-center gap-1">
+              <Icon name="carbon:blog" class="w-3 h-3" />
+              Blog
+            </a>
+          )}
+          {url && url !== "#" && (
+            <a href={url} target="_blank" class="link link-hover text-xs flex items-center gap-1">
+              <Icon name="carbon:link" class="w-3 h-3" />
+              View Website
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
