@@ -61,12 +61,15 @@ import { Icon } from "astro-icon/components";
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
-    <div
-      class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"
-    >
+    <div class="mx-auto max-w-3xl w-[95vw] flex flex-col mb-4">
+      <div class="flex items-center bg-green-800 px-3 py-2 rounded-full mb-3 w-fit animate-pulse hover:scale-105 transition-all duration-300">
+        <div class="w-3 h-3 bg-green-400 rounded-full mr-2 shadow-lg shadow-green-400/50 modern-pulse"></div>
+        <span class="text-green-100 text-sm font-medium">Available for work</span>
+      </div>
+      <div class="divider w-full bg-secondary h-px"></div>
     </div>
     <main
-      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll py-2 grid w-[95vw]"
+      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll pt-4 pb-2 grid w-[95vw]"
     >
       <div class="container">
         <Container />
@@ -117,5 +120,20 @@ import { Icon } from "astro-icon/components";
       display: flex;
       flex-wrap: wrap;
     }
+  }
+
+  @keyframes modern-pulse {
+    0%, 100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1) translateY(-1px);
+      opacity: 0.8;
+    }
+  }
+
+  .modern-pulse {
+    animation: modern-pulse 2s ease-in-out infinite;
   }
 </style>
