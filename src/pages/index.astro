@@ -21,6 +21,23 @@ import { Icon } from "astro-icon/components";
       import { themeChange } from "theme-change";
       themeChange();
     </script>
+    <script is:inline>
+      // Sync toggle checked state with current theme and persist on change
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.querySelector('input[data-toggle-theme]');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (toggle) {
+          // checked = light (lofi), unchecked = dark (black)
+          toggle.checked = currentTheme === 'lofi';
+          toggle.addEventListener('change', function () {
+            const updatedTheme = document.documentElement.getAttribute('data-theme');
+            if (updatedTheme) {
+              localStorage.setItem('theme', updatedTheme);
+            }
+          });
+        }
+      });
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,10 +52,9 @@ import { Icon } from "astro-icon/components";
       <Icon name="carbon:moon" class="w-4 h-4" />
       <input
         type="checkbox"
-        data-toggle-theme="black,lofi"
+        data-toggle-theme="lofi,black"
         data-act-class="ACTIVECLASS"
         class="toggle toggle-sm mx-1 bg-secondary"
-        checked
       />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
