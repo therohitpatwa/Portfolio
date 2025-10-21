@@ -10,12 +10,14 @@ import { Icon } from "astro-icon/components";
   <head>
     <script is:inline>
       if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "lofi");
-      } else
+        document.documentElement.setAttribute("data-theme", "black");
+        localStorage.setItem("theme", "black");
+      } else {
         document.documentElement.setAttribute(
           "data-theme",
           localStorage.getItem("theme")
         );
+      }
     </script>
     <script>
       import { themeChange } from "theme-change";
