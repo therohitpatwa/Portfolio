@@ -34,7 +34,7 @@ const { timeframe, title, description, url, tags, url_name, location, github_url
         {Array.isArray(tags) && (
           <div class="flex flex-wrap content-around gap-2 my-4">
             {tags.map((item) => (
-              <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1" :key={item}>{item}</span>
+              <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1">{item}</span>
             ))}
           </div>
         )}

@@ -7,32 +7,39 @@ import ContactCard from "./ContactCard.astro";
 const works = await Astro.glob("../pages/works/*.md");
 const projects = await Astro.glob("../pages/projects/*.md");
 const studies = await Astro.glob("../pages/studies/*.md");
-const certificates = await Astro.glob("../pages/certificates/*.md");
-const blogs = await Astro.glob("../pages/blogs/*.md");
 const contact = await Astro.glob("../pages/contact/*.md");
-// Capsule skills shown as badges (flat list, no categories) — no markdown files needed
+
+// Flat list of skills - no categories
 // Icon sets available: carbon, mdi
 const skillCapsules: { label: string; icon: string }[] = [
   { label: "C", icon: "mdi:language-c" },
   { label: "Java", icon: "mdi:language-java" },
-  { label: "JDBC", icon: "mdi:database" },
-  { label: "Servlet", icon: "mdi:server" },
   { label: "Spring Core", icon: "mdi:leaf" },
   { label: "Spring Boot", icon: "mdi:sprout" },
   { label: "Spring Security", icon: "mdi:shield-lock" },
   { label: "Microservices", icon: "mdi:lan" },
+  { label: "Servlet", icon: "mdi:server" },
+  { label: "JUnit", icon: "mdi:test-tube" },
+  { label: "Mockito", icon: "mdi:test-tube" },
   { label: "HTML", icon: "mdi:language-html5" },
   { label: "CSS", icon: "mdi:language-css3" },
   { label: "JavaScript", icon: "mdi:language-javascript" },
   { label: "React.js", icon: "mdi:react" },
   { label: "MySQL", icon: "mdi:database" },
-  { label: "Maven", icon: "mdi:hammer-wrench" },
+  { label: "JDBC", icon: "mdi:database" },
+  { label: "Redis", icon: "mdi:database" },
+  { label: "Kafka", icon: "mdi:message" },
+  { label: "Swagger", icon: "mdi:api" },
+  { label: "Docker", icon: "mdi:docker" },
   { label: "Git", icon: "mdi:git" },
   { label: "GitHub", icon: "mdi:github" },
+  { label: "Maven", icon: "mdi:hammer-wrench" },
   { label: "Linux", icon: "mdi:linux" },
-  { label: "Docker", icon: "mdi:docker" },
   { label: "Vercel", icon: "mdi:triangle-outline" },
-  { label: "Digital Ocean", icon: "mdi:cloud-outline" }
+  { label: "DSA", icon: "mdi:graph" },
+  { label: "Operating System", icon: "mdi:monitor" },
+  { label: "Computer Network", icon: "mdi:lan" },
+  { label: "DBMS", icon: "mdi:database" }
 ];
 const PDF = "/MyResume.pdf";
 ---
@@ -110,7 +117,18 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  
+  <AccordionLayout title={"Blog"} icon={"carbon:blog"}>
+    <div class="text-center text-secondary py-8">
+      <Icon name="carbon:blog" class="w-12 h-12 mx-auto mb-4 opacity-50" />
+      <p>Visit my Hashnode blog for the latest posts.</p>
+      <div class="mt-4">
+        <a href="https://therohitpatwa.hashnode.dev/" target="_blank" class="btn btn-outline btn-primary">
+          <Icon name="carbon:blog" class="w-4 h-4 mr-2" />
+          Visit Hashnode Blog
+        </a>
+      </div>
+    </div>
+  </AccordionLayout>
 
   <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"}>
     <div class="flex justify-center w-full">
