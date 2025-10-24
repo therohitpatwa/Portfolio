@@ -63,7 +63,7 @@ const { timeframe, title, description, url, tags, url_name, location, github_url
           {url && url !== "#" && (
             <a href={url} target="_blank" class="link link-hover text-xs flex items-center gap-1">
               <Icon name="carbon:link" class="w-3 h-3" />
-              View Website
+              {url_name || "View Website"}
             </a>
           )}
         </div>
