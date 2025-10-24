@@ -6,8 +6,6 @@ institute: RR Group Of Institution
 date: 2022-2026
 tags:
   [
-    "Computer Science",
-    "FullStack Development",
-    "Web Development"
+    "Computer Science"
   ]
 ---
