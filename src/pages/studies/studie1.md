@@ -6,6 +6,6 @@ institute: RR Group Of Institution
 date: 2022-2026
 tags:
   [
-    "Computer Science"
+    "DSA", "DBMS", "Computer Network", "Operating System"
   ]
 ---
