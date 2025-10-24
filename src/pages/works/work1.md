@@ -3,7 +3,7 @@ title: FreeLancer
 date: 2025 - Present
 url: "https://github.com/therohitpatwa"
 location: Uttar Pradesh, India
-org: "View Portfolio"
+org: "Proof of Work"
 tags: ["FullStack", "FrontEnd", "BackEnd"]
 ---
 
