@@ -1,7 +1,9 @@
 ---
 title: Numsy
+video_url: /x.mp4
+video_thumbnail: /numsy.png
+url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 github_url: https://github.com/therohitpatwa/Numsy/packages/2606241
-blog_url : https://therohitpatwa.hashnode.dev/numsy
 tags: ["Maven", "Java", "Github packages"]
 date: 2025
 ---

@@ -1,0 +1,298 @@
+---
+import { Icon } from "astro-icon/components";
+const { 
+  title, 
+  description, 
+  tags, 
+  url, 
+  github_url,
+  video_url,
+  video_thumbnail
+} = Astro.props;
+
+const normalizeVideoPath = (path: string | undefined) => {
+  if (!path) return undefined;
+  if (path.startsWith('/')) return path;
+  if (path.includes('public/')) {
+    return '/' + path.split('public/')[1].replace(/\\/g, '/');
+  }
+  if (path.includes('\\')) {
+    const filename = path.split('\\').pop();
+    return '/' + filename;
+  }
+  return path.startsWith('/') ? path : '/' + path;
+};
+
+const normalizedVideoUrl = normalizeVideoPath(video_url);
+const normalizedThumbnail = normalizeVideoPath(video_thumbnail);
+const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
+---
+
+<div class="project-card w-full h-full flex flex-col">
+  {normalizedVideoUrl && (
+    <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden">
+      {normalizedThumbnail ? (
+        <div class="video-container relative w-full h-full">
+          <img 
+            src={normalizedThumbnail} 
+            alt={`${title} thumbnail`}
+            class="w-full h-full object-cover rounded-t-lg"
+            id={`thumbnail-${uniqueId}`}
+            style="image-rendering: auto;"
+          />
+          <button 
+            class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group"
+            data-video-id={`video-${uniqueId}`}
+            data-thumbnail-id={`thumbnail-${uniqueId}`}
+            data-play-btn-id={`play-btn-${uniqueId}`}
+            id={`play-btn-${uniqueId}`}
+            type="button"
+          >
+            <div class="play-icon-circle">
+              <Icon name="carbon:play-filled" class="w-8 h-8 text-white" />
+            </div>
+          </button>
+          <video 
+            class="hidden w-full h-full object-cover rounded-t-lg"
+            controls
+            id={`video-${uniqueId}`}
+            preload="none"
+          >
+            <source src={normalizedVideoUrl} type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      ) : (
+        <div class="video-container relative w-full h-full">
+          <video 
+            class="w-full h-full object-cover"
+            controls
+            preload="metadata"
+          >
+            <source src={normalizedVideoUrl} type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+    </div>
+  )}
+
+  <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow">
+    <div class="flex items-center justify-between mb-2">
+      <h2 class="card-title text-xl font-bold text-white">{title}</h2>
+      <div class="flex items-center gap-2">
+        {url && url !== "#" && (
+          <a href={url} target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary transition-colors">
+            <Icon name="mdi:earth" class="w-5 h-5" />
+          </a>
+        )}
+        {github_url && (
+          <a href={github_url} target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary transition-colors">
+            <Icon name="carbon:logo-github" class="w-5 h-5" />
+          </a>
+        )}
+      </div>
+    </div>
+
+    <article class="prose prose-invert text-sm text-gray-300 mb-4">
+      <Fragment set:html={description}></Fragment>
+    </article>
+
+    {Array.isArray(tags) && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-auto">
+        {tags.map((tag) => (
+          <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .project-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    border: 1px solid rgba(150, 150, 150, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(150, 150, 150, 0.4);
+  }
+
+  .video-header {
+    position: relative;
+  }
+
+  .play-button {
+    background: transparent;
+  }
+
+  .play-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(60, 60, 60, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .video-header:hover .play-button,
+  .video-header:active .play-button,
+  .video-header:focus-within .play-button {
+    opacity: 1;
+  }
+
+
+  .tag-capsule {
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px dashed rgba(150, 150, 150, 0.4);
+    color: white;
+    transition: all 0.2s ease;
+  }
+
+  .tag-capsule:hover {
+    border-color: rgba(150, 150, 150, 0.6);
+    background-color: rgba(40, 40, 40, 0.9);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll('.play-button');
+      
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute('data-video-id');
+        const thumbnailId = button.getAttribute('data-thumbnail-id');
+        const playBtnId = button.getAttribute('data-play-btn-id');
+        
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+        
+        if (!video || !thumbnail || !playBtn) return;
+        
+        let isVideoPlaying = false;
+        let isHovering = false;
+        
+        function showThumbnail() {
+          thumbnail.style.display = 'block';
+          playBtn.style.display = 'flex';
+          video.classList.add('hidden');
+          video.style.display = 'none';
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+        
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = '0';
+            playBtn.style.display = 'none';
+            return;
+          }
+          
+          const thumbnailVisible = thumbnail.style.display !== 'none' && 
+                                   !thumbnail.classList.contains('hidden') &&
+                                   getComputedStyle(thumbnail).display !== 'none';
+          
+          if (thumbnailVisible) {
+            playBtn.style.display = 'flex';
+            playBtn.style.opacity = isHovering ? '1' : '0';
+          } else {
+            playBtn.style.opacity = '0';
+            playBtn.style.display = 'none';
+          }
+        }
+        
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = 'none';
+          playBtn.style.display = 'none';
+          playBtn.style.opacity = '0';
+          video.classList.remove('hidden');
+          video.style.display = 'block';
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+        
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+        
+        const videoHeader = thumbnail.closest('.video-header');
+        if (videoHeader) {
+          videoHeader.addEventListener('mouseenter', function() {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+          
+          videoHeader.addEventListener('mouseleave', function() {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+          
+          videoHeader.addEventListener('touchstart', function() {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+        
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener('play', function() {
+            isVideoPlaying = true;
+            thumbnail.style.display = 'none';
+            playBtn.style.display = 'none';
+            playBtn.style.opacity = '0';
+            video.classList.remove('hidden');
+            video.style.display = 'block';
+          });
+          
+          video.addEventListener('ended', function() {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+          
+          video.addEventListener('pause', function() {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = 'block';
+              playBtn.style.display = 'flex';
+              video.classList.add('hidden');
+              video.style.display = 'none';
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script>
+

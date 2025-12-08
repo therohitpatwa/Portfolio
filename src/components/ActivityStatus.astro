@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+
+const wakatimeApiKey = import.meta.env.PUBLIC_WAKATIME_API_KEY;
+
+const defaultData = {
+  status: "Offline in IntelliJ",
+  timeWorked: "0m",
+  period: "Today",
+};
+
+let activityData = defaultData;
+
+if (wakatimeApiKey) {
+  try {
+    const encodedKey = typeof Buffer !== 'undefined' 
+      ? Buffer.from(wakatimeApiKey).toString('base64')
+      : btoa(wakatimeApiKey);
+    
+    const response = await fetch('https://wakatime.com/api/v1/users/current/summaries?range=today', {
+      headers: {
+        'Authorization': `Basic ${encodedKey}`
+      }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const today = data.data?.[0];
+      const grandTotal = today?.grand_total;
+      
+      if (grandTotal && grandTotal.text && grandTotal.text !== "0 secs") {
+        activityData = {
+          status: "Online in IntelliJ",
+          timeWorked: grandTotal.text,
+          period: "Today",
+        };
+      } else {
+        const yesterday = data.data?.[1];
+        if (yesterday?.grand_total?.text) {
+          activityData = {
+            status: "Offline in IntelliJ",
+            timeWorked: yesterday.grand_total.text,
+            period: "Yesterday",
+          };
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching WakaTime data:', error);
+  }
+}
+---
+
+<div class="activity-status flex items-center gap-1.5 text-white text-xs whitespace-nowrap">
+  <span class="font-medium">{activityData.status}</span>
+  <svg class="w-4 h-4 intellij-icon flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="12" fill="#000000"/>
+    <path d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z" fill="#FF6BCB" opacity="0.8"/>
+    <path d="M4 8L10 10L8 16L4 14Z" fill="#FF8C42" opacity="0.8"/>
+    <path d="M6 18L10 16L12 20L8 22Z" fill="#9B59B6" opacity="0.8"/>
+    <path d="M14 6L20 8L18 14L14 12Z" fill="#3498DB" opacity="0.9"/>
+    <rect x="8" y="8" width="8" height="8" fill="#000000" rx="0.5"/>
+    <rect x="9.5" y="10" width="1" height="4" fill="#FFFFFF"/>
+    <path d="M12.5 10 L13.5 10 L13.5 12.5 Q13.5 13.5 12.5 13.5 L11.5 13.5" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF"/>
+    <line x1="9" y1="15.5" x2="10.5" y2="15.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round"/>
+  </svg>
+  <span class="text-gray-300">
+    {activityData.period} worked {activityData.timeWorked}
+  </span>
+</div>
+
+<style>
+  .activity-status {
+    font-family: inherit;
+  }
+  
+  .intellij-icon {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+</style>
+

@@ -3,52 +3,50 @@ import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import * as about from "../pages/about/about.md";
 import Card from "./Card.astro";
+import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
 const works = await Astro.glob("../pages/works/*.md");
 const projects = await Astro.glob("../pages/projects/*.md");
 const studies = await Astro.glob("../pages/studies/*.md");
 const contact = await Astro.glob("../pages/contact/*.md");
 
-// Flat list of skills - no categories
-// Icon sets available: carbon, mdi
-const skillCapsules: { label: string; icon: string }[] = [
-  { label: "C", icon: "mdi:language-c" },
-  { label: "Java", icon: "mdi:language-java" },
-  { label: "Spring Core", icon: "mdi:leaf" },
-  { label: "Spring Boot", icon: "mdi:sprout" },
-  { label: "Spring Security", icon: "mdi:shield-lock" },
-  { label: "Microservices", icon: "mdi:lan" },
-  { label: "Servlet", icon: "mdi:server" },
-  { label: "JUnit", icon: "mdi:test-tube" },
-  { label: "Mockito", icon: "mdi:test-tube" },
-  { label: "HTML", icon: "mdi:language-html5" },
-  { label: "CSS", icon: "mdi:language-css3" },
-  { label: "JavaScript", icon: "mdi:language-javascript" },
-  { label: "React.js", icon: "mdi:react" },
-  { label: "MySQL", icon: "mdi:database" },
-  { label: "JDBC", icon: "mdi:database" },
-  { label: "Redis", icon: "mdi:database" },
-  { label: "Kafka", icon: "mdi:message" },
-  { label: "Swagger", icon: "mdi:api" },
-  { label: "Docker", icon: "mdi:docker" },
-  { label: "Git", icon: "mdi:git" },
-  { label: "GitHub", icon: "mdi:github" },
-  { label: "Maven", icon: "mdi:hammer-wrench" },
-  { label: "Linux", icon: "mdi:linux" },
-  { label: "Vercel", icon: "mdi:triangle-outline" },
- 
+const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
+  { label: "C", icon: "mdi:language-c", iconColor: "#A8B9CC" },
+  { label: "Java", icon: "mdi:language-java", iconColor: "#ED8B00" },
+  { label: "Spring Core", icon: "mdi:leaf", iconColor: "#6DB33F" },
+  { label: "Spring Boot", icon: "mdi:sprout", iconColor: "#6DB33F" },
+  { label: "Spring Security", icon: "mdi:shield-lock", iconColor: "#6DB33F" },
+  { label: "Microservices", icon: "mdi:lan", iconColor: "#9333EA" },
+  { label: "Servlet", icon: "mdi:server", iconColor: "#3B82F6" },
+  { label: "JUnit", icon: "mdi:test-tube", iconColor: "#EAB308" },
+  { label: "Mockito", icon: "mdi:test-tube", iconColor: "#EAB308" },
+  { label: "HTML", icon: "mdi:language-html5", iconColor: "#E34F26" },
+  { label: "CSS", icon: "mdi:language-css3", iconColor: "#1572B6" },
+  { label: "JavaScript", icon: "mdi:language-javascript", iconColor: "#F7DF1E" },
+  { label: "React.js", icon: "mdi:react", iconColor: "#61DAFB" },
+  { label: "MySQL", icon: "mdi:database", iconColor: "#4479A1" },
+  { label: "JDBC", icon: "mdi:database", iconColor: "#3B82F6" },
+  { label: "Redis", icon: "mdi:database", iconColor: "#DC382D" },
+  { label: "Kafka", icon: "mdi:message", iconColor: "#231F20" },
+  { label: "Swagger", icon: "mdi:api", iconColor: "#85EA2D" },
+  { label: "Docker", icon: "mdi:docker", iconColor: "#2496ED" },
+  { label: "Git", icon: "mdi:git", iconColor: "#F05032" },
+  { label: "GitHub", icon: "mdi:github", iconColor: "#FFFFFF" },
+  { label: "Maven", icon: "mdi:hammer-wrench", iconColor: "#C71A36" },
+  { label: "Linux", icon: "mdi:linux", iconColor: "#FCC624" },
+  { label: "Vercel", icon: "mdi:triangle-outline", iconColor: "#000000" },
 ];
 const PDF = "/MyResume.pdf";
 ---
 
-<div class="join join-vertical gap-1">
-  <AccordionLayout title={"About"} icon={"carbon:identification"}>
+<div class="join join-vertical gap-1 accordion-container">
+  <AccordionLayout title={"About"} icon={"carbon:identification"} accordionId="about">
     <article class="text-justify">
       <Fragment set:html={about.compiledContent()} />
     </article>
   </AccordionLayout>
 
-  <AccordionLayout title={"Work"} icon={"carbon:construction"}>
+  <AccordionLayout title={"Work"} icon={"carbon:construction"} accordionId="work">
     {
       works.map((item) => {
         return (
@@ -66,7 +64,7 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Studies"} icon={"carbon:education"}>
+  <AccordionLayout title={"Studies"} icon={"carbon:education"} accordionId="studies">
     {
       studies.map((item) => {
         return (
@@ -83,38 +81,61 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Skills"} icon={"carbon:skill-level"}>
+  <AccordionLayout title={"Skills"} icon={"carbon:skill-level"} accordionId="skills">
     <div class="flex flex-wrap gap-2">
       {skillCapsules.map((skill) => (
-        <span class="badge badge-outline flex items-center gap-1">
-          <Icon name={skill.icon} class="w-4 h-4" />
-          {skill.label}
+        <span class="skill-capsule flex items-center gap-2 px-3 py-1 rounded-lg">
+          <Icon name={skill.icon} class="w-4 h-4 skill-icon" style={`color: ${skill.iconColor}`} />
+          <span class="skill-text">{skill.label}</span>
         </span>
       ))}
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Projects"} icon={"carbon:tools"}>
-    {
-      projects.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={item.frontmatter.url_name || "Live"}
-            github_url={item.frontmatter.github_url}
-            demo_url={item.frontmatter.demo_url}
-            blog_url={item.frontmatter.blog_url}
-          />
-        );
-      })
-    }
+<style>
+  .skill-capsule {
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px dashed rgba(150, 150, 150, 0.4);
+    transition: all 0.2s ease;
+  }
+  .skill-capsule:hover {
+    border-color: rgba(150, 150, 150, 0.6);
+    background-color: rgba(40, 40, 40, 0.9);
+  }
+  .skill-text {
+    color: white;
+    font-size: 0.875rem;
+  }
+  .skill-icon {
+    flex-shrink: 0;
+  }
+  .skill-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+  <AccordionLayout title={"Projects"} icon={"carbon:tools"} accordionId="projects">
+    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+      {
+        projects.map((item) => {
+          return (
+            <ProjectCard
+              title={item.frontmatter.title}
+              description={item.compiledContent()}
+              tags={item.frontmatter.tags}
+              url={item.frontmatter.url}
+              github_url={item.frontmatter.github_url}
+              video_url={item.frontmatter.video_url}
+              video_thumbnail={item.frontmatter.video_thumbnail}
+            />
+          );
+        })
+      }
+    </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Blog"} icon={"carbon:blog"}>
+  <AccordionLayout title={"Blog"} icon={"carbon:blog"} accordionId="blog">
     <div class="text-center text-secondary py-8">
       <Icon name="carbon:blog" class="w-12 h-12 mx-auto mb-4 opacity-50" />
       <p>Tech concepts? I make them blog-worthy.</p>
@@ -127,7 +148,7 @@ const PDF = "/MyResume.pdf";
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"}>
+  <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"} accordionId="files">
     <div class="flex justify-center w-full">
       <div
         class="card card-compact card-bordered border-[oklch(var(--s))] w-96 md:w-112 lg:w-128 hover:shadow-lg transition-all"
@@ -139,7 +160,7 @@ const PDF = "/MyResume.pdf";
           <h2 class="card-title">Resume</h2>
           <p>View and download my resume by clicking on the button below</p>
           <div class="card-actions justify-end">
-            <a target="public/MyResume.pdf" href={PDF}>
+            <a target="_blank" href={PDF}>
               <button class="btn btn-outline">
                 <p>Download resume</p>
                 <Icon name="carbon:document-pdf" class="w-6 h-6 ml-1" />
@@ -151,7 +172,7 @@ const PDF = "/MyResume.pdf";
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Contact"} icon={"carbon:location-person"}>
+  <AccordionLayout title={"Contact"} icon={"carbon:location-person"} accordionId="contact">
     <div class="flex flex-wrap content-around gap-4 justify-center">
       {
         contact.map((item) => {
@@ -167,3 +188,21 @@ const PDF = "/MyResume.pdf";
     </div>
   </AccordionLayout>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionInputs = document.querySelectorAll<HTMLInputElement>('.accordion-container .accordion-checkbox');
+    
+    accordionInputs.forEach((input) => {
+      input.addEventListener('change', function() {
+        if (this.checked) {
+          accordionInputs.forEach((otherInput) => {
+            if (otherInput !== this) {
+              otherInput.checked = false;
+            }
+          });
+        }
+      });
+    });
+  });
+</script>

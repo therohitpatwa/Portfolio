@@ -3,17 +3,9 @@ import "@fontsource-variable/dm-sans";
 import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import ActivityStatus from "../components/ActivityStatus.astro";
 import { Icon } from "astro-icon/components";
 import * as about from "./about/about.md";
-
-// SEO Data
-const siteUrl = "https://therohitpatwa.me";
-const siteName = "Rohit Patwa - Full Stack Developer";
-const description = "Full-Stack developer skilled in building scalable web applications using Spring Framework, React and modern UI frameworks. Available for work.";
-const keywords = "Rohit Patwa, Full Stack Developer, Java, Spring Boot, React, JavaScript, Portfolio, Web Developer, Backend Developer, Frontend Developer, MySQL, RESTful APIs";
-const author = "Rohit Patwa";
-const imageUrl = `${siteUrl}/profile.webp`;
-const twitterHandle = "@therohitpatwa";
 ---
 
 <html lang="en">
@@ -34,12 +26,10 @@ const twitterHandle = "@therohitpatwa";
       themeChange();
     </script>
     <script is:inline>
-      // Sync toggle checked state with current theme and persist on change
       document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.querySelector('input[data-toggle-theme]');
         const currentTheme = document.documentElement.getAttribute('data-theme');
         if (toggle) {
-          // checked = light (lofi), unchecked = dark (black)
           toggle.checked = currentTheme === 'lofi';
           toggle.addEventListener('change', function () {
             const updatedTheme = document.documentElement.getAttribute('data-theme');
@@ -50,91 +40,17 @@ const twitterHandle = "@therohitpatwa";
         }
       });
     </script>
-    
-    <!-- Basic Meta Tags -->
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- SEO Meta Tags -->
-    <title>{siteName}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    <meta name="author" content={author} />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
-    <meta property="og:title" content={siteName} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content="en_US" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteUrl} />
-    <meta property="twitter:title" content={siteName} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={imageUrl} />
-    <meta property="twitter:creator" content={twitterHandle} />
-    <meta property="twitter:site" content={twitterHandle} />
-    
-    <!-- Additional SEO -->
-    <link rel="canonical" href={siteUrl} />
+    <title>Rohit Patwa - Full Stack Developer</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    
-    <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://github.com" />
-    <link rel="dns-prefetch" href="https://linkedin.com" />
-    <link rel="dns-prefetch" href="https://hashnode.dev" />
-    
-    <!-- Preload critical resources -->
     <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
     <link rel="preload" href="/MyResume.pdf" as="document" type="application/pdf" />
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": about.frontmatter.name,
-      "jobTitle": about.frontmatter.designation,
-      "description": description,
-      "url": siteUrl,
-      "image": imageUrl,
-      "sameAs": [
-        "https://github.com/therohitpatwa",
-        "https://linkedin.com/in/therohitpatwa",
-        "https://therohitpatwa.hashnode.dev/"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lucknow",
-        "addressRegion": "Uttar Pradesh",
-        "addressCountry": "India"
-      },
-      "knowsAbout": [
-        "Java", "Spring Boot", "React", "JavaScript", "MySQL", "RESTful APIs",
-        "Microservices", "Docker", "Git", "Full Stack Development"
-      ],
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "RR Group Of Institution"
-      }
-    })} />
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
@@ -152,13 +68,18 @@ const twitterHandle = "@therohitpatwa";
     </div>
 
     <div class="mx-auto max-w-3xl w-[95vw] flex flex-col mb-4">
-      <div class="available-capsule flex items-center bg-gradient-to-r from-green-950/40 to-green-900/40 backdrop-blur-lg border border-green-800/20 px-3 py-2 rounded-full mb-3 w-fit shadow-lg shadow-green-950/15 hover:shadow-green-950/25 transition-all duration-300">
-        <div class="relative mr-2">
-          <div class="w-3 h-3 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg shadow-green-400/60 animate-pulse"></div>
-          <div class="absolute inset-0 w-3 h-3 bg-green-400/30 rounded-full animate-ping"></div>
-          <div class="absolute inset-0 w-3 h-3 bg-green-500/20 rounded-full animate-pulse"></div>
+      <div class="flex items-center justify-between mb-3 gap-3 flex-nowrap overflow-x-auto">
+        <div class="available-capsule flex items-center bg-gradient-to-r from-green-950/40 to-green-900/40 backdrop-blur-lg border border-green-800/20 px-3 py-2 rounded-full flex-shrink-0 shadow-lg shadow-green-950/15 hover:shadow-green-950/25 transition-all duration-300">
+          <div class="relative mr-2">
+            <div class="w-3 h-3 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg shadow-green-400/60 animate-pulse"></div>
+            <div class="absolute inset-0 w-3 h-3 bg-green-400/30 rounded-full animate-ping"></div>
+            <div class="absolute inset-0 w-3 h-3 bg-green-500/20 rounded-full animate-pulse"></div>
+          </div>
+          <span class="text-green-200/90 text-xs font-semibold tracking-wide whitespace-nowrap">Available for work</span>
         </div>
-        <span class="text-green-200/90 text-xs font-semibold tracking-wide">Available for work</span>
+        <div class="flex-shrink-0">
+          <ActivityStatus />
+        </div>
       </div>
       <div class="divider w-full bg-secondary h-px"></div>
     </div>
@@ -209,7 +130,6 @@ const twitterHandle = "@therohitpatwa";
     scrollbar-width: 1px;
   }
 
-  /* Custom animation for available for work capsule */
   @keyframes leaf-glow {
     0%, 100% {
       box-shadow: 0 0 8px rgba(34, 197, 94, 0.4), 0 0 16px rgba(34, 197, 94, 0.2);
@@ -222,13 +142,4 @@ const twitterHandle = "@therohitpatwa";
   .available-capsule .animate-pulse {
     animation: leaf-glow 2s ease-in-out infinite;
   }
-
-  /* Line clamp utility for blog descriptions */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
 </style>

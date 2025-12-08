@@ -1,7 +1,9 @@
 ---
 title: My Own Printf
+video_url: /printf.mp4
+video_thumbnail: /printf.png 
+url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 github_url: https://github.com/therohitpatwa/MyOwnPrintf
-demo_url: https://www.linkedin.com/posts/therohitpatwa_project-2-my-own-printf-rohitprintf-activity-7291745869396090880-iu9q?utm_source=share&utm_medium=member_desktop&rcm=ACoAAELf5PMBMBJhaauteUQeFkW-yV4tnfwWoE0
 tags: ["Pointer", "Recursion", "System Call"]
 date: 2024
 ---

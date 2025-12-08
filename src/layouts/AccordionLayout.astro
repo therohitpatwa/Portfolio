@@ -1,10 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-const { title, icon } = Astro.props;
+const { title, icon, accordionId } = Astro.props;
+const id = accordionId || title.toLowerCase().replace(/\s+/g, '-');
 ---
 
-<div class="collapse collapse-arrow ease-in-out duration-700">
-  <input aria-label={title} type="checkbox"/>
+<div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id={id}>
+  <input aria-label={title} type="checkbox" id={id} class="accordion-checkbox" />
   <div class="collapse-title font-extrabold tracking-tight md:text-2xl">
     <div class="flex">
       <Icon name={icon} class="w-8 h-8 mr-4" />

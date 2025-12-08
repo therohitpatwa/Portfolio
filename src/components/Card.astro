@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-const { timeframe, title, description, url, tags, url_name, location, github_url, demo_url, blog_url } =
-  Astro.props;
+const { timeframe, title, description, url, tags, url_name, location, github_url, demo_url, blog_url } = Astro.props;
 ---
 
 <div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full md:w-112 lg:w-128 hover:shadow-lg transition-all my-4">
@@ -12,7 +11,7 @@ const { timeframe, title, description, url, tags, url_name, location, github_url
         {location && (
           <div class="flex items-center mt-2">
             <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-            <p class="text-sm  font-light text-secondary">{location}</p>
+            <p class="text-sm font-light text-secondary">{location}</p>
           </div>
         )}
       </div>

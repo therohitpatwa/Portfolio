@@ -1,7 +1,9 @@
 ---
 title: Multithreaded WebServer
+video_url: /x.mp4
+video_thumbnail: /webserver.png
+url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 github_url: https://github.com/therohitpatwa/WebServer
-demo_url: https://www.linkedin.com/posts/therohitpatwa_it-was-300-am-and-i-was-communicating-with-activity-7359746794559295488-huzx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAELf5PMBMBJhaauteUQeFkW-yV4tnfwWoE0
 tags: ["Java", "Multithreading", "ThreadPool"]
 date: 2025
 ---
