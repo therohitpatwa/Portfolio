@@ -20,7 +20,7 @@ const normalizeVideoPath = (path: string | undefined) => {
     const filename = path.split('\\').pop();
     return '/' + filename;
   }
-  return path.startsWith('/') ? path : '/' + path;
+  return '/' + path;
 };
 
 const normalizedVideoUrl = normalizeVideoPath(video_url);

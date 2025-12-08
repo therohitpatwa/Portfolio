@@ -90,7 +90,7 @@ import * as about from "./about/about.md";
         <Container />
       </div>
     </main>
-    <Footer class="flex justify-center items-center py-4" />
+    <Footer />
   </body>
 </html>
 
@@ -120,6 +120,7 @@ import * as about from "./about/about.md";
 
   .overflow-y-scroll {
     overflow-x: hidden;
+    scrollbar-width: 1px;
   }
 
   .overflow-y-scroll::-webkit-scrollbar {
@@ -128,10 +129,6 @@ import * as about from "./about/about.md";
 
   .overflow-y-scroll::-webkit-scrollbar-thumb {
     background-color: oklch(var(--s));
-  }
-
-  .overflow-y-scroll {
-    scrollbar-width: 1px;
   }
 
   @keyframes leaf-glow {
