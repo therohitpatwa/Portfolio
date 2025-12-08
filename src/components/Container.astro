@@ -7,7 +7,6 @@ import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
 const works = await Astro.glob("../pages/works/*.md");
 const projects = await Astro.glob("../pages/projects/*.md");
-const studies = await Astro.glob("../pages/studies/*.md");
 const contact = await Astro.glob("../pages/contact/*.md");
 
 const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
@@ -66,23 +65,6 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Studies"} icon={"carbon:education"} accordionId="studies">
-    {
-      studies.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            location={item.frontmatter.location}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name="Visit College"
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
   <AccordionLayout title={"Skills"} icon={"carbon:skill-level"} accordionId="skills">
     <div class="flex flex-wrap gap-2">
       {skillCapsules.map((skill) => (
@@ -118,7 +100,7 @@ const PDF = "/MyResume.pdf";
 </style>
 
   <AccordionLayout title={"Projects"} icon={"carbon:tools"} accordionId="projects">
-    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
       {
         projects.map((item) => {
           return (

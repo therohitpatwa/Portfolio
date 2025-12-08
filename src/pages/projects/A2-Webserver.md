@@ -1,8 +1,8 @@
 ---
 title: Multithreaded WebServer
-video_url: /x.mp4
+video_url: /pixel.mp4
 video_thumbnail: /webserver.png
-url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
+url: https://threadpool.netlify.app/
 github_url: https://github.com/therohitpatwa/WebServer
 tags: ["Java", "Multithreading", "ThreadPool"]
 date: 2025

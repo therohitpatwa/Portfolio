@@ -1,6 +1,6 @@
 ---
 title: Numsy
-video_url: /x.mp4
+video_url: /pixel.mp4
 video_thumbnail: /numsy.png
 url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 github_url: https://github.com/therohitpatwa/Numsy/packages/2606241

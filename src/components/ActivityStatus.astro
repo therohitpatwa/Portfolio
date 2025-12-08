@@ -10,6 +10,7 @@ const defaultData = {
 
 let activityData = defaultData;
 
+// Server-side fetch for initial render (works on localhost)
 if (wakatimeApiKey) {
   try {
     const encodedKey = typeof Buffer !== 'undefined' 
@@ -27,7 +28,7 @@ if (wakatimeApiKey) {
       const today = data.data?.[0];
       const grandTotal = today?.grand_total;
       
-      if (grandTotal && grandTotal.text && grandTotal.text !== "0 secs") {
+      if (grandTotal && grandTotal.text && grandTotal.text !== "0 secs" && grandTotal.text !== "0 sec" && grandTotal.total_seconds > 0) {
         activityData = {
           status: "Online in",
           statusSuffix: "IntelliJ",
@@ -52,9 +53,12 @@ if (wakatimeApiKey) {
 }
 ---
 
-<div class="activity-status flex flex-col text-white text-xs">
+<div 
+  class="activity-status flex flex-col text-xs" 
+  data-wakatime-key={wakatimeApiKey || ''}
+>
   <div class="flex items-center gap-1.5 whitespace-nowrap">
-    <span class="font-medium">{activityData.status}</span>
+    <span class="font-medium text-base-content activity-status-text">{activityData.status}</span>
     <svg class="w-4 h-4 intellij-icon flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="12" fill="#000000"/>
       <path d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z" fill="#FF6BCB" opacity="0.8"/>
@@ -67,9 +71,9 @@ if (wakatimeApiKey) {
       <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF"/>
       <line x1="9" y1="15.5" x2="10.5" y2="15.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round"/>
     </svg>
-    <span class="font-medium">{activityData.statusSuffix || "IntelliJ"}</span>
+    <span class="font-medium text-base-content activity-status-suffix">{activityData.statusSuffix}</span>
   </div>
-  <span class="text-gray-300 text-[10px] md:text-xs whitespace-nowrap">
+  <span class="text-base-content/70 text-[10px] md:text-xs whitespace-nowrap activity-status-time">
     {activityData.period} worked {activityData.timeWorked}
   </span>
 </div>
@@ -84,3 +88,83 @@ if (wakatimeApiKey) {
     opacity: 0.7;
   }
 </style>
+
+<script>
+  (function() {
+    function updateActivityStatus() {
+      const activityStatusEl = document.querySelector('.activity-status');
+      if (!activityStatusEl) return;
+      
+      const apiKey = activityStatusEl.getAttribute('data-wakatime-key');
+      if (!apiKey || apiKey.trim() === '') return;
+      
+      const statusTextEl = activityStatusEl.querySelector('.activity-status-text');
+      const statusSuffixEl = activityStatusEl.querySelector('.activity-status-suffix');
+      const statusTimeEl = activityStatusEl.querySelector('.activity-status-time');
+      
+      if (!statusTextEl || !statusSuffixEl || !statusTimeEl) return;
+      
+      // Encode API key to base64
+      const encodedKey = btoa(apiKey);
+      
+      // Fetch WakaTime data (client-side refresh for dynamic updates)
+      fetch('https://wakatime.com/api/v1/users/current/summaries?range=today', {
+        headers: {
+          'Authorization': `Basic ${encodedKey}`
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data || !data.data || !Array.isArray(data.data) || data.data.length === 0) {
+          return;
+        }
+        
+        const today = data.data[0];
+        const grandTotal = today?.grand_total;
+        
+        // Check if there's meaningful activity today
+        if (grandTotal && grandTotal.text && grandTotal.total_seconds > 0) {
+          const timeText = grandTotal.text.trim().toLowerCase();
+          if (timeText !== "0 secs" && timeText !== "0 sec" && timeText !== "0s" && timeText !== "") {
+            statusTextEl.textContent = "Online in";
+            statusSuffixEl.textContent = "IntelliJ";
+            statusTimeEl.textContent = `Today worked ${grandTotal.text}`;
+            return;
+          }
+        }
+        
+        // If no activity today, check yesterday
+        const yesterday = data.data[1];
+        if (yesterday?.grand_total?.text) {
+          statusTextEl.textContent = "Offline in";
+          statusSuffixEl.textContent = "IntelliJ";
+          statusTimeEl.textContent = `Yesterday worked ${yesterday.grand_total.text}`;
+        }
+      })
+      .catch(error => {
+        // Silently fail - keep server-side rendered data
+        console.error('ActivityStatus: Error fetching WakaTime data:', error);
+      });
+    }
+    
+    // Run when DOM is ready, then refresh periodically
+    function init() {
+      // Initial refresh after page load (for Vercel dynamic updates)
+      setTimeout(updateActivityStatus, 1000);
+      
+      // Refresh every 5 minutes
+      setInterval(updateActivityStatus, 5 * 60 * 1000);
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
