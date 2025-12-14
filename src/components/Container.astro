@@ -7,7 +7,6 @@ import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
 const works = await Astro.glob("../pages/works/*.md");
 const projects = await Astro.glob("../pages/projects/*.md");
-const studies = await Astro.glob("../pages/studies/*.md");
 const contact = await Astro.glob("../pages/contact/*.md");
 
 const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
@@ -66,31 +65,16 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Studies"} icon={"carbon:education"} accordionId="studies">
-    {
-      studies.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            location={item.frontmatter.location}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name="Visit College"
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
   <AccordionLayout title={"Skills"} icon={"carbon:skill-level"} accordionId="skills">
-    <div class="flex flex-wrap gap-2">
-      {skillCapsules.map((skill) => (
-        <span class="skill-capsule flex items-center gap-2 px-3 py-1 rounded-lg">
-          <Icon name={skill.icon} class="w-4 h-4 skill-icon" style={`color: ${skill.iconColor}`} />
-          <span class="skill-text">{skill.label}</span>
-        </span>
-      ))}
+    <div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full hover:shadow-lg transition-all p-4">
+      <div class="flex flex-wrap gap-2">
+        {skillCapsules.map((skill) => (
+          <span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg">
+            <Icon name={skill.icon} class="w-3.5 h-3.5 skill-icon" style={`color: ${skill.iconColor}`} />
+            <span class="skill-text">{skill.label}</span>
+          </span>
+        ))}
+      </div>
     </div>
   </AccordionLayout>
 
