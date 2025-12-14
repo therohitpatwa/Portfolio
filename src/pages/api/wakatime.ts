@@ -11,7 +11,7 @@ export async function GET() {
   }
 
   try {
-    const encodedKey = Buffer.from(wakatimeApiKey).toString('base64');
+    const encodedKey = btoa(wakatimeApiKey);
     
     const response = await fetch('https://wakatime.com/api/v1/users/current/summaries?range=today', {
       headers: {
