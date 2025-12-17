@@ -1,8 +1,9 @@
 ---
+layout: ../../layouts/ProjectLayout.astro
 title: My Own Printf
-video_url: /printf.mp4
-video_thumbnail: /printf.png 
-url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
+video_url: /projectvideos/printf.mp4
+video_thumbnail: /projectthumbnail/printf.png 
+url: https://github.com/therohitpatwa/MyOwnPrintf
 github_url: https://github.com/therohitpatwa/MyOwnPrintf
 tags: ["Pointer", "Recursion", "System Call"]
 date: 2024

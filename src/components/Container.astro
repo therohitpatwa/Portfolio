@@ -5,8 +5,10 @@ import * as about from "../pages/about/about.md";
 import Card from "./Card.astro";
 import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
+import BlogCard from "./BlogCard.astro";
 const works = await Astro.glob("../pages/works/*.md");
 const projects = await Astro.glob("../pages/projects/*.md");
+const blogs = await Astro.glob("../pages/blog/*.md");
 const contact = await Astro.glob("../pages/contact/*.md");
 
 const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
@@ -102,35 +104,66 @@ const PDF = "/MyResume.pdf";
 </style>
 
   <AccordionLayout title={"Projects"} icon={"carbon:tools"} accordionId="projects">
-    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-      {
-        projects.map((item) => {
-          return (
-            <ProjectCard
-              title={item.frontmatter.title}
-              description={item.compiledContent()}
-              tags={item.frontmatter.tags}
-              url={item.frontmatter.url}
-              github_url={item.frontmatter.github_url}
-              video_url={item.frontmatter.video_url}
-              video_thumbnail={item.frontmatter.video_thumbnail}
-            />
-          );
-        })
-      }
+    <div class="projects-container">
+      <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch" id="projects-grid">
+        {
+          projects.map((item, index) => {
+            return (
+              <div class={index >= 4 ? 'hidden-project hidden' : ''}>
+                <ProjectCard
+                  title={item.frontmatter.title}
+                  description={item.compiledContent()}
+                  tags={item.frontmatter.tags}
+                  url={item.frontmatter.url}
+                  github_url={item.frontmatter.github_url}
+                  video_url={item.frontmatter.video_url}
+                  video_thumbnail={item.frontmatter.video_thumbnail}
+                  project_url={item.url}
+                />
+              </div>
+            );
+          })
+        }
+      </div>
+      {projects.length > 4 && (
+        <div class="flex justify-center mt-6">
+          <button id="show-all-projects" class="btn btn-outline btn-sm">
+            <span class="show-text">Show all projects</span>
+            <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
+          </button>
+        </div>
+      )}
     </div>
   </AccordionLayout>
 
   <AccordionLayout title={"Blog"} icon={"carbon:blog"} accordionId="blog">
-    <div class="text-center text-secondary py-8">
-      <Icon name="carbon:blog" class="w-12 h-12 mx-auto mb-4 opacity-50" />
-      <p>Tech concepts? I make them blog-worthy.</p>
-      <div class="mt-4">
-        <a href="https://therohitpatwa.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-primary">
-          <Icon name="carbon:blog" class="w-4 h-4 mr-2" />
-          Explore Articles
-        </a>
+    <div class="blog-container">
+      <div class="blog-grid grid grid-cols-1 md:grid-cols-2 gap-4" id="blog-grid">
+        {
+          blogs.map((item, index) => {
+            return (
+              <div class={index >= 4 ? 'hidden-blog hidden' : ''}>
+                <BlogCard
+                  title={item.frontmatter.title}
+                  description={item.frontmatter.description}
+                  tags={item.frontmatter.tags}
+                  url={item.url}
+                  thumbnail={item.frontmatter.thumbnail}
+                  date={item.frontmatter.date}
+                />
+              </div>
+            );
+          })
+        }
       </div>
+      {blogs.length > 4 && (
+        <div class="flex justify-center mt-6">
+          <button id="show-all-blogs" class="btn btn-outline btn-sm">
+            <span class="show-text">Show all blogs</span>
+            <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
+          </button>
+        </div>
+      )}
     </div>
   </AccordionLayout>
 
@@ -190,5 +223,61 @@ const PDF = "/MyResume.pdf";
         }
       });
     });
+
+    // Show all projects button
+    const showAllProjectsBtn = document.getElementById('show-all-projects');
+    
+    if (showAllProjectsBtn) {
+      let isExpanded = false;
+      showAllProjectsBtn.addEventListener('click', function() {
+        const hiddenProjects = document.querySelectorAll('.hidden-project');
+        const showText = showAllProjectsBtn.querySelector('.show-text');
+        const chevron = showAllProjectsBtn.querySelector('.chevron-icon') as HTMLElement | null;
+        
+        if (!isExpanded) {
+          hiddenProjects.forEach(project => {
+            project.classList.remove('hidden');
+          });
+          if (showText) showText.textContent = 'Show less';
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+          isExpanded = true;
+        } else {
+          hiddenProjects.forEach(project => {
+            project.classList.add('hidden');
+          });
+          if (showText) showText.textContent = 'Show all projects';
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
+          isExpanded = false;
+        }
+      });
+    }
+
+    // Show all blogs button
+    const showAllBlogsBtn = document.getElementById('show-all-blogs');
+    
+    if (showAllBlogsBtn) {
+      let isExpanded = false;
+      showAllBlogsBtn.addEventListener('click', function() {
+        const hiddenBlogs = document.querySelectorAll('.hidden-blog');
+        const showText = showAllBlogsBtn.querySelector('.show-text');
+        const chevron = showAllBlogsBtn.querySelector('.chevron-icon') as HTMLElement | null;
+        
+        if (!isExpanded) {
+          hiddenBlogs.forEach(blog => {
+            blog.classList.remove('hidden');
+          });
+          if (showText) showText.textContent = 'Show less';
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+          isExpanded = true;
+        } else {
+          hiddenBlogs.forEach(blog => {
+            blog.classList.add('hidden');
+          });
+          if (showText) showText.textContent = 'Show all blogs';
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
+          isExpanded = false;
+        }
+      });
+    }
   });
 </script>

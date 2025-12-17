@@ -1,7 +1,8 @@
 ---
+layout: ../../layouts/ProjectLayout.astro
 title: Pixel Nova
-video_url: /pixel.mp4
-video_thumbnail: /pixelnova.png
+video_url: /projectvideos/pixelnova.mp4
+video_thumbnail: /projectthumbnail/pixelnova.png
 url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 github_url: https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor
 tags: ["Java", "Multithreading", "ThreadPool", "Executer Service", "Async Programming", "JavaFx"]

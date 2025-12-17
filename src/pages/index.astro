@@ -1,11 +1,12 @@
 ---
+export const prerender = true;
+
 import "@fontsource-variable/dm-sans";
 import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ActivityStatus from "../components/ActivityStatus.astro";
 import { Icon } from "astro-icon/components";
-import * as about from "./about/about.md";
 ---
 
 <html lang="en">
@@ -144,3 +145,58 @@ import * as about from "./about/about.md";
     animation: leaf-glow 2s ease-in-out infinite;
   }
 </style>
+
+<script>
+  // Check for accordion opening flags on page load
+  window.addEventListener('load', () => {
+    // Check if we should open projects accordion
+    if (sessionStorage.getItem('openProjectsAccordion') === 'true') {
+      sessionStorage.removeItem('openProjectsAccordion');
+      setTimeout(() => {
+        const projectsCheckbox = document.getElementById('projects') as HTMLInputElement | null;
+        if (projectsCheckbox) {
+          projectsCheckbox.checked = true;
+          // Scroll to projects section
+          document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+    
+    // Check if we should open blog accordion
+    if (sessionStorage.getItem('openBlogAccordion') === 'true') {
+      sessionStorage.removeItem('openBlogAccordion');
+      setTimeout(() => {
+        const blogCheckbox = document.getElementById('blog') as HTMLInputElement | null;
+        if (blogCheckbox) {
+          blogCheckbox.checked = true;
+          // Scroll to blog section
+          document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
+    // Handle URL hash on page load
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        const checkbox = document.getElementById(hash) as HTMLInputElement | null;
+        if (checkbox) {
+          checkbox.checked = true;
+          checkbox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
+    // Remove hash from URL when accordion is closed
+    const accordionCheckboxes = document.querySelectorAll('.accordion-checkbox');
+    accordionCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const inputCheckbox = checkbox as HTMLInputElement;
+        if (!inputCheckbox.checked && window.location.hash === `#${inputCheckbox.id}`) {
+          // Remove hash without reloading page
+          history.pushState('', document.title, window.location.pathname + window.location.search);
+        }
+      });
+    });
+  });
+</script>

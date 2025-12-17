@@ -7,7 +7,8 @@ const {
   url, 
   github_url,
   video_url,
-  video_thumbnail
+  video_thumbnail,
+  project_url
 } = Astro.props;
 
 const normalizeVideoPath = (path: string | undefined) => {
@@ -78,8 +79,23 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
   )}
 
   <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow">
-    <div class="flex items-center justify-between mb-2">
-      <h2 class="card-title text-xl font-bold text-white">{title}</h2>
+    <h2 class="card-title text-xl font-bold text-white mb-2">{title}</h2>
+
+    <article class="prose prose-invert text-sm text-gray-300 mb-4">
+      <Fragment set:html={description}></Fragment>
+    </article>
+
+    {Array.isArray(tags) && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag) => (
+          <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div class="flex items-center justify-between mt-auto">
       <div class="flex items-center gap-2">
         {url && url !== "#" && (
           <a href={url} target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary transition-colors">
@@ -92,21 +108,16 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
           </a>
         )}
       </div>
+      {project_url && (
+        <a 
+          href={project_url}
+          class="btn btn-primary btn-sm"
+        >
+          View Details
+          <Icon name="carbon:arrow-right" class="w-4 h-4" />
+        </a>
+      )}
     </div>
-
-    <article class="prose prose-invert text-sm text-gray-300 mb-4">
-      <Fragment set:html={description}></Fragment>
-    </article>
-
-    {Array.isArray(tags) && tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mt-auto">
-        {tags.map((tag) => (
-          <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium">
-            {tag}
-          </span>
-        ))}
-      </div>
-    )}
   </div>
 </div>
 
@@ -153,15 +164,15 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
 
 
   .tag-capsule {
-    background-color: rgba(30, 30, 30, 0.8);
-    border: 1px dashed rgba(150, 150, 150, 0.4);
-    color: white;
+    background-color: rgba(60, 60, 60, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
     transition: all 0.2s ease;
   }
 
   .tag-capsule:hover {
-    border-color: rgba(150, 150, 150, 0.6);
-    background-color: rgba(40, 40, 40, 0.9);
+    background-color: rgba(80, 80, 80, 0.9);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 </style>
 

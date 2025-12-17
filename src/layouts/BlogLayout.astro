@@ -1,0 +1,209 @@
+---
+import { Icon } from "astro-icon/components";
+import "@fontsource-variable/dm-sans";
+
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{frontmatter.title} - Rohit Patwa</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "black");
+        localStorage.setItem("theme", "black");
+      } else {
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+      }
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+    </script>
+  </head>
+  <body class="min-h-screen bg-base-100">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <!-- Back Button -->
+      <a href="/#blog" class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6">
+        <Icon name="carbon:arrow-left" class="w-4 h-4" />
+        Back to Blog
+      </a>
+
+      <!-- Blog Header -->
+      {frontmatter.thumbnail && (
+        <div class="mb-8 rounded-lg overflow-hidden">
+          <img 
+            src={frontmatter.thumbnail} 
+            alt={frontmatter.title}
+            class="w-full h-64 md:h-96 object-cover"
+          />
+        </div>
+      )}
+
+      <article class="prose prose-lg max-w-none">
+        <!-- Title and Meta -->
+        <div class="mb-8">
+          <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
+          
+          <div class="flex items-center gap-4 text-sm text-secondary mb-4">
+            {frontmatter.date && (
+              <div class="flex items-center gap-2">
+                <Icon name="carbon:calendar" class="w-4 h-4" />
+                <span>{frontmatter.date}</span>
+              </div>
+            )}
+          </div>
+
+          {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {frontmatter.tags.map((tag) => (
+                <span class="badge badge-outline">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Blog Content -->
+        <div class="blog-content">
+          <slot />
+        </div>
+      </article>
+
+      <!-- Social Share (Optional) -->
+      <div class="mt-12 pt-8 border-t border-base-300">
+        <div class="flex items-center justify-between">
+          <a href="/#blog" class="back-to-blog btn btn-outline btn-sm">
+            <Icon name="carbon:arrow-left" class="w-4 h-4" />
+            Back to Blog
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Open blog accordion when page loads with hash
+      if (window.location.hash === '#blog') {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const blogCheckbox = document.getElementById('blog') as HTMLInputElement | null;
+            if (blogCheckbox) {
+              blogCheckbox.checked = true;
+            }
+          }, 100);
+        });
+      }
+
+      // Handle back button clicks
+      document.querySelectorAll('.back-to-blog').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Store state to open accordion
+          sessionStorage.setItem('openBlogAccordion', 'true');
+          window.location.href = '/#blog';
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    font-family: "DM Sans Variable", sans-serif;
+  }
+
+  .blog-content {
+    color: oklch(var(--bc));
+  }
+
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-content h2 {
+    font-size: 1.875rem;
+    border-bottom: 1px solid oklch(var(--bc) / 0.1);
+    padding-bottom: 0.5rem;
+  }
+
+  .blog-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .blog-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-content code {
+    background-color: oklch(var(--b2));
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  .blog-content pre {
+    background-color: oklch(var(--b2));
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .blog-content pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .blog-content a {
+    color: oklch(var(--p));
+    text-decoration: underline;
+  }
+
+  .blog-content a:hover {
+    color: oklch(var(--pf));
+  }
+
+  .blog-content blockquote {
+    border-left: 4px solid oklch(var(--p));
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: oklch(var(--bc) / 0.7);
+  }
+
+  .blog-content img {
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .blog-content strong {
+    font-weight: 600;
+    color: oklch(var(--bc));
+  }
+
+  .blog-content em {
+    font-style: italic;
+  }
+</style>

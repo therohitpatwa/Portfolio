@@ -1,9 +1,10 @@
 ---
+// Component will fetch data on the client side from our API
 ---
 
-<div class="activity-status flex flex-col text-white text-xs" id="activity-status">
+<div class="activity-status flex flex-col text-xs" id="wakatime-status">
   <div class="flex items-center gap-1.5 whitespace-nowrap">
-    <span class="font-medium status-text">Offline in</span>
+    <span class="font-medium status-text activity-text">Loading...</span>
     <svg class="w-4 h-4 intellij-icon flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="12" fill="#000000"/>
       <path d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z" fill="#FF6BCB" opacity="0.8"/>
@@ -16,44 +17,63 @@
       <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF"/>
       <line x1="9" y1="15.5" x2="10.5" y2="15.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round"/>
     </svg>
-    <span class="font-medium">IntelliJ</span>
+    <span class="font-medium status-suffix activity-text">IntelliJ</span>
   </div>
-  <span class="text-gray-300 text-[10px] md:text-xs whitespace-nowrap time-worked">
-    Today worked 0m
+  <span class="text-[10px] md:text-xs whitespace-nowrap time-worked activity-text-secondary">
+    Fetching activity...
   </span>
 </div>
 
 <script>
-  async function updateActivityStatus() {
+  async function fetchWakatimeData() {
+    const statusText = document.querySelector('.status-text');
+    const statusSuffix = document.querySelector('.status-suffix');
+    const timeWorked = document.querySelector('.time-worked');
+    
     try {
       const response = await fetch('/api/wakatime');
-
+      
       if (response.ok) {
         const data = await response.json();
         
-        const statusText = document.querySelector('.status-text');
-        const timeWorked = document.querySelector('.time-worked');
-        
-        if (statusText && timeWorked && !data.error) {
-          statusText.textContent = data.status;
-          timeWorked.textContent = `${data.period} worked ${data.timeWorked}`;
-        }
+        if (statusText) statusText.textContent = data.status || 'Offline in';
+        if (statusSuffix) statusSuffix.textContent = data.statusSuffix || 'IntelliJ';
+        if (timeWorked) timeWorked.textContent = `${data.period} worked ${data.timeWorked}`;
+      } else {
+        if (statusText) statusText.textContent = 'Offline in';
+        if (statusSuffix) statusSuffix.textContent = 'IntelliJ';
+        if (timeWorked) timeWorked.textContent = 'Today worked 0m';
       }
     } catch (error) {
       console.error('Error fetching WakaTime data:', error);
+      if (statusText) statusText.textContent = 'Offline in';
+      if (statusSuffix) statusSuffix.textContent = 'IntelliJ';
+      if (timeWorked) timeWorked.textContent = 'Unable to fetch';
     }
   }
 
-  // Update on page load
-  updateActivityStatus();
-  
-  // Update every 5 minutes
-  setInterval(updateActivityStatus, 5 * 60 * 1000);
+  // Fetch on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fetchWakatimeData);
+  } else {
+    fetchWakatimeData();
+  }
+
+  // Refresh every 5 minutes
+  setInterval(fetchWakatimeData, 5 * 60 * 1000);
 </script>
 
 <style>
   .activity-status {
     font-family: inherit;
+  }
+  
+  .activity-text {
+    color: oklch(var(--bc));
+  }
+  
+  .activity-text-secondary {
+    color: oklch(var(--bc) / 0.7);
   }
   
   .intellij-icon {

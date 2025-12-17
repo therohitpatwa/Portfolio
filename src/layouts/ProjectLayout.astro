@@ -1,0 +1,197 @@
+---
+import { Icon } from "astro-icon/components";
+import "@fontsource-variable/dm-sans";
+
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{frontmatter.title} - Rohit Patwa</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "black");
+        localStorage.setItem("theme", "black");
+      } else {
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+      }
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+    </script>
+  </head>
+  <body class="min-h-screen bg-base-100">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <!-- Back Button -->
+      <a href="/#projects" class="back-to-projects inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6">
+        <Icon name="carbon:arrow-left" class="w-4 h-4" />
+        Back to Projects
+      </a>
+
+      <article class="prose prose-lg max-w-none">
+        <!-- Title -->
+        <h1 class="text-4xl font-bold mb-6">{frontmatter.title}</h1>
+
+        <!-- Project Video -->
+        {frontmatter.video_url && (
+          <div class="mb-6">
+            <video 
+              class="w-full rounded-lg"
+              controls
+              poster={frontmatter.video_thumbnail}
+            >
+              <source src={frontmatter.video_url} type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+
+        <!-- Links -->
+        <div class="flex items-center gap-4 mb-6">
+          {frontmatter.url && frontmatter.url !== "#" && (
+            <a href={frontmatter.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Icon name="mdi:earth" class="w-5 h-5" />
+              <span>Website</span>
+            </a>
+          )}
+          {frontmatter.github_url && (
+            <a href={frontmatter.github_url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Icon name="carbon:logo-github" class="w-5 h-5" />
+              <span>GitHub</span>
+            </a>
+          )}
+        </div>
+
+        <!-- Tags -->
+        {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-8">
+            {frontmatter.tags.map((tag) => (
+              <span class="badge badge-outline">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <!-- Project Content -->
+        <div class="project-content">
+          <slot />
+        </div>
+      </article>
+
+      <!-- Back Button Bottom -->
+      <div class="mt-12 pt-8 border-t border-base-300">
+        <a href="/#projects" class="back-to-projects btn btn-outline btn-sm">
+          <Icon name="carbon:arrow-left" class="w-4 h-4" />
+          Back to Projects
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Open projects accordion when page loads with hash
+      if (window.location.hash === '#projects') {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const projectsCheckbox = document.getElementById('projects') as HTMLInputElement | null;
+            if (projectsCheckbox) {
+              projectsCheckbox.checked = true;
+            }
+          }, 100);
+        });
+      }
+
+      // Handle back button clicks
+      document.querySelectorAll('.back-to-projects').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Store state to open accordion
+          sessionStorage.setItem('openProjectsAccordion', 'true');
+          window.location.href = '/#projects';
+        });
+      });
+    </script>
+
+    <style is:global>
+      .project-content {
+        color: oklch(var(--bc));
+      }
+
+      .project-content h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .project-content p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+      }
+
+      .project-content ul,
+      .project-content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .project-content code {
+        background-color: oklch(var(--b2));
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+      }
+
+      .project-content pre {
+        background-color: oklch(var(--b2));
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+      }
+
+      .project-content pre code {
+        background-color: transparent;
+        padding: 0;
+      }
+
+      .project-content a {
+        color: oklch(var(--p));
+        text-decoration: underline;
+      }
+
+      .project-content a:hover {
+        color: oklch(var(--pf));
+      }
+
+      .project-content blockquote {
+        border-left: 4px solid oklch(var(--p));
+        padding-left: 1rem;
+        margin-left: 0;
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .project-content img {
+        border-radius: 0.5rem;
+        margin: 1.5rem 0;
+      }
+    </style>
+  </body>
+</html>
