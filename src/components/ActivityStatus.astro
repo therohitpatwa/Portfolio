@@ -45,7 +45,6 @@
         if (timeWorked) timeWorked.textContent = 'Today worked 0m';
       }
     } catch (error) {
-      console.error('Error fetching WakaTime data:', error);
       if (statusText) statusText.textContent = 'Offline in';
       if (statusSuffix) statusSuffix.textContent = 'IntelliJ';
       if (timeWorked) timeWorked.textContent = 'Unable to fetch';

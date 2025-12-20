@@ -60,7 +60,6 @@ export async function GET() {
       }
     });
   } catch (error) {
-    console.error('Error fetching WakaTime data:', error);
     return new Response(JSON.stringify({ 
       status: 'Offline in',
       statusSuffix: 'IntelliJ',

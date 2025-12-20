@@ -49,9 +49,21 @@ const { frontmatter } = Astro.props;
       <article class="prose prose-lg max-w-none">
         <!-- Title and Meta -->
         <div class="mb-8">
+          {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+              {frontmatter.tags.map((tag) => (
+                <span class="badge badge-outline">{tag}</span>
+              ))}
+            </div>
+          )}
+          
           <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
           
-          <div class="flex items-center gap-4 text-sm text-secondary mb-4">
+          {frontmatter.description && (
+            <p class="text-lg text-secondary mb-4">{frontmatter.description}</p>
+          )}
+          
+          <div class="flex items-center gap-4 text-sm text-secondary">
             {frontmatter.date && (
               <div class="flex items-center gap-2">
                 <Icon name="carbon:calendar" class="w-4 h-4" />
@@ -59,14 +71,6 @@ const { frontmatter } = Astro.props;
               </div>
             )}
           </div>
-
-          {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
-            <div class="flex flex-wrap gap-2">
-              {frontmatter.tags.map((tag) => (
-                <span class="badge badge-outline">{tag}</span>
-              ))}
-            </div>
-          )}
         </div>
 
         <!-- Blog Content -->
@@ -113,10 +117,6 @@ const { frontmatter } = Astro.props;
 </html>
 
 <style is:global>
-  body {
-    font-family: "DM Sans Variable", sans-serif;
-  }
-
   .blog-content {
     color: oklch(var(--bc));
   }

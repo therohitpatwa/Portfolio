@@ -1,0 +1,11 @@
+---
+layout: ../../layouts/ProjectLayout.astro
+title: Multithreaded WebServer
+description: It is a client-server communication model in Java capable of handling multiple client requests simultaneously using sockets and threads.
+video_thumbnail: /projectthumbnail/webserver.png
+video_url: /projectvideos/pixelnova.mp4
+url: https://github.com/therohitpatwa/WebServer
+github_url: https://github.com/therohitpatwa/WebServer
+tags: ["Java", "Multithreading", "ThreadPool"]
+
+---

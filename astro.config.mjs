@@ -8,5 +8,22 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [tailwind(), icon()],
   output: "hybrid",
-  adapter: vercel()
+  adapter: vercel(),
+  image: {
+    domains: [],
+    remotePatterns: []
+  },
+  vite: {
+    build: {
+      cssMinify: true,
+      minify: 'terser',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor': ['astro']
+          }
+        }
+      }
+    }
+  }
 });

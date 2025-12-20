@@ -112,7 +112,7 @@ const PDF = "/MyResume.pdf";
               <div class={index >= 4 ? 'hidden-project hidden' : ''}>
                 <ProjectCard
                   title={item.frontmatter.title}
-                  description={item.compiledContent()}
+                  description={item.frontmatter.description}
                   tags={item.frontmatter.tags}
                   url={item.frontmatter.url}
                   github_url={item.frontmatter.github_url}
