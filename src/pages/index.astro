@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ActivityStatus from "../components/ActivityStatus.astro";
 import { Icon } from "astro-icon/components";
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <html lang="en">
@@ -52,6 +53,7 @@ import { Icon } from "astro-icon/components";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
     <link rel="preload" href="/MyResume.pdf" as="document" type="application/pdf" />
+    <SpeedInsights />
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
