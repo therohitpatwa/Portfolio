@@ -12,15 +12,9 @@ const { frontmatter } = Astro.props;
     <title>{frontmatter.title} - Rohit Patwa</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script is:inline>
-      if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "black");
-        localStorage.setItem("theme", "black");
-      } else {
-        document.documentElement.setAttribute(
-          "data-theme",
-          localStorage.getItem("theme")
-        );
-      }
+      const theme = localStorage.getItem("theme") || "black";
+      document.documentElement.setAttribute("data-theme", theme);
+      if (!localStorage.getItem("theme")) localStorage.setItem("theme", "black");
     </script>
     <script>
       import { themeChange } from "theme-change";
@@ -91,23 +85,9 @@ const { frontmatter } = Astro.props;
     </div>
 
     <script>
-      // Open blog accordion when page loads with hash
-      if (window.location.hash === '#blog') {
-        window.addEventListener('load', () => {
-          setTimeout(() => {
-            const blogCheckbox = document.getElementById('blog') as HTMLInputElement | null;
-            if (blogCheckbox) {
-              blogCheckbox.checked = true;
-            }
-          }, 100);
-        });
-      }
-
-      // Handle back button clicks
       document.querySelectorAll('.back-to-blog').forEach(button => {
         button.addEventListener('click', (e) => {
           e.preventDefault();
-          // Store state to open accordion
           sessionStorage.setItem('openBlogAccordion', 'true');
           window.location.href = '/#blog';
         });

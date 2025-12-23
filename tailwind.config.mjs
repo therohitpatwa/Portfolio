@@ -9,7 +9,8 @@ export default {
 					...require("daisyui/src/theming/themes")["lofi"],
 					"--rounded-box": "1rem",
 					"--rounded-btn": "0.5rem",
-					"--rounded-badge": "1.9rem"
+					"--rounded-badge": "1.9rem",
+					"base-100": "#FFF8E7"
 				},
 				black: {
 					...require("daisyui/src/theming/themes")["black"],

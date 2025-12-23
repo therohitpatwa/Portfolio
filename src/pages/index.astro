@@ -12,31 +12,22 @@ import { Icon } from "astro-icon/components";
 <html lang="en">
   <head>
     <script is:inline>
-      if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "black");
-        localStorage.setItem("theme", "black");
-      } else {
-        document.documentElement.setAttribute(
-          "data-theme",
-          localStorage.getItem("theme")
-        );
-      }
+      const theme = localStorage.getItem("theme") || "black";
+      document.documentElement.setAttribute("data-theme", theme);
+      if (!localStorage.getItem("theme")) localStorage.setItem("theme", "black");
     </script>
     <script>
       import { themeChange } from "theme-change";
       themeChange();
     </script>
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', () => {
         const toggle = document.querySelector('input[data-toggle-theme]');
-        const currentTheme = document.documentElement.getAttribute('data-theme');
         if (toggle) {
-          toggle.checked = currentTheme === 'lofi';
-          toggle.addEventListener('change', function () {
-            const updatedTheme = document.documentElement.getAttribute('data-theme');
-            if (updatedTheme) {
-              localStorage.setItem('theme', updatedTheme);
-            }
+          toggle.checked = document.documentElement.getAttribute('data-theme') === 'lofi';
+          toggle.addEventListener('change', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme) localStorage.setItem('theme', theme);
           });
         }
       });
@@ -50,6 +41,7 @@ import { Icon } from "astro-icon/components";
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
     <link rel="preload" href="/MyResume.pdf" as="document" type="application/pdf" />
   </head>
@@ -100,6 +92,10 @@ import { Icon } from "astro-icon/components";
     font-family: "DM Sans Variable", sans-serif;
   }
 
+  [data-theme="black"] body {
+    background: #0e0f11;
+  }
+
   @media (min-width: 768px) {
     .container {
       display: flex;
@@ -143,6 +139,18 @@ import { Icon } from "astro-icon/components";
 
   .available-capsule .animate-pulse {
     animation: leaf-glow 2s ease-in-out infinite;
+  }
+
+  .tag-capsule {
+    background-color: rgba(60, 60, 60, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transition: all 0.2s ease;
+  }
+
+  .tag-capsule:hover {
+    background-color: rgba(80, 80, 80, 0.9);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 </style>
 
