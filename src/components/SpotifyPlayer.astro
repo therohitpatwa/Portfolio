@@ -1,0 +1,783 @@
+---
+// Spotify Web Playback SDK Player Component
+---
+
+<div class="spotify-player-container" id="spotify-player-container">
+  <div class="flip-card" id="flip-card">
+    <div class="flip-card-inner" id="flip-card-inner">
+      <!-- Front Face (Compact View) -->
+      <div class="flip-card-front">
+        <div class="spotify-card compact">
+          <div class="track-info flex items-center gap-3">
+            <div class="album-art-wrapper">
+              <img
+                id="album-art-front"
+                src=""
+                alt="Album Art"
+                class="album-art hidden"
+              />
+              <div id="album-placeholder-front" class="album-placeholder">
+                <svg
+                  class="w-8 h-8 text-green-500"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="track-details flex-1 min-w-0">
+              <div class="status-row flex items-center gap-2">
+                <span class="spotify-icon">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                    ></path>
+                  </svg>
+                </span>
+                <span
+                  id="play-status-front"
+                  class="text-xs font-medium opacity-70"
+                  >Last played by Rohit</span
+                >
+              </div>
+              <p id="track-title-front" class="track-title font-bold truncate">
+                Loading...
+              </p>
+              <p
+                id="track-artist-front"
+                class="track-artist text-sm opacity-70 truncate"
+              >
+                —
+              </p>
+            </div>
+
+            <button id="play-btn-front" class="play-btn" title="Play">
+              <svg
+                class="play-icon w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back Face (Player View with Slider) -->
+      <div class="flip-card-back">
+        <div class="spotify-card compact-player">
+          <!-- Compact player: just song info, play button, and slider -->
+          <div
+            class="compact-player-header flex items-center justify-between gap-3 mb-2"
+          >
+            <div class="track-info-compact flex-1 min-w-0">
+              <p
+                id="track-title-back"
+                class="track-title-compact font-bold truncate text-sm"
+              >
+                Loading...
+              </p>
+              <p
+                id="track-artist-back"
+                class="track-artist-compact text-xs opacity-70 truncate"
+              >
+                —
+              </p>
+            </div>
+
+            <button id="play-btn" class="play-btn-compact" title="Pause">
+              <svg
+                id="pause-icon"
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Progress Bar (Interactive Slider) -->
+          <div class="progress-container-compact">
+            <div class="progress-bar-wrapper" id="progress-bar-wrapper">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div
+              class="time-display flex justify-between text-xs opacity-60 mt-1"
+            >
+              <span id="current-time">0:00</span>
+              <span id="total-time">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+<script>
+  // TypeScript: declare Spotify namespace and window property
+  declare global {
+    interface Window {
+      onSpotifyWebPlaybackSDKReady: () => void;
+      Spotify: any;
+    }
+  }
+
+  interface SpotifyTrack {
+    isPlaying: boolean;
+    title: string;
+    artist: string;
+    albumImageUrl: string;
+    trackUri: string;
+    durationMs: number;
+    progressMs?: number;
+    noData?: boolean;
+    error?: string;
+  }
+
+  let player: any = null;
+  let deviceId: string | null = null;
+  let currentTrackUri: string | null = null;
+  let isPlaying = false;
+  let accessToken: string | null = null;
+  let progressInterval: number | null = null;
+  let currentProgress = 0;
+  let trackDuration = 0;
+
+  // Format milliseconds to mm:ss
+  function formatTime(ms: number): string {
+    const seconds = Math.floor(ms / 1000);
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  }
+
+  // Update progress bar
+  function updateProgress() {
+    if (isPlaying && trackDuration > 0) {
+      currentProgress += 1000;
+      if (currentProgress > trackDuration) currentProgress = trackDuration;
+
+      const progressPercent = (currentProgress / trackDuration) * 100;
+      const progressBar = document.getElementById("progress-bar");
+      const currentTimeEl = document.getElementById("current-time");
+
+      if (progressBar) progressBar.style.width = `${progressPercent}%`;
+      if (currentTimeEl)
+        currentTimeEl.textContent = formatTime(currentProgress);
+    }
+  }
+
+  // Start progress timer
+  function startProgressTimer() {
+    if (progressInterval) clearInterval(progressInterval);
+    progressInterval = window.setInterval(updateProgress, 1000);
+  }
+
+  // Stop progress timer
+  function stopProgressTimer() {
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      progressInterval = null;
+    }
+  }
+
+  // Update UI elements (optimized with cached elements)
+  function updateUI(data: SpotifyTrack) {
+    // Cache DOM elements
+    const elements = {
+      albumArtFront: document.getElementById(
+        "album-art-front",
+      ) as HTMLImageElement,
+      albumPlaceholderFront: document.getElementById("album-placeholder-front"),
+      trackTitleFront: document.getElementById("track-title-front"),
+      trackArtistFront: document.getElementById("track-artist-front"),
+      playStatusFront: document.getElementById("play-status-front"),
+      trackTitleBack: document.getElementById("track-title-back"),
+      trackArtistBack: document.getElementById("track-artist-back"),
+      totalTime: document.getElementById("total-time"),
+      progressBar: document.getElementById("progress-bar"),
+      currentTime: document.getElementById("current-time"),
+    };
+
+    // Update album art (front face only - back face doesn't show it)
+    if (
+      data.albumImageUrl &&
+      elements.albumArtFront &&
+      elements.albumPlaceholderFront
+    ) {
+      elements.albumArtFront.src = data.albumImageUrl;
+      elements.albumArtFront.classList.remove("hidden");
+      elements.albumPlaceholderFront.classList.add("hidden");
+    }
+
+    // Update track info (all faces)
+    const title = data.title;
+    const artist = data.artist;
+    if (elements.trackTitleFront) elements.trackTitleFront.textContent = title;
+    if (elements.trackArtistFront)
+      elements.trackArtistFront.textContent = artist;
+    if (elements.trackTitleBack) elements.trackTitleBack.textContent = title;
+    if (elements.trackArtistBack) elements.trackArtistBack.textContent = artist;
+
+    // Update play status (front face only)
+    if (elements.playStatusFront) {
+      const statusText = data.isPlaying
+        ? "Now playing"
+        : "Last played by Rohit";
+      elements.playStatusFront.textContent = statusText;
+      elements.playStatusFront.classList.toggle(
+        "text-green-400",
+        data.isPlaying,
+      );
+    }
+
+    // Update progress
+    trackDuration = data.durationMs || 0;
+    currentProgress = data.progressMs || 0;
+
+    if (elements.totalTime)
+      elements.totalTime.textContent = formatTime(trackDuration);
+    if (elements.progressBar && trackDuration > 0) {
+      elements.progressBar.style.width = `${(currentProgress / trackDuration) * 100}%`;
+    }
+    if (elements.currentTime)
+      elements.currentTime.textContent = formatTime(currentProgress);
+
+    currentTrackUri = data.trackUri;
+  }
+
+  // Toggle play/pause and flip card
+  function updatePlayButton(playing: boolean) {
+    // Prevent redundant updates
+    if (isPlaying === playing) return;
+
+    const flipCardInner = document.getElementById("flip-card-inner");
+    const playBtn = document.getElementById("play-btn");
+
+    if (playing) {
+      // Flip to back (show player with slider) - INSTANT
+      flipCardInner?.classList.add("flipped");
+      playBtn?.classList.add("playing");
+      startProgressTimer();
+    } else {
+      // Flip to front (compact view) - INSTANT
+      flipCardInner?.classList.remove("flipped");
+      playBtn?.classList.remove("playing");
+      stopProgressTimer();
+    }
+    isPlaying = playing;
+  }
+
+  // Fetch track data
+  async function fetchTrackData(): Promise<SpotifyTrack | null> {
+    try {
+      const response = await fetch("/api/spotify");
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (error) {
+      console.error("Error fetching track:", error);
+    }
+    return null;
+  }
+
+  // Get access token
+  async function getAccessToken(): Promise<string | null> {
+    try {
+      const response = await fetch("/api/spotify-token");
+      if (response.ok) {
+        const data = await response.json();
+        return data.access_token;
+      }
+    } catch (error) {
+      console.error("Error getting token:", error);
+    }
+    return null;
+  }
+
+  // Seek to position in track
+  async function seekToPosition(positionMs: number) {
+    if (!accessToken || !deviceId) return;
+
+    try {
+      await fetch(
+        `https://api.spotify.com/v1/me/player/seek?position_ms=${Math.floor(positionMs)}&device_id=${deviceId}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      currentProgress = positionMs;
+    } catch (error) {
+      console.error("Error seeking:", error);
+    }
+  }
+
+  // Play track using Spotify Web API
+  async function playTrack() {
+    if (!accessToken || !currentTrackUri || !deviceId) {
+      console.log("Missing requirements:", {
+        accessToken: !!accessToken,
+        currentTrackUri,
+        deviceId,
+      });
+      return;
+    }
+
+    try {
+      // Transfer playback to this device
+      await fetch("https://api.spotify.com/v1/me/player", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          device_ids: [deviceId],
+          play: false,
+        }),
+      });
+
+      // Reduced delay for faster response
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
+      // Now play the track
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uris: [currentTrackUri],
+            position_ms: currentProgress,
+          }),
+        },
+      );
+
+      if (response.status === 204 || response.status === 200) {
+        console.log("Playback started successfully");
+        // Let the player state listener handle UI update
+
+        // Ensure volume is set
+        if (player) {
+          player.setVolume(0.8);
+        }
+      } else {
+        console.error("Play response status:", response.status);
+        const errorText = await response.text();
+        console.error("Play error:", errorText);
+      }
+    } catch (error) {
+      console.error("Error playing track:", error);
+    }
+  }
+
+  // Pause track
+  async function pauseTrack() {
+    if (!player) return;
+
+    try {
+      await player.pause();
+      // Let the player state listener handle UI update
+    } catch (error) {
+      console.error("Error pausing:", error);
+    }
+  }
+
+  // Toggle play/pause
+  function togglePlayback() {
+    if (isPlaying) {
+      pauseTrack();
+    } else {
+      playTrack();
+    }
+  }
+
+  // Initialize Spotify Web Playback SDK
+
+  window.onSpotifyWebPlaybackSDKReady = async () => {
+    accessToken = await getAccessToken();
+
+    if (!accessToken) {
+      console.error("Could not get access token");
+      return;
+    }
+
+    player = new window.Spotify.Player({
+      name: "Rohit's Portfolio Player",
+      getOAuthToken: (cb: (token: string) => void) => {
+        cb(accessToken!);
+      },
+      volume: 0.5,
+    });
+
+    // Error handling
+    player.addListener("initialization_error", ({ message }) =>
+      console.error("Init error:", message),
+    );
+    player.addListener("authentication_error", ({ message }) =>
+      console.error("Auth error:", message),
+    );
+    player.addListener("account_error", ({ message }) =>
+      console.error("Account error:", message),
+    );
+    player.addListener("playback_error", ({ message }) =>
+      console.error("Playback error:", message),
+    );
+
+    // Ready
+    player.addListener("ready", ({ device_id }) => {
+      console.log("Spotify Player ready with Device ID:", device_id);
+      deviceId = device_id;
+
+      // Set volume explicitly
+      player.setVolume(0.8).then(() => {
+        console.log("Volume set to 80%");
+      });
+    });
+
+    // Not Ready
+    player.addListener("not_ready", ({ device_id }) => {
+      console.log("Device ID has gone offline:", device_id);
+    });
+
+    // State changed
+    player.addListener("player_state_changed", (state) => {
+      if (!state) {
+        console.log("Player state is null");
+        return;
+      }
+
+      console.log("Player state changed:", {
+        paused: state.paused,
+        position: state.position,
+        duration: state.duration,
+      });
+
+      const currentTrack = state.track_window.current_track;
+      if (currentTrack) {
+        trackDuration = currentTrack.duration_ms;
+        currentProgress = state.position;
+
+        const progressBar = document.getElementById("progress-bar");
+        const currentTimeEl = document.getElementById("current-time");
+        const totalTimeEl = document.getElementById("total-time");
+
+        if (progressBar)
+          progressBar.style.width = `${(currentProgress / trackDuration) * 100}%`;
+        if (currentTimeEl)
+          currentTimeEl.textContent = formatTime(currentProgress);
+        if (totalTimeEl) totalTimeEl.textContent = formatTime(trackDuration);
+      }
+
+      updatePlayButton(!state.paused);
+    });
+
+    // Connect
+    try {
+      const connected = await player.connect();
+      if (connected) {
+        console.log("Player connected successfully!");
+      } else {
+        console.error("Player failed to connect");
+      }
+    } catch (error) {
+      console.error("Error connecting player:", error);
+    }
+  };
+
+  // Initialize on page load
+  async function init() {
+    const data = await fetchTrackData();
+    if (data && !data.noData && !data.error) {
+      updateUI(data);
+    }
+
+    // Setup play button click handlers (both front and back)
+    const playBtn = document.getElementById("play-btn");
+    const playBtnFront = document.getElementById("play-btn-front");
+    playBtn?.addEventListener("click", togglePlayback);
+    playBtnFront?.addEventListener("click", togglePlayback);
+
+    // Setup interactive slider
+    const progressBarWrapper = document.getElementById("progress-bar-wrapper");
+    progressBarWrapper?.addEventListener("click", (e) => {
+      if (!trackDuration || !isPlaying) return;
+
+      const rect = progressBarWrapper.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const percentage = clickX / rect.width;
+      const newPosition = percentage * trackDuration;
+
+      seekToPosition(newPosition);
+
+      // Update UI immediately
+      currentProgress = newPosition;
+      const progressBar = document.getElementById("progress-bar");
+      const currentTimeEl = document.getElementById("current-time");
+      if (progressBar) progressBar.style.width = `${percentage * 100}%`;
+      if (currentTimeEl) currentTimeEl.textContent = formatTime(newPosition);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Refresh track data every 30 seconds
+  setInterval(async () => {
+    if (!isPlaying) {
+      const data = await fetchTrackData();
+      if (data && !data.noData && !data.error) {
+        updateUI(data);
+      }
+    }
+  }, 30000);
+</script>
+
+<style>
+  .spotify-player-container {
+    width: 100%;
+    perspective: 1000px;
+  }
+
+  .flip-card {
+    width: 100%;
+    position: relative;
+    height: 80px; /* Fixed height to prevent expansion */
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    position: relative;
+  }
+
+  .flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+  }
+
+  .spotify-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .spotify-card.compact-player {
+    padding: 10px 12px;
+  }
+
+  .track-title-compact {
+    color: oklch(var(--bc));
+    line-height: 1.2;
+  }
+
+  .track-artist-compact {
+    color: oklch(var(--bc) / 0.7);
+    line-height: 1.1;
+  }
+
+  .play-btn-compact {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(30, 215, 96, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(30, 215, 96, 0.3);
+    color: #1db954;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(30, 215, 96, 0.15);
+  }
+
+  .play-btn-compact:hover {
+    background: rgba(30, 215, 96, 0.25);
+    border-color: rgba(30, 215, 96, 0.5);
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.25);
+  }
+
+  .play-btn-compact.playing {
+    background: rgba(30, 215, 96, 0.2);
+    border-color: rgba(30, 215, 96, 0.4);
+    animation: pulse-green-glass 2s infinite;
+  }
+
+  .progress-container-compact {
+    padding: 0;
+  }
+
+  .album-art-wrapper {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    background: rgba(30, 215, 96, 0.05);
+    border-radius: 8px;
+  }
+
+  .album-art {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease;
+  }
+
+  .album-art.hidden {
+    display: none;
+  }
+
+  .album-placeholder {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background: rgba(30, 215, 96, 0.1);
+    border: 1px solid rgba(30, 215, 96, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .album-placeholder.hidden {
+    display: none;
+  }
+
+  .spotify-icon {
+    color: #1db954;
+  }
+
+  .track-title {
+    color: oklch(var(--bc));
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+
+  .track-artist {
+    color: oklch(var(--bc) / 0.7);
+    line-height: 1.2;
+  }
+
+  .play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(30, 215, 96, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(30, 215, 96, 0.3);
+    color: #1db954;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(30, 215, 96, 0.15);
+  }
+
+  .play-btn:hover {
+    background: rgba(30, 215, 96, 0.25);
+    border-color: rgba(30, 215, 96, 0.5);
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.25);
+  }
+
+  .play-btn.playing {
+    background: rgba(30, 215, 96, 0.2);
+    border-color: rgba(30, 215, 96, 0.4);
+    animation: pulse-green-glass 2s infinite;
+  }
+
+  @keyframes pulse-green-glass {
+    0%,
+    100% {
+      box-shadow:
+        0 4px 12px rgba(30, 215, 96, 0.15),
+        0 0 0 0 rgba(30, 215, 96, 0.4);
+    }
+    50% {
+      box-shadow:
+        0 6px 20px rgba(30, 215, 96, 0.25),
+        0 0 0 8px rgba(30, 215, 96, 0);
+    }
+  }
+
+  .progress-container {
+    padding: 0 4px;
+  }
+
+  .progress-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.2s ease;
+  }
+
+  .progress-bar-wrapper:hover {
+    height: 6px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #1db954;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  .time-display {
+    color: oklch(var(--bc) / 0.5);
+    font-size: 0.7rem;
+  }
+</style>
