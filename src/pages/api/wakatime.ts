@@ -13,7 +13,8 @@ export async function GET() {
   try {
     const encodedKey = btoa(wakatimeApiKey);
     
-    const response = await fetch('https://wakatime.com/api/v1/users/current/summaries?range=today', {
+    // Fetch last 2 days to get yesterday data when offline today
+    const response = await fetch('https://wakatime.com/api/v1/users/current/summaries?range=last_7_days', {
       headers: {
         'Authorization': `Basic ${encodedKey}`,
         'Content-Type': 'application/json'
@@ -25,8 +26,11 @@ export async function GET() {
     }
 
     const data = await response.json();
-    const today = data.data?.[0];
-    const yesterday = data.data?.[1];
+    
+    // Data is sorted by date, last item is today
+    const summaries = data.data || [];
+    const today = summaries[summaries.length - 1];
+    const yesterday = summaries[summaries.length - 2];
     const grandTotal = today?.grand_total;
     
     let activityData = {
@@ -43,7 +47,7 @@ export async function GET() {
         timeWorked: grandTotal.text,
         period: 'Today'
       };
-    } else if (yesterday?.grand_total?.text) {
+    } else if (yesterday?.grand_total?.text && yesterday.grand_total.text !== "0 secs") {
       activityData = {
         status: 'Offline in',
         statusSuffix: 'IntelliJ',

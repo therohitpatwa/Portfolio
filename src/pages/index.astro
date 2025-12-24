@@ -78,13 +78,10 @@ import { Icon } from "astro-icon/components";
     <div
       class="mx-auto max-w-3xl w-[95vw] flex flex-col mb-4 overflow-hidden relative z-10"
     >
-      <!-- Row 1: Activity Status + Available Badge -->
+      <!-- Row 1: Available Badge + Activity Status -->
       <div
         class="flex items-center justify-between mb-2 gap-2 md:gap-3 flex-nowrap min-w-0"
       >
-        <div class="flex-shrink-0 min-w-0">
-          <ActivityStatus />
-        </div>
         <div
           class="available-capsule flex items-center bg-gradient-to-r from-green-950/40 to-green-900/40 backdrop-blur-lg border border-green-800/20 px-3 py-2 rounded-full flex-shrink-0 shadow-lg shadow-green-950/15 hover:shadow-green-950/25 transition-all duration-300"
         >
@@ -106,6 +103,9 @@ import { Icon } from "astro-icon/components";
             class="text-green-200/90 text-xs font-semibold tracking-wide whitespace-nowrap"
             >Available for work</span
           >
+        </div>
+        <div class="flex-shrink-0 min-w-0">
+          <ActivityStatus />
         </div>
       </div>
       <!-- Row 2: Spotify Player -->

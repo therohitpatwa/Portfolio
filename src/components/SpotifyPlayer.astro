@@ -327,11 +327,6 @@
   // Play track using Spotify Web API
   async function playTrack() {
     if (!accessToken || !currentTrackUri || !deviceId) {
-      console.log("Missing requirements:", {
-        accessToken: !!accessToken,
-        currentTrackUri,
-        deviceId,
-      });
       return;
     }
 
@@ -369,17 +364,10 @@
       );
 
       if (response.status === 204 || response.status === 200) {
-        console.log("Playback started successfully");
-        // Let the player state listener handle UI update
-
         // Ensure volume is set
         if (player) {
           player.setVolume(0.8);
         }
-      } else {
-        console.error("Play response status:", response.status);
-        const errorText = await response.text();
-        console.error("Play error:", errorText);
       }
     } catch (error) {
       console.error("Error playing track:", error);
@@ -441,32 +429,16 @@
 
     // Ready
     player.addListener("ready", ({ device_id }) => {
-      console.log("Spotify Player ready with Device ID:", device_id);
       deviceId = device_id;
-
-      // Set volume explicitly
-      player.setVolume(0.8).then(() => {
-        console.log("Volume set to 80%");
-      });
+      player.setVolume(0.8);
     });
 
     // Not Ready
-    player.addListener("not_ready", ({ device_id }) => {
-      console.log("Device ID has gone offline:", device_id);
-    });
+    player.addListener("not_ready", () => {});
 
     // State changed
     player.addListener("player_state_changed", (state) => {
-      if (!state) {
-        console.log("Player state is null");
-        return;
-      }
-
-      console.log("Player state changed:", {
-        paused: state.paused,
-        position: state.position,
-        duration: state.duration,
-      });
+      if (!state) return;
 
       const currentTrack = state.track_window.current_track;
       if (currentTrack) {
@@ -488,16 +460,7 @@
     });
 
     // Connect
-    try {
-      const connected = await player.connect();
-      if (connected) {
-        console.log("Player connected successfully!");
-      } else {
-        console.error("Player failed to connect");
-      }
-    } catch (error) {
-      console.error("Error connecting player:", error);
-    }
+    player.connect();
   };
 
   // Initialize on page load
@@ -631,12 +594,16 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
     box-shadow: 0 4px 12px rgba(30, 215, 96, 0.15);
+    /* Fix for 3D transform visual glitch */
+    isolation: isolate;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .play-btn-compact:hover {
     background: rgba(30, 215, 96, 0.25);
     border-color: rgba(30, 215, 96, 0.5);
-    transform: scale(1.08);
+    transform: scale(1.08) translateZ(0);
     box-shadow: 0 6px 20px rgba(30, 215, 96, 0.25);
   }
 
@@ -746,10 +713,6 @@
         0 6px 20px rgba(30, 215, 96, 0.25),
         0 0 0 8px rgba(30, 215, 96, 0);
     }
-  }
-
-  .progress-container {
-    padding: 0 4px;
   }
 
   .progress-bar-wrapper {
