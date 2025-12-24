@@ -6,10 +6,10 @@ import Card from "./Card.astro";
 import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
 import BlogCard from "./BlogCard.astro";
-const works = await Astro.glob("../pages/works/*.md");
-const projects = await Astro.glob("../pages/projects/*.md");
-const blogs = await Astro.glob("../pages/blog/*.md");
-const contact = await Astro.glob("../pages/contact/*.md");
+const works = Object.values(await import.meta.glob<any>("../pages/works/*.md", { eager: true }));
+const projects = Object.values(await import.meta.glob<any>("../pages/projects/*.md", { eager: true }));
+const blogs = Object.values(await import.meta.glob<any>("../pages/blog/*.md", { eager: true }));
+const contact = Object.values(await import.meta.glob<any>("../pages/contact/*.md", { eager: true }));
 
 const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
   { label: "C", icon: "mdi:language-c", iconColor: "#A8B9CC" },

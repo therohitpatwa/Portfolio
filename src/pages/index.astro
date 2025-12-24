@@ -6,6 +6,7 @@ import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ActivityStatus from "../components/ActivityStatus.astro";
+import ParticleBackground from "../components/ParticleBackground.astro";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -45,8 +46,11 @@ import { Icon } from "astro-icon/components";
     <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
     <link rel="preload" href="/MyResume.pdf" as="document" type="application/pdf" />
   </head>
-  <body class="flex flex-col min-h-screen">
-    <Header />
+  <body class="flex flex-col min-h-screen relative">
+    <div class="relative z-10">
+      <Header />
+    </div>
+    <ParticleBackground />
     <div
       class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-20"
     >
@@ -60,7 +64,7 @@ import { Icon } from "astro-icon/components";
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
-    <div class="mx-auto max-w-3xl w-[95vw] flex flex-col mb-4 overflow-hidden">
+    <div class="mx-auto max-w-3xl w-[95vw] flex flex-col mb-4 overflow-hidden relative z-10">
       <div class="flex items-center justify-between mb-3 gap-2 md:gap-3 flex-nowrap min-w-0">
         <div class="available-capsule flex items-center bg-gradient-to-r from-green-950/40 to-green-900/40 backdrop-blur-lg border border-green-800/20 px-3 py-2 rounded-full flex-shrink-0 shadow-lg shadow-green-950/15 hover:shadow-green-950/25 transition-all duration-300">
           <div class="relative mr-2">
@@ -77,13 +81,15 @@ import { Icon } from "astro-icon/components";
       <div class="divider w-full bg-secondary h-px"></div>
     </div>
     <main
-      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll pt-4 pb-2 grid w-[95vw]"
+      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll pt-4 pb-2 grid w-[95vw] relative z-10"
     >
       <div class="container">
         <Container />
       </div>
     </main>
-    <Footer />
+    <div class="relative z-10">
+      <Footer />
+    </div>
   </body>
 </html>
 
