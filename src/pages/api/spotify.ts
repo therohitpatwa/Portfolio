@@ -46,7 +46,7 @@ export async function GET() {
     // If currently playing something
     if (nowPlayingResponse.status === 200) {
       const nowPlaying = await nowPlayingResponse.json();
-      
+
       if (nowPlaying.is_playing && nowPlaying.item) {
         const track = nowPlaying.item;
         return new Response(JSON.stringify({
@@ -62,7 +62,7 @@ export async function GET() {
           progressMs: nowPlaying.progress_ms,
         }), {
           status: 200,
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'public, s-maxage=10, stale-while-revalidate=5'
           }
@@ -79,11 +79,11 @@ export async function GET() {
 
     if (recentlyPlayedResponse.status === 200) {
       const recentlyPlayed = await recentlyPlayedResponse.json();
-      
+
       if (recentlyPlayed.items && recentlyPlayed.items.length > 0) {
         const track = recentlyPlayed.items[0].track;
         const playedAt = recentlyPlayed.items[0].played_at;
-        
+
         return new Response(JSON.stringify({
           isPlaying: false,
           title: track.name,
@@ -97,9 +97,9 @@ export async function GET() {
           playedAt: playedAt,
         }), {
           status: 200,
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
-            'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=15'
+            'Cache-Control': 'public, s-maxage=10, stale-while-revalidate=5'
           }
         });
       }

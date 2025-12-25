@@ -277,10 +277,15 @@
     isPlaying = playing;
   }
 
-  // Fetch track data
-  async function fetchTrackData(): Promise<SpotifyTrack | null> {
+  // Fetch track data with optional cache busting for fresh data
+  async function fetchTrackData(
+    bustCache = false,
+  ): Promise<SpotifyTrack | null> {
     try {
-      const response = await fetch("/api/spotify");
+      const url = bustCache ? `/api/spotify?t=${Date.now()}` : "/api/spotify";
+      const response = await fetch(url, {
+        cache: bustCache ? "no-store" : "default",
+      });
       if (response.ok) {
         return await response.json();
       }
@@ -324,6 +329,26 @@
     }
   }
 
+  // Check if device is already active
+  async function isDeviceActive(): Promise<boolean> {
+    if (!accessToken) return false;
+    try {
+      const response = await fetch(
+        "https://api.spotify.com/v1/me/player/devices",
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
+      );
+      if (response.ok) {
+        const data = await response.json();
+        return data.devices?.some((d: any) => d.id === deviceId && d.is_active);
+      }
+    } catch (e) {
+      console.error("Error checking device status:", e);
+    }
+    return false;
+  }
+
   // Play track using Spotify Web API
   async function playTrack() {
     if (!accessToken || !currentTrackUri || !deviceId) {
@@ -331,21 +356,23 @@
     }
 
     try {
-      // Transfer playback to this device
-      await fetch("https://api.spotify.com/v1/me/player", {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          device_ids: [deviceId],
-          play: false,
-        }),
-      });
-
-      // Reduced delay for faster response
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      // Only transfer playback if device is not already active
+      const alreadyActive = await isDeviceActive();
+      if (!alreadyActive) {
+        await fetch("https://api.spotify.com/v1/me/player", {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            device_ids: [deviceId],
+            play: false,
+          }),
+        });
+        // Small delay only when transferring
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
 
       // Now play the track
       const response = await fetch(
@@ -465,7 +492,8 @@
 
   // Initialize on page load
   async function init() {
-    const data = await fetchTrackData();
+    // Force fresh data on page load to ensure latest "last played" info
+    const data = await fetchTrackData(true);
     if (data && !data.noData && !data.error) {
       updateUI(data);
     }
@@ -524,6 +552,7 @@
     width: 100%;
     position: relative;
     height: 80px; /* Fixed height to prevent expansion */
+    background: transparent;
   }
 
   .flip-card-inner {
@@ -532,6 +561,7 @@
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    background: transparent;
   }
 
   .flip-card-inner.flipped {
@@ -543,6 +573,7 @@
     width: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    background: transparent;
   }
 
   .flip-card-front {
@@ -562,6 +593,28 @@
     border-radius: 12px;
     padding: 12px;
     backdrop-filter: blur(10px);
+    /* Prevent flickering during theme transitions and animations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Light mode theme styling */
+  :global([data-theme="lofi"]) .spotify-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="lofi"]) .flip-card-inner {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  :global([data-theme="lofi"]) .flip-card-front,
+  :global([data-theme="lofi"]) .flip-card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .spotify-card.compact-player {
@@ -742,5 +795,10 @@
   .time-display {
     color: oklch(var(--bc) / 0.5);
     font-size: 0.7rem;
+  }
+
+  /* Light mode progress bar visibility */
+  :global([data-theme="lofi"]) .progress-bar-wrapper {
+    background: rgba(0, 0, 0, 0.1);
   }
 </style>

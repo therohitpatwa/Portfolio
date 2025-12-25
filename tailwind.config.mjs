@@ -17,7 +17,8 @@ export default {
 					"--rounded-box": "1rem",
 					"--rounded-btn": "0.5rem",
 					"--rounded-badge": "1.9rem",
-					"secondary": "#e5e5e5"
+					"secondary": "#e5e5e5",
+					"base-100": "#0e0f11"
 				}
 			}
 		],
