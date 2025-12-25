@@ -111,7 +111,6 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('Spotify API error:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch Spotify data' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
