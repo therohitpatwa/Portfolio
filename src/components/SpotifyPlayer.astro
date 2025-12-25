@@ -151,6 +151,8 @@
   let progressInterval: number | null = null;
   let currentProgress = 0;
   let trackDuration = 0;
+  let audioActivated = false;
+  let playerReady = false;
 
   // Format milliseconds to mm:ss
   function formatTime(ms: number): string {
@@ -349,13 +351,46 @@
     return false;
   }
 
+  // Activate browser audio context (required for autoplay)
+  async function activateAudio() {
+    if (audioActivated) return true;
+
+    try {
+      // Activate the player's audio element if available
+      if (player && player._options && player._options.getOAuthToken) {
+        await player.activateElement();
+        audioActivated = true;
+        console.log("Audio activated successfully");
+        return true;
+      }
+    } catch (error) {
+      console.log("Audio activation attempt:", error);
+    }
+    return false;
+  }
+
   // Play track using Spotify Web API
   async function playTrack() {
     if (!accessToken || !currentTrackUri || !deviceId) {
+      console.log("Missing requirements:", {
+        accessToken: !!accessToken,
+        currentTrackUri,
+        deviceId,
+      });
       return;
     }
 
+    if (!playerReady) {
+      console.log("Player not ready yet, waiting...");
+      // Wait for player to be ready
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      if (!playerReady) return;
+    }
+
     try {
+      // CRITICAL: Activate audio on first user interaction
+      await activateAudio();
+
       // Only transfer playback if device is not already active
       const alreadyActive = await isDeviceActive();
       if (!alreadyActive) {
@@ -370,8 +405,8 @@
             play: false,
           }),
         });
-        // Small delay only when transferring
-        await new Promise((resolve) => setTimeout(resolve, 100));
+        // Delay when transferring to allow device activation
+        await new Promise((resolve) => setTimeout(resolve, 300));
       }
 
       // Now play the track
@@ -393,8 +428,12 @@
       if (response.status === 204 || response.status === 200) {
         // Ensure volume is set
         if (player) {
-          player.setVolume(0.8);
+          await player.setVolume(0.8);
         }
+      } else {
+        console.error("Play failed with status:", response.status);
+        const text = await response.text();
+        console.error("Response:", text);
       }
     } catch (error) {
       console.error("Error playing track:", error);
@@ -457,7 +496,9 @@
     // Ready
     player.addListener("ready", ({ device_id }) => {
       deviceId = device_id;
+      playerReady = true;
       player.setVolume(0.8);
+      console.log("Spotify player ready with device:", device_id);
     });
 
     // Not Ready

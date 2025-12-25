@@ -14,56 +14,74 @@ const { frontmatter } = Astro.props;
     <script is:inline>
       const theme = localStorage.getItem("theme") || "black";
       document.documentElement.setAttribute("data-theme", theme);
-      if (!localStorage.getItem("theme")) localStorage.setItem("theme", "black");
+      if (!localStorage.getItem("theme"))
+        localStorage.setItem("theme", "black");
     </script>
     <script>
       import { themeChange } from "theme-change";
       themeChange();
     </script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script>
   </head>
   <body class="min-h-screen bg-base-100">
     <div class="max-w-4xl mx-auto px-4 py-8">
       <!-- Back Button -->
-      <a href="/#blog" class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6">
+      <a
+        href="/#blog"
+        class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6"
+      >
         <Icon name="carbon:arrow-left" class="w-4 h-4" />
         Back to Blog
       </a>
 
       <!-- Blog Header -->
-      {frontmatter.thumbnail && (
-        <div class="mb-8 rounded-lg overflow-hidden">
-          <img 
-            src={frontmatter.thumbnail} 
-            alt={frontmatter.title}
-            class="w-full h-64 md:h-96 object-cover"
-          />
-        </div>
-      )}
+      {
+        frontmatter.thumbnail && (
+          <div class="mb-8 rounded-lg overflow-hidden">
+            <img
+              src={frontmatter.thumbnail}
+              alt={frontmatter.title}
+              class="w-full h-64 md:h-96 object-cover"
+            />
+          </div>
+        )
+      }
 
       <article class="prose prose-lg max-w-none">
         <!-- Title and Meta -->
         <div class="mb-8">
-          {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-4">
-              {frontmatter.tags.map((tag) => (
-                <span class="badge badge-outline">{tag}</span>
-              ))}
-            </div>
-          )}
-          
-          <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
-          
-          {frontmatter.description && (
-            <p class="text-lg text-secondary mb-4">{frontmatter.description}</p>
-          )}
-          
-          <div class="flex items-center gap-4 text-sm text-secondary">
-            {frontmatter.date && (
-              <div class="flex items-center gap-2">
-                <Icon name="carbon:calendar" class="w-4 h-4" />
-                <span>{frontmatter.date}</span>
+          {
+            Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 mb-4">
+                {frontmatter.tags.map((tag) => (
+                  <span class="badge badge-outline">{tag}</span>
+                ))}
               </div>
-            )}
+            )
+          }
+
+          <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
+
+          {
+            frontmatter.description && (
+              <p class="text-lg text-secondary mb-4">
+                {frontmatter.description}
+              </p>
+            )
+          }
+
+          <div class="flex items-center gap-4 text-sm text-secondary">
+            {
+              frontmatter.date && (
+                <div class="flex items-center gap-2">
+                  <Icon name="carbon:calendar" class="w-4 h-4" />
+                  <span>{frontmatter.date}</span>
+                </div>
+              )
+            }
           </div>
         </div>
 
@@ -85,11 +103,11 @@ const { frontmatter } = Astro.props;
     </div>
 
     <script>
-      document.querySelectorAll('.back-to-blog').forEach(button => {
-        button.addEventListener('click', (e) => {
+      document.querySelectorAll(".back-to-blog").forEach((button) => {
+        button.addEventListener("click", (e) => {
           e.preventDefault();
-          sessionStorage.setItem('openBlogAccordion', 'true');
-          window.location.href = '/#blog';
+          sessionStorage.setItem("openBlogAccordion", "true");
+          window.location.href = "/#blog";
         });
       });
     </script>

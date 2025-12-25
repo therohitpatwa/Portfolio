@@ -2,7 +2,12 @@
 // Particle Background Component with triangle particles, trails, and scatter on hover
 ---
 
-<div id="particles-container" class="fixed inset-0 w-full h-full" style="z-index: 1; pointer-events: none;"></div>
+<div
+  id="particles-container"
+  class="fixed inset-0 w-full h-full"
+  style="z-index: 1; pointer-events: none;"
+>
+</div>
 
 <script>
   import { tsParticles } from "@tsparticles/engine";
@@ -75,8 +80,8 @@
               straight: false,
               trail: {
                 enable: true,
-                fill: { 
-                  color: dark ? "#000000" : "#ffffff" 
+                fill: {
+                  color: dark ? "#000000" : "#ffffff",
                 },
                 length: 5,
               },
@@ -116,7 +121,10 @@
     // Reload particles on theme change
     const observer = new MutationObserver(async (mutations) => {
       for (const mutation of mutations) {
-        if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-theme"
+        ) {
           await loadParticles();
         }
       }

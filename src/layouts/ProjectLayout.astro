@@ -14,74 +14,104 @@ const { frontmatter } = Astro.props;
     <script is:inline>
       const theme = localStorage.getItem("theme") || "black";
       document.documentElement.setAttribute("data-theme", theme);
-      if (!localStorage.getItem("theme")) localStorage.setItem("theme", "black");
+      if (!localStorage.getItem("theme"))
+        localStorage.setItem("theme", "black");
     </script>
     <script>
       import { themeChange } from "theme-change";
       themeChange();
     </script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script>
   </head>
   <body class="min-h-screen bg-base-100">
     <div class="max-w-4xl mx-auto px-4 py-8">
       <!-- Back Button -->
-      <a href="/#projects" class="back-to-projects inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6">
+      <a
+        href="/#projects"
+        class="back-to-projects inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6"
+      >
         <Icon name="carbon:arrow-left" class="w-4 h-4" />
         Back to Projects
       </a>
 
       <article class="prose prose-lg max-w-none">
         <!-- Project Video -->
-        {frontmatter.video_url && (
-          <div class="mb-6">
-            <video 
-              class="w-full rounded-lg"
-              controls
-              poster={frontmatter.video_thumbnail}
-            >
-              <source src={frontmatter.video_url} type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )}
+        {
+          frontmatter.video_url && (
+            <div class="mb-6">
+              <video
+                class="w-full rounded-lg"
+                controls
+                poster={frontmatter.video_thumbnail}
+              >
+                <source src={frontmatter.video_url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )
+        }
 
         <!-- Tags -->
-        {Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
-          <div class="flex flex-wrap gap-2 mb-4">
-            {frontmatter.tags.map((tag) => (
-              <span class="badge badge-outline">{tag}</span>
-            ))}
-          </div>
-        )}
-        
+        {
+          Array.isArray(frontmatter.tags) && frontmatter.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+              {frontmatter.tags.map((tag) => (
+                <span class="badge badge-outline">{tag}</span>
+              ))}
+            </div>
+          )
+        }
+
         <!-- Title -->
         <h1 class="text-4xl font-bold mb-4">{frontmatter.title}</h1>
 
-        {frontmatter.description && (
-          <p class="text-lg text-secondary mb-4">{frontmatter.description}</p>
-        )}
+        {
+          frontmatter.description && (
+            <p class="text-lg text-secondary mb-4">{frontmatter.description}</p>
+          )
+        }
 
         <!-- Links -->
         <div class="flex items-center gap-4 mb-8">
-          {frontmatter.url && frontmatter.url !== "#" && (
-            <a href={frontmatter.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm hover:text-primary transition-colors">
-              <Icon name="mdi:earth" class="w-5 h-5" />
-              <span>Website</span>
-            </a>
-          )}
-          {frontmatter.github_url && (
-            <a href={frontmatter.github_url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm hover:text-primary transition-colors">
-              <Icon name="carbon:logo-github" class="w-5 h-5" />
-              <span>Source Code</span>
-            </a>
-          )}
+          {
+            frontmatter.url && frontmatter.url !== "#" && (
+              <a
+                href={frontmatter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+              >
+                <Icon name="mdi:earth" class="w-5 h-5" />
+                <span>Website</span>
+              </a>
+            )
+          }
+          {
+            frontmatter.github_url && (
+              <a
+                href={frontmatter.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+              >
+                <Icon name="carbon:logo-github" class="w-5 h-5" />
+                <span>Source Code</span>
+              </a>
+            )
+          }
         </div>
 
         <!-- Project Content (optional additional details) -->
-        {Astro.slots.has('default') && (
-          <div class="project-content border-t border-base-300 pt-6">
-            <slot />
-          </div>
-        )}
+        {
+          Astro.slots.has("default") && (
+            <div class="project-content border-t border-base-300 pt-6">
+              <slot />
+            </div>
+          )
+        }
       </article>
 
       <!-- Back Button Bottom -->
@@ -94,11 +124,11 @@ const { frontmatter } = Astro.props;
     </div>
 
     <script>
-      document.querySelectorAll('.back-to-projects').forEach(button => {
-        button.addEventListener('click', (e) => {
+      document.querySelectorAll(".back-to-projects").forEach((button) => {
+        button.addEventListener("click", (e) => {
           e.preventDefault();
-          sessionStorage.setItem('openProjectsAccordion', 'true');
-          window.location.href = '/#projects';
+          sessionStorage.setItem("openProjectsAccordion", "true");
+          window.location.href = "/#projects";
         });
       });
     </script>
