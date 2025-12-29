@@ -5,18 +5,45 @@ import "@fontsource-variable/dm-sans";
 const { frontmatter } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="theme-loaded">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{frontmatter.title} - Rohit Patwa</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script is:inline>
-      const theme = localStorage.getItem("theme") || "black";
-      document.documentElement.setAttribute("data-theme", theme);
-      if (!localStorage.getItem("theme"))
-        localStorage.setItem("theme", "black");
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFF8E7" : "#0e0f11";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
     </script>
+    <style>
+      /* Critical CSS - theme colors must match localStorage theme */
+      html[data-theme="lofi"],
+      html[data-theme="lofi"] body {
+        background-color: #fff8e7 !important;
+      }
+      html[data-theme="black"],
+      html[data-theme="black"] body {
+        background-color: #0e0f11 !important;
+      }
+      /* Enable transitions only after initial load */
+      html.transitions-enabled,
+      html.transitions-enabled body {
+        transition: background-color 0.3s ease !important;
+      }
+    </style>
     <script>
       import { themeChange } from "theme-change";
       themeChange();

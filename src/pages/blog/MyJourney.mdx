@@ -1,0 +1,9 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: My Journey - Dumb To Dev.
+description: The personal story of overcoming mental roadblocks, and developing the critical thinking and become a dev.
+thumbnail: /blogthumbnail/MyJourney/MyJourney.webp
+date: January 01, 2026
+tags: ["My Journey", "Personal life","Teaching", "Coding"]
+---
+

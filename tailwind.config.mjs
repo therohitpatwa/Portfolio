@@ -10,7 +10,8 @@ export default {
 					"--rounded-box": "1rem",
 					"--rounded-btn": "0.5rem",
 					"--rounded-badge": "1.9rem",
-					"base-100": "#FFF8E7"
+					"base-100": "#FFF8E7",
+					"--b1": "98.5% 0.02 85", // oklch value for #FFF8E7
 				},
 				black: {
 					...require("daisyui/src/theming/themes")["black"],
@@ -18,7 +19,8 @@ export default {
 					"--rounded-btn": "0.5rem",
 					"--rounded-badge": "1.9rem",
 					"secondary": "#e5e5e5",
-					"base-100": "#0e0f11"
+					"base-100": "#0e0f11",
+					"--b1": "7.5% 0.005 265", // oklch value for #0e0f11
 				}
 			}
 		],

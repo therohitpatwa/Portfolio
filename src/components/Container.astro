@@ -6,10 +6,22 @@ import Card from "./Card.astro";
 import ProjectCard from "./ProjectCard.astro";
 import ContactCard from "./ContactCard.astro";
 import BlogCard from "./BlogCard.astro";
-const works = Object.values(await import.meta.glob<any>("../pages/works/*.md", { eager: true }));
-const projects = Object.values(await import.meta.glob<any>("../pages/projects/*.md", { eager: true }));
-const blogs = Object.values(await import.meta.glob<any>("../pages/blog/*.md", { eager: true }));
-const contact = Object.values(await import.meta.glob<any>("../pages/contact/*.md", { eager: true }));
+const works = Object.values(
+  await import.meta.glob<any>("../pages/works/*.md", { eager: true }),
+);
+const projects = Object.values(
+  await import.meta.glob<any>("../pages/projects/*.{md,mdx}", { eager: true }),
+);
+const blogs = Object.values(
+  await import.meta.glob<any>("../pages/blog/*.{md,mdx}", { eager: true }),
+).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime(),
+);
+const contact = Object.values(
+  await import.meta.glob<any>("../pages/contact/*.md", { eager: true }),
+);
 
 const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
   { label: "C", icon: "mdi:language-c", iconColor: "#A8B9CC" },
@@ -28,7 +40,11 @@ const skillCapsules: { label: string; icon: string; iconColor: string }[] = [
 
   { label: "HTML", icon: "mdi:language-html5", iconColor: "#E34F26" },
   { label: "CSS", icon: "mdi:language-css3", iconColor: "#1572B6" },
-  { label: "JavaScript", icon: "mdi:language-javascript", iconColor: "#F7DF1E" },
+  {
+    label: "JavaScript",
+    icon: "mdi:language-javascript",
+    iconColor: "#F7DF1E",
+  },
   { label: "React.js", icon: "mdi:react", iconColor: "#61DAFB" },
   { label: "MySQL", icon: "mdi:database", iconColor: "#4479A1" },
 
@@ -43,13 +59,21 @@ const PDF = "/MyResume.pdf";
 ---
 
 <div class="join join-vertical gap-1 accordion-container">
-  <AccordionLayout title={"About"} icon={"carbon:identification"} accordionId="about">
+  <AccordionLayout
+    title={"About"}
+    icon={"carbon:identification"}
+    accordionId="about"
+  >
     <article class="text-justify">
       <Fragment set:html={about.compiledContent()} />
     </article>
   </AccordionLayout>
 
-  <AccordionLayout title={"Work"} icon={"carbon:construction"} accordionId="work">
+  <AccordionLayout
+    title={"Work"}
+    icon={"carbon:construction"}
+    accordionId="work"
+  >
     {
       works.map((item) => {
         return (
@@ -67,49 +91,70 @@ const PDF = "/MyResume.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Skills"} icon={"carbon:skill-level"} accordionId="skills">
-    <div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full hover:shadow-lg transition-all p-4">
+  <AccordionLayout
+    title={"Skills"}
+    icon={"carbon:skill-level"}
+    accordionId="skills"
+  >
+    <div
+      class="card card-compact card-bordered border border-[oklch(var(--s))] w-full hover:shadow-lg transition-all p-4"
+    >
       <div class="flex flex-wrap gap-2">
-        {skillCapsules.map((skill) => (
-          <span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg">
-            <Icon name={skill.icon} class="w-3.5 h-3.5 skill-icon" style={`color: ${skill.iconColor}`} />
-            <span class="skill-text">{skill.label}</span>
-          </span>
-        ))}
+        {
+          skillCapsules.map((skill) => (
+            <span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg">
+              <Icon
+                name={skill.icon}
+                class="w-3.5 h-3.5 skill-icon"
+                style={`color: ${skill.iconColor}`}
+              />
+              <span class="skill-text">{skill.label}</span>
+            </span>
+          ))
+        }
       </div>
     </div>
   </AccordionLayout>
 
-<style>
-  .skill-capsule {
-    background-color: rgba(30, 30, 30, 0.8);
-    border: 1px dashed rgba(150, 150, 150, 0.4);
-    transition: all 0.2s ease;
-  }
-  .skill-capsule:hover {
-    border-color: rgba(150, 150, 150, 0.6);
-    background-color: rgba(40, 40, 40, 0.9);
-  }
-  .skill-text {
-    color: white;
-    font-size: 0.875rem;
-  }
-  .skill-icon {
-    flex-shrink: 0;
-  }
-  .skill-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-</style>
+  <style>
+    .skill-capsule {
+      background-color: rgba(30, 30, 30, 0.8);
+      border: 1px dashed rgba(150, 150, 150, 0.4);
+      transition: all 0.2s ease;
+    }
+    .skill-capsule:hover {
+      border-color: rgba(150, 150, 150, 0.6);
+      background-color: rgba(40, 40, 40, 0.9);
+    }
+    .skill-text {
+      color: white;
+      font-size: 0.875rem;
+    }
+    .skill-icon {
+      flex-shrink: 0;
+    }
+    .skill-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 
-  <AccordionLayout title={"Projects"} icon={"carbon:tools"} accordionId="projects">
+  <AccordionLayout
+    title={"Projects"}
+    icon={"carbon:tools"}
+    accordionId="projects"
+  >
     <div class="projects-container">
-      <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch" id="projects-grid">
+      <div
+        class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch"
+        id="projects-grid"
+      >
         {
           projects.map((item, index) => {
             return (
-              <div class={index >= 4 ? 'hidden-project hidden' : ''}>
+              <div
+                class={`project-item ${index >= 4 ? "hidden-project hidden" : ""}`}
+              >
                 <ProjectCard
                   title={item.frontmatter.title}
                   description={item.frontmatter.description}
@@ -125,24 +170,31 @@ const PDF = "/MyResume.pdf";
           })
         }
       </div>
-      {projects.length > 4 && (
-        <div class="flex justify-center mt-6">
-          <button id="show-all-projects" class="btn btn-outline btn-sm">
-            <span class="show-text">Show all projects</span>
-            <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
-          </button>
-        </div>
-      )}
+      {
+        projects.length > 4 && (
+          <div class="flex justify-center mt-6">
+            <button id="show-all-projects" class="btn btn-outline btn-sm">
+              <span class="show-text">Show all projects</span>
+              <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
+            </button>
+          </div>
+        )
+      }
     </div>
   </AccordionLayout>
 
   <AccordionLayout title={"Blogs"} icon={"carbon:blog"} accordionId="blog">
     <div class="blog-container">
-      <div class="blog-grid grid grid-cols-1 md:grid-cols-2 gap-4" id="blog-grid">
+      <div
+        class="blog-grid grid grid-cols-1 md:grid-cols-2 gap-4"
+        id="blog-grid"
+      >
         {
           blogs.map((item, index) => {
             return (
-              <div class={index >= 4 ? 'hidden-blog hidden' : ''}>
+              <div
+                class={`blog-item ${index >= 4 ? "hidden-blog hidden" : ""}`}
+              >
                 <BlogCard
                   title={item.frontmatter.title}
                   description={item.frontmatter.description}
@@ -156,18 +208,24 @@ const PDF = "/MyResume.pdf";
           })
         }
       </div>
-      {blogs.length > 4 && (
-        <div class="flex justify-center mt-6">
-          <button id="show-all-blogs" class="btn btn-outline btn-sm">
-            <span class="show-text">Show all blogs</span>
-            <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
-          </button>
-        </div>
-      )}
+      {
+        blogs.length > 4 && (
+          <div class="flex justify-center mt-6">
+            <button id="show-all-blogs" class="btn btn-outline btn-sm">
+              <span class="show-text">Show all blogs</span>
+              <Icon name="carbon:chevron-down" class="w-4 h-4 chevron-icon" />
+            </button>
+          </div>
+        )
+      }
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"} accordionId="files">
+  <AccordionLayout
+    title={"Files"}
+    icon={"carbon:volume-file-storage"}
+    accordionId="files"
+  >
     <div class="flex justify-center w-full">
       <div
         class="card card-compact card-bordered border-[oklch(var(--s))] w-96 md:w-112 lg:w-128 hover:shadow-lg transition-all"
@@ -191,7 +249,11 @@ const PDF = "/MyResume.pdf";
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Contact"} icon={"carbon:location-person"} accordionId="contact">
+  <AccordionLayout
+    title={"Contact"}
+    icon={"carbon:location-person"}
+    accordionId="contact"
+  >
     <div class="flex flex-wrap content-around gap-4 justify-center">
       {
         contact.map((item) => {
@@ -209,11 +271,13 @@ const PDF = "/MyResume.pdf";
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const accordionInputs = document.querySelectorAll<HTMLInputElement>('.accordion-container .accordion-checkbox');
-    
+  document.addEventListener("DOMContentLoaded", function () {
+    const accordionInputs = document.querySelectorAll<HTMLInputElement>(
+      ".accordion-container .accordion-checkbox",
+    );
+
     accordionInputs.forEach((input) => {
-      input.addEventListener('change', function() {
+      input.addEventListener("change", function () {
         if (this.checked) {
           accordionInputs.forEach((otherInput) => {
             if (otherInput !== this) {
@@ -225,56 +289,60 @@ const PDF = "/MyResume.pdf";
     });
 
     // Show all projects button
-    const showAllProjectsBtn = document.getElementById('show-all-projects');
-    
+    const showAllProjectsBtn = document.getElementById("show-all-projects");
+
     if (showAllProjectsBtn) {
       let isExpanded = false;
-      showAllProjectsBtn.addEventListener('click', function() {
-        const hiddenProjects = document.querySelectorAll('.hidden-project');
-        const showText = showAllProjectsBtn.querySelector('.show-text');
-        const chevron = showAllProjectsBtn.querySelector('.chevron-icon') as HTMLElement | null;
-        
+      showAllProjectsBtn.addEventListener("click", function () {
+        const hiddenProjects = document.querySelectorAll(".hidden-project");
+        const showText = showAllProjectsBtn.querySelector(".show-text");
+        const chevron = showAllProjectsBtn.querySelector(
+          ".chevron-icon",
+        ) as HTMLElement | null;
+
         if (!isExpanded) {
-          hiddenProjects.forEach(project => {
-            project.classList.remove('hidden');
+          hiddenProjects.forEach((project) => {
+            project.classList.remove("hidden");
           });
-          if (showText) showText.textContent = 'Show less';
-          if (chevron) chevron.style.transform = 'rotate(180deg)';
+          if (showText) showText.textContent = "Show less";
+          if (chevron) chevron.style.transform = "rotate(180deg)";
           isExpanded = true;
         } else {
-          hiddenProjects.forEach(project => {
-            project.classList.add('hidden');
+          hiddenProjects.forEach((project) => {
+            project.classList.add("hidden");
           });
-          if (showText) showText.textContent = 'Show all projects';
-          if (chevron) chevron.style.transform = 'rotate(0deg)';
+          if (showText) showText.textContent = "Show all projects";
+          if (chevron) chevron.style.transform = "rotate(0deg)";
           isExpanded = false;
         }
       });
     }
 
     // Show all blogs button
-    const showAllBlogsBtn = document.getElementById('show-all-blogs');
-    
+    const showAllBlogsBtn = document.getElementById("show-all-blogs");
+
     if (showAllBlogsBtn) {
       let isExpanded = false;
-      showAllBlogsBtn.addEventListener('click', function() {
-        const hiddenBlogs = document.querySelectorAll('.hidden-blog');
-        const showText = showAllBlogsBtn.querySelector('.show-text');
-        const chevron = showAllBlogsBtn.querySelector('.chevron-icon') as HTMLElement | null;
-        
+      showAllBlogsBtn.addEventListener("click", function () {
+        const hiddenBlogs = document.querySelectorAll(".hidden-blog");
+        const showText = showAllBlogsBtn.querySelector(".show-text");
+        const chevron = showAllBlogsBtn.querySelector(
+          ".chevron-icon",
+        ) as HTMLElement | null;
+
         if (!isExpanded) {
-          hiddenBlogs.forEach(blog => {
-            blog.classList.remove('hidden');
+          hiddenBlogs.forEach((blog) => {
+            blog.classList.remove("hidden");
           });
-          if (showText) showText.textContent = 'Show less';
-          if (chevron) chevron.style.transform = 'rotate(180deg)';
+          if (showText) showText.textContent = "Show less";
+          if (chevron) chevron.style.transform = "rotate(180deg)";
           isExpanded = true;
         } else {
-          hiddenBlogs.forEach(blog => {
-            blog.classList.add('hidden');
+          hiddenBlogs.forEach((blog) => {
+            blog.classList.add("hidden");
           });
-          if (showText) showText.textContent = 'Show all blogs';
-          if (chevron) chevron.style.transform = 'rotate(0deg)';
+          if (showText) showText.textContent = "Show all blogs";
+          if (chevron) chevron.style.transform = "rotate(0deg)";
           isExpanded = false;
         }
       });
