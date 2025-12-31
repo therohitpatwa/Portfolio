@@ -1,122 +1,141 @@
 ---
 import { Icon } from "astro-icon/components";
-const { 
-  title, 
-  description, 
-  tags, 
-  url, 
+const {
+  title,
+  description,
+  tags,
+  url,
   github_url,
   video_url,
   video_thumbnail,
-  project_url
+  project_url,
 } = Astro.props;
 
 const normalizeVideoPath = (path: string | undefined) => {
   if (!path) return undefined;
-  if (path.startsWith('/')) return path;
-  if (path.includes('public/')) {
-    return '/' + path.split('public/')[1].replace(/\\/g, '/');
+  if (path.startsWith("/")) return path;
+  if (path.includes("public/")) {
+    return "/" + path.split("public/")[1].replace(/\\/g, "/");
   }
-  if (path.includes('\\')) {
-    const filename = path.split('\\').pop();
-    return '/' + filename;
+  if (path.includes("\\")) {
+    const filename = path.split("\\").pop();
+    return "/" + filename;
   }
-  return '/' + path;
+  return "/" + path;
 };
 
 const normalizedVideoUrl = normalizeVideoPath(video_url);
 const normalizedThumbnail = normalizeVideoPath(video_thumbnail);
-const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
+const uniqueId = title.replace(/\s+/g, "-").toLowerCase();
 ---
 
 <div class="project-card w-full h-full flex flex-col">
-  {normalizedVideoUrl && (
-    <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden">
-      {normalizedThumbnail ? (
-        <div class="video-container relative w-full h-full">
-          <img 
-            src={normalizedThumbnail} 
-            alt={`${title} thumbnail`}
-            class="w-full h-full object-cover rounded-t-lg"
-            id={`thumbnail-${uniqueId}`}
-            style="image-rendering: auto;"
-          />
-          <button 
-            class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group"
-            data-video-id={`video-${uniqueId}`}
-            data-thumbnail-id={`thumbnail-${uniqueId}`}
-            data-play-btn-id={`play-btn-${uniqueId}`}
-            id={`play-btn-${uniqueId}`}
-            type="button"
-          >
-            <div class="play-icon-circle">
-              <Icon name="carbon:play-filled" class="w-8 h-8 text-white" />
-            </div>
-          </button>
-          <video 
-            class="hidden w-full h-full object-cover rounded-t-lg"
-            controls
-            id={`video-${uniqueId}`}
-            preload="none"
-          >
-            <source src={normalizedVideoUrl} type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      ) : (
-        <div class="video-container relative w-full h-full">
-          <video 
-            class="w-full h-full object-cover"
-            controls
-            preload="metadata"
-          >
-            <source src={normalizedVideoUrl} type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-    </div>
-  )}
+  {
+    normalizedVideoUrl && (
+      <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden">
+        {normalizedThumbnail ? (
+          <div class="video-container relative w-full h-full">
+            <img
+              src={normalizedThumbnail}
+              alt={`${title} thumbnail`}
+              class="w-full h-full object-cover rounded-t-lg"
+              id={`thumbnail-${uniqueId}`}
+              style="image-rendering: auto;"
+            />
+            <button
+              class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group"
+              data-video-id={`video-${uniqueId}`}
+              data-thumbnail-id={`thumbnail-${uniqueId}`}
+              data-play-btn-id={`play-btn-${uniqueId}`}
+              id={`play-btn-${uniqueId}`}
+              type="button"
+            >
+              <div class="play-icon-circle">
+                <Icon name="carbon:play-filled" class="w-8 h-8 text-white" />
+              </div>
+            </button>
+            <video
+              class="hidden w-full h-full object-cover rounded-t-lg"
+              controls
+              id={`video-${uniqueId}`}
+              preload="none"
+            >
+              <source src={normalizedVideoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ) : (
+          <div class="video-container relative w-full h-full">
+            <video
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+            >
+              <source src={normalizedVideoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+      </div>
+    )
+  }
 
-  <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow">
+  <div
+    class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow"
+  >
     <h2 class="card-title text-xl font-bold text-white mb-2">{title}</h2>
 
     <article class="prose prose-invert text-sm text-gray-300 mb-4">
-      <Fragment set:html={description}></Fragment>
+      <Fragment set:html={description} />
     </article>
 
-    {Array.isArray(tags) && tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-4">
-        {tags.map((tag) => (
-          <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium">
-            {tag}
-          </span>
-        ))}
-      </div>
-    )}
+    {
+      Array.isArray(tags) && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
 
     <div class="flex items-center justify-between mt-auto">
       <div class="flex items-center gap-2">
-        {url && url !== "#" && (
-          <a href={url} target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary transition-colors">
-            <Icon name="mdi:earth" class="w-5 h-5" />
-          </a>
-        )}
-        {github_url && (
-          <a href={github_url} target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary transition-colors">
-            <Icon name="carbon:logo-github" class="w-5 h-5" />
-          </a>
-        )}
+        {
+          url && url !== "#" && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white hover:text-primary transition-colors"
+            >
+              <Icon name="mdi:earth" class="w-5 h-5" />
+            </a>
+          )
+        }
+        {
+          github_url && (
+            <a
+              href={github_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white hover:text-primary transition-colors"
+            >
+              <Icon name="carbon:logo-github" class="w-5 h-5" />
+            </a>
+          )
+        }
       </div>
-      {project_url && (
-        <a 
-          href={project_url}
-          class="btn btn-primary btn-sm"
-        >
-          View Details
-          <Icon name="carbon:arrow-right" class="w-4 h-4" />
-        </a>
-      )}
+      {
+        project_url && (
+          <a href={project_url} class="btn btn-primary btn-sm">
+            View Details
+            <Icon name="carbon:arrow-right" class="w-4 h-4" />
+          </a>
+        )
+      }
     </div>
   </div>
 </div>
@@ -164,62 +183,63 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
 </style>
 
 <script is:inline>
-  (function() {
+  (function () {
     function initVideoPlayers() {
-      const playButtons = document.querySelectorAll('.play-button');
-      
+      const playButtons = document.querySelectorAll(".play-button");
+
       playButtons.forEach((button) => {
-        const videoId = button.getAttribute('data-video-id');
-        const thumbnailId = button.getAttribute('data-thumbnail-id');
-        const playBtnId = button.getAttribute('data-play-btn-id');
-        
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
         const video = document.getElementById(videoId);
         const thumbnail = document.getElementById(thumbnailId);
         const playBtn = document.getElementById(playBtnId);
-        
+
         if (!video || !thumbnail || !playBtn) return;
-        
+
         let isVideoPlaying = false;
         let isHovering = false;
-        
+
         function showThumbnail() {
-          thumbnail.style.display = 'block';
-          playBtn.style.display = 'flex';
-          video.classList.add('hidden');
-          video.style.display = 'none';
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
           if (video instanceof HTMLVideoElement) {
             video.pause();
             video.currentTime = 0;
           }
         }
-        
+
         function updatePlayButtonVisibility() {
           if (isVideoPlaying) {
-            playBtn.style.opacity = '0';
-            playBtn.style.display = 'none';
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
             return;
           }
-          
-          const thumbnailVisible = thumbnail.style.display !== 'none' && 
-                                   !thumbnail.classList.contains('hidden') &&
-                                   getComputedStyle(thumbnail).display !== 'none';
-          
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
           if (thumbnailVisible) {
-            playBtn.style.display = 'flex';
-            playBtn.style.opacity = isHovering ? '1' : '0';
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
           } else {
-            playBtn.style.opacity = '0';
-            playBtn.style.display = 'none';
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
           }
         }
-        
+
         function showVideo() {
           isVideoPlaying = true;
-          thumbnail.style.display = 'none';
-          playBtn.style.display = 'none';
-          playBtn.style.opacity = '0';
-          video.classList.remove('hidden');
-          video.style.display = 'block';
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
           if (video instanceof HTMLVideoElement) {
             video.play().catch(() => {
               isVideoPlaying = false;
@@ -227,58 +247,58 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
             });
           }
         }
-        
-        button.addEventListener('click', function(e) {
+
+        button.addEventListener("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
           showVideo();
         });
-        
-        const videoHeader = thumbnail.closest('.video-header');
+
+        const videoHeader = thumbnail.closest(".video-header");
         if (videoHeader) {
-          videoHeader.addEventListener('mouseenter', function() {
+          videoHeader.addEventListener("mouseenter", function () {
             if (!isVideoPlaying) {
               isHovering = true;
               updatePlayButtonVisibility();
             }
           });
-          
-          videoHeader.addEventListener('mouseleave', function() {
+
+          videoHeader.addEventListener("mouseleave", function () {
             isHovering = false;
             updatePlayButtonVisibility();
           });
-          
-          videoHeader.addEventListener('touchstart', function() {
+
+          videoHeader.addEventListener("touchstart", function () {
             if (!isVideoPlaying) {
               isHovering = true;
               updatePlayButtonVisibility();
             }
           });
         }
-        
+
         if (video instanceof HTMLVideoElement) {
-          video.addEventListener('play', function() {
+          video.addEventListener("play", function () {
             isVideoPlaying = true;
-            thumbnail.style.display = 'none';
-            playBtn.style.display = 'none';
-            playBtn.style.opacity = '0';
-            video.classList.remove('hidden');
-            video.style.display = 'block';
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
           });
-          
-          video.addEventListener('ended', function() {
+
+          video.addEventListener("ended", function () {
             isVideoPlaying = false;
             showThumbnail();
             updatePlayButtonVisibility();
           });
-          
-          video.addEventListener('pause', function() {
+
+          video.addEventListener("pause", function () {
             if (video.currentTime > 0) {
               isVideoPlaying = false;
-              thumbnail.style.display = 'block';
-              playBtn.style.display = 'flex';
-              video.classList.add('hidden');
-              video.style.display = 'none';
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
               updatePlayButtonVisibility();
             }
           });
@@ -286,11 +306,10 @@ const uniqueId = title.replace(/\s+/g, '-').toLowerCase();
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initVideoPlayers);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
     } else {
       initVideoPlayers();
     }
   })();
 </script>
-
