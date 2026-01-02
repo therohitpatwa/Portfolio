@@ -16,7 +16,7 @@ import { Icon } from "astro-icon/components";
     <script is:inline>
       (function () {
         var theme = localStorage.getItem("theme") || "black";
-        var bgColor = theme === "lofi" ? "#FFF8E7" : "#0e0f11";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.style.cssText =
           "background-color: " + bgColor + " !important;";
@@ -34,11 +34,11 @@ import { Icon } from "astro-icon/components";
       /* Critical CSS - theme colors must match localStorage theme */
       html[data-theme="lofi"],
       html[data-theme="lofi"] body {
-        background-color: #fff8e7 !important;
+        background-color: #ffffff !important;
       }
       html[data-theme="black"],
       html[data-theme="black"] body {
-        background-color: #0e0f11 !important;
+        background-color: #000000 !important;
       }
       /* Enable transitions only after initial load */
       html.transitions-enabled,
@@ -164,7 +164,7 @@ import { Icon } from "astro-icon/components";
   }
 
   [data-theme="black"] body {
-    background: #0e0f11;
+    background: #000000;
   }
 
   @media (min-width: 768px) {
