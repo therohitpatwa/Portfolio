@@ -1,0 +1,169 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: Publish your own java maven package.
+description: A complete step-by-step guide to building, publishing, and using a Java utility library.
+thumbnail: /blogthumbnail/maven/maven.webp
+date: January 13, 2026
+tags: ["Maven Package","GitHub Packages","Java"]
+---
+
+
+
+---
+## Table of Contents
+
+- [What is Numsy?](#what-is-numsy)
+- [Step-by-Step: Building the Package](#step-by-step-building-the-package)
+  - [1. Generate a Maven Project](#1-generate-a-maven-project)
+  - [2. Implement the Utility Class](#2-implement-the-utility-class)
+- [Publishing to GitHub Packages](#publishing-to-github-packages)
+  - [3. Set Up pom.xml](#3-set-up-pomxml)
+  - [4. Authenticate with GitHub](#4-authenticate-with-github)
+  - [5. Deploy the Package](#5-deploy-the-package)
+- [Using the Numsy Package in Other Projects](#using-the-numsy-package-in-other-projects)
+- [Final Thoughts](#final-thoughts)
+
+---
+
+## What is Numsy?
+
+**Numsy** is a lightweight Java utility library for basic number manipulation, formatting, and checks.
+
+### Current Features
+
+- Check if a number is **Even** or **Odd**
+- Check if a number is **Prime**
+- Find **Prime numbers within a range**
+- Number formatting (add commas)
+- Find **GCD**
+- Find **LCM**
+
+It’s nothing fancy — just a clean, reusable utility layer for common number-related tasks that Java doesn’t provide directly.
+
+---
+
+## Step-by-Step: Building the Package
+
+### 1. Generate a Maven Project
+
+I used the Maven archetype to quickly scaffold the project:
+
+```bash
+mvn archetype:generate \
+  -DgroupId=com.therohitpatwa \
+  -DartifactId=Numsy \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DinteractiveMode=false
+```
+
+This will create a folder structure like this.
+(It will also create test folder, but we won't bother with that for now. also ignore the .gitignore, give it teste of its own medicine 😁)
+
+
+<img src="/blogthumbnail/maven/1.webp" alt="Description" width="900" />
+
+### 2. Implement the Utility class
+
+In src/main/java/com/therohitpatwa/Numsy Numsy.java, I added some static method:
+
+```java
+public static Boolean isEven(int n) { ... }
+public static Boolean isOdd(int n) { ... }
+public static List<Integer> primeInRange(int start,int end) { ... }
+So on...
+```
+
+<img src="/blogthumbnail/maven/2.webp" alt="Description" width="900" />
+
+---
+
+
+## Publishing to GitHub Packages
+
+### 3. Set Up pom.xml
+
+I updated my pom.xml to include the Github packages repository under distribution Management.
+
+```xml
+<distributionManagement>
+  <repository>
+    <id>github</id>
+    <name>GitHub Packages</name>
+    <url>https://maven.pkg.github.com/Github_Username/numsy</url>
+  </repository>
+</distributionManagement>
+```
+
+### 4. Authenticate with GitHub
+
+In your Maven setting.xml (In ~/.m2/setting.xml file), added my GitHub credentials like this:
+
+```xml  
+<servers>
+  <server>
+    <id>github</id>
+    <username>YOUR_GITHUB_USERNAME</username>
+    <password>YOUR_PERSONAL_ACCESS_TOKEN</password>
+  </server>
+</servers>
+```
+
+To create YOUR_PERSONAL_ACCESS_TOKEN:
+
+go to https://github.com/settings/tokens
+
+Create a Classic Token with these scope enables: write:packages read:packages
+
+Create and Paste it in the setting.xml
+
+### 5. Deploy the Package
+
+Run this command to publish:
+
+```bash
+mvn deploy
+```
+
+You'll see the packages listed under Packages in your GItHub repo if all goes well!
+
+<img src="/blogthumbnail/maven/3.webp" alt="Description" width="900" />
+<img src="/blogthumbnail/maven/4.webp" alt="Description" width="900" />
+
+---
+
+
+## Using the Numsy Package in Other Projects
+
+In other project’s pom.xml, include the repository and dependency:
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>com.therohitpatwa</groupId>
+    <artifactId>numsy</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </dependency>
+</dependencies>
+```
+
+Now Import
+
+```java
+com.therohitpatwa.Numsy.numsy
+```
+
+and you can use methods provided in Numsy class of numsy
+
+**Syntax -Numsy.methodName();**
+
+<img src="/blogthumbnail/maven/5.webp" alt="Description" width="900" />
+<img src="/blogthumbnail/maven/6.webp" alt="Description" width="900" />
+
+---
+
+## Final Thoughts
+
+I will add more method in Numsy soon. if you would like to use it or contribute, check it out here —
+👉 [Numsy](https://github.com/therohitpatwa/numsy)
+
+
