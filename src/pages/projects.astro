@@ -1,0 +1,381 @@
+---
+export const prerender = true;
+
+import "@fontsource-variable/dm-sans";
+import ParticleBackground from "../components/ParticleBackground.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+
+const projects = Object.values(
+    await import.meta.glob<any>("./projects/*.{md,mdx}", { eager: true }),
+);
+
+const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
+---
+
+<html lang="en" class="theme-loaded">
+    <head>
+        <script is:inline>
+            (function () {
+                var theme = localStorage.getItem("theme") || "black";
+                var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.setAttribute("data-theme", theme);
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+                document.write(
+                    '<style id="theme-init">html,body{background-color:' +
+                        bgColor +
+                        " !important;transition:none !important;}</style>",
+                );
+                if (!localStorage.getItem("theme"))
+                    localStorage.setItem("theme", "black");
+            })();
+        </script>
+        <style>
+            html[data-theme="lofi"],
+            html[data-theme="lofi"] body {
+                background-color: #ffffff !important;
+            }
+            html[data-theme="black"],
+            html[data-theme="black"] body {
+                background-color: #000000 !important;
+            }
+            html.transitions-enabled,
+            html.transitions-enabled body {
+                transition: background-color 0.3s ease !important;
+            }
+        </style>
+        <script>
+            import { themeChange } from "theme-change";
+            themeChange();
+        </script>
+        <script is:inline>
+            document.addEventListener("DOMContentLoaded", () => {
+                const toggle = document.querySelector(
+                    "input[data-toggle-theme]",
+                );
+                if (toggle) {
+                    toggle.checked =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "lofi";
+                    toggle.addEventListener("change", () => {
+                        const theme =
+                            document.documentElement.getAttribute("data-theme");
+                        if (theme) localStorage.setItem("theme", theme);
+                    });
+                }
+            });
+        </script>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>All Projects - Rohit Patwa</title>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script>
+    </head>
+    <body class="flex flex-col min-h-screen relative">
+        <ParticleBackground />
+        <div
+            class="flex justify-between items-center absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-20"
+        >
+            <a href="/" class="btn btn-outline btn-sm">
+                <Icon name="carbon:arrow-left" class="w-4 h-4" />
+                <span>Back to Home</span>
+            </a>
+
+            <div class="flex items-center">
+                <Icon name="carbon:moon" class="w-4 h-4" />
+                <input
+                    type="checkbox"
+                    data-toggle-theme="lofi,black"
+                    data-act-class="ACTIVECLASS"
+                    class="toggle toggle-sm mx-1 bg-secondary"
+                />
+                <Icon name="carbon:light" class="w-4 h-4" />
+            </div>
+        </div>
+
+        <main
+            class="mx-auto flex-grow max-w-3xl w-[95vw] pt-24 pb-8 relative z-10"
+        >
+            <div class="text-center mb-10">
+                <h1
+                    class="text-3xl md:text-4xl font-bold mb-4"
+                    style="font-family: 'Cinzel', serif;"
+                >
+                    Projects
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base">
+                    Things I’ve built, explored, and experimented with.
+                </p>
+            </div>
+
+            <div class="divider w-full bg-secondary h-px mb-6"></div>
+
+            <!-- Filter Section -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-gray-400 mb-3">
+                    Filter by Category
+                </h3>
+                <div class="flex flex-wrap gap-2" id="project-filter-container">
+                    {
+                        FILTER_CATEGORIES.map((category) => (
+                            <button
+                                class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all"
+                                data-category={category}
+                            >
+                                {category}
+                            </button>
+                        ))
+                    }
+                    <button
+                        class="clear-btn px-3 py-0.5 text-xs rounded-full border border-red-600 text-red-400 hover:bg-red-600/20 transition-all hidden"
+                        id="project-clear-filter"
+                    >
+                        <Icon name="carbon:close" class="w-3 h-3 inline mr-1" />
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-4"
+                id="projects-grid"
+            >
+                {
+                    projects.map((item, index) => (
+                        <div
+                            class={`project-filter-item ${index >= 6 ? "hidden-item hidden" : ""}`}
+                            data-category={item.frontmatter.category || ""}
+                        >
+                            <ProjectCard
+                                title={item.frontmatter.title}
+                                description={item.frontmatter.description}
+                                tags={item.frontmatter.tags}
+                                url={item.frontmatter.url}
+                                github_url={item.frontmatter.github_url}
+                                video_url={item.frontmatter.video_url}
+                                video_thumbnail={
+                                    item.frontmatter.video_thumbnail
+                                }
+                                project_url={item.url}
+                                status={item.frontmatter.status}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div
+                id="project-no-results"
+                class="hidden text-center py-8 text-gray-400"
+            >
+                No projects found for this category.
+            </div>
+
+            {
+                projects.length > 6 && (
+                    <div
+                        class="flex justify-center mt-8"
+                        id="load-more-container"
+                    >
+                        <button
+                            class="btn btn-outline btn-sm"
+                            id="load-more-btn"
+                        >
+                            Load more posts
+                        </button>
+                    </div>
+                )
+            }
+
+            <!-- Quote Section -->
+            <div class="quote-section mt-16 mb-8">
+                <div
+                    class="quote-card relative bg-base-300/30 border border-gray-700 rounded-lg p-8"
+                >
+                    <div
+                        class="quote-mark absolute text-6xl text-gray-600/50 font-serif"
+                        style="top: 1rem; left: 1.5rem;"
+                    >
+                        "
+                    </div>
+                    <p
+                        class="italic text-gray-300 text-sm md:text-base pl-8 pr-4"
+                    >
+                        "Work so hard that failure is not an option."
+                    </p>
+                    <p class="text-right text-gray-400 mt-4 text-sm">— Rohit</p>
+                </div>
+            </div>
+        </main>
+        <div class="relative z-10">
+            <Footer />
+        </div>
+    </body>
+</html>
+
+<style is:global>
+    body {
+        font-family: "DM Sans Variable", sans-serif;
+    }
+
+    [data-theme="black"] body {
+        background: #000000;
+    }
+
+    @media only screen and (max-width: 480px) {
+        * {
+            font-size: 12px;
+        }
+    }
+
+    .tag-capsule {
+        background-color: rgba(60, 60, 60, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        transition: all 0.2s ease;
+    }
+
+    .tag-capsule:hover {
+        background-color: rgba(80, 80, 80, 0.9);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .filter-btn {
+        background-color: transparent;
+        color: #9ca3af;
+    }
+
+    .filter-btn:hover {
+        color: #ffffff;
+    }
+
+    .filter-btn.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        function initProjectFilters() {
+            var filterContainer = document.getElementById(
+                "project-filter-container",
+            );
+            if (!filterContainer) return;
+
+            var filterBtns = filterContainer.querySelectorAll(".filter-btn");
+            var clearBtn = document.getElementById("project-clear-filter");
+            var projectCards = document.querySelectorAll(
+                ".project-filter-item",
+            );
+            var noResults = document.getElementById("project-no-results");
+            var activeFilter = null;
+
+            function updateFilter(category) {
+                activeFilter = category;
+                var visibleCount = 0;
+
+                for (var i = 0; i < projectCards.length; i++) {
+                    var card = projectCards[i];
+                    var cardCategory = card.getAttribute("data-category");
+                    if (!category || cardCategory === category) {
+                        card.style.display = "";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+
+                if (visibleCount === 0 && noResults) {
+                    noResults.classList.remove("hidden");
+                } else if (noResults) {
+                    noResults.classList.add("hidden");
+                }
+
+                for (var j = 0; j < filterBtns.length; j++) {
+                    var btn = filterBtns[j];
+                    if (btn.getAttribute("data-category") === category) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                }
+
+                if (category && clearBtn) {
+                    clearBtn.classList.remove("hidden");
+                } else if (clearBtn) {
+                    clearBtn.classList.add("hidden");
+                }
+            }
+
+            for (var k = 0; k < filterBtns.length; k++) {
+                (function (btn) {
+                    btn.addEventListener("click", function () {
+                        var category = btn.getAttribute("data-category");
+                        if (activeFilter === category) {
+                            updateFilter(null);
+                        } else {
+                            updateFilter(category);
+                        }
+                    });
+                })(filterBtns[k]);
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener("click", function () {
+                    updateFilter(null);
+                });
+            }
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initProjectFilters);
+        } else {
+            initProjectFilters();
+        }
+    })();
+</script>
+
+<script is:inline>
+    (function () {
+        function initLoadMore() {
+            var loadMoreBtn = document.getElementById("load-more-btn");
+            var loadMoreContainer = document.getElementById(
+                "load-more-container",
+            );
+            if (!loadMoreBtn) return;
+
+            loadMoreBtn.addEventListener("click", function () {
+                var hiddenItems = document.querySelectorAll(".hidden-item");
+                for (var i = 0; i < hiddenItems.length; i++) {
+                    hiddenItems[i].classList.remove("hidden-item");
+                    hiddenItems[i].classList.remove("hidden");
+                }
+                if (loadMoreContainer) {
+                    loadMoreContainer.style.display = "none";
+                }
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initLoadMore);
+        } else {
+            initLoadMore();
+        }
+    })();
+</script>

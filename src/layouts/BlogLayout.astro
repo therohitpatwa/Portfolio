@@ -57,11 +57,11 @@ const { frontmatter } = Astro.props;
     <div class="max-w-4xl mx-auto px-4 py-8">
       <!-- Back Button -->
       <a
-        href="/#blog"
+        href="/blogs"
         class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6"
       >
         <Icon name="carbon:arrow-left" class="w-4 h-4" />
-        Back to Blog
+        Back to Blogs
       </a>
 
       <!-- Blog Header -->
@@ -121,23 +121,13 @@ const { frontmatter } = Astro.props;
       <!-- Social Share (Optional) -->
       <div class="mt-12 pt-8 border-t border-base-300">
         <div class="flex items-center justify-between">
-          <a href="/#blog" class="back-to-blog btn btn-outline btn-sm">
+          <a href="/blogs" class="back-to-blog btn btn-outline btn-sm">
             <Icon name="carbon:arrow-left" class="w-4 h-4" />
-            Back to Blog
+            Back to Blogs
           </a>
         </div>
       </div>
     </div>
-
-    <script>
-      document.querySelectorAll(".back-to-blog").forEach((button) => {
-        button.addEventListener("click", (e) => {
-          e.preventDefault();
-          sessionStorage.setItem("openBlogAccordion", "true");
-          window.location.href = "/#blog";
-        });
-      });
-    </script>
   </body>
 </html>
 

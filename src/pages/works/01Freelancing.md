@@ -1,6 +1,6 @@
 ---
 title: FreeLancer 
-date: 2025 - Present
+date: 2026 - Present
 url: "https://github.com/therohitpatwa"
 location: Uttar Pradesh, India
 org: "Proof of Work"

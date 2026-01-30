@@ -1,0 +1,401 @@
+---
+export const prerender = true;
+
+import "@fontsource-variable/dm-sans";
+import ParticleBackground from "../components/ParticleBackground.astro";
+import BlogCard from "../components/BlogCard.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+
+const blogs = Object.values(
+    await import.meta.glob<any>("./blog/*.{md,mdx}", { eager: true }),
+).sort(
+    (a, b) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime(),
+);
+
+const FILTER_TAGS = ["Tech", "Personal"];
+
+const tagCounts: Record<string, number> = {};
+blogs.forEach((blog) => {
+    const tags = blog.frontmatter.tags || [];
+    tags.forEach((tag: string) => {
+        if (FILTER_TAGS.includes(tag)) {
+            tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+        }
+    });
+});
+
+// Keep tags in the order defined in FILTER_TAGS
+const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
+    (tag) => [tag, tagCounts[tag]] as [string, number],
+);
+---
+
+<html lang="en" class="theme-loaded">
+    <head>
+        <script is:inline>
+            (function () {
+                var theme = localStorage.getItem("theme") || "black";
+                var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.setAttribute("data-theme", theme);
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+                document.write(
+                    '<style id="theme-init">html,body{background-color:' +
+                        bgColor +
+                        " !important;transition:none !important;}</style>",
+                );
+                if (!localStorage.getItem("theme"))
+                    localStorage.setItem("theme", "black");
+            })();
+        </script>
+        <style>
+            html[data-theme="lofi"],
+            html[data-theme="lofi"] body {
+                background-color: #ffffff !important;
+            }
+            html[data-theme="black"],
+            html[data-theme="black"] body {
+                background-color: #000000 !important;
+            }
+            html.transitions-enabled,
+            html.transitions-enabled body {
+                transition: background-color 0.3s ease !important;
+            }
+        </style>
+        <script>
+            import { themeChange } from "theme-change";
+            themeChange();
+        </script>
+        <script is:inline>
+            document.addEventListener("DOMContentLoaded", () => {
+                const toggle = document.querySelector(
+                    "input[data-toggle-theme]",
+                );
+                if (toggle) {
+                    toggle.checked =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "lofi";
+                    toggle.addEventListener("change", () => {
+                        const theme =
+                            document.documentElement.getAttribute("data-theme");
+                        if (theme) localStorage.setItem("theme", theme);
+                    });
+                }
+            });
+        </script>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>All Blogs - Rohit Patwa</title>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script>
+    </head>
+    <body class="flex flex-col min-h-screen relative">
+        <ParticleBackground />
+        <div
+            class="flex justify-between items-center absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-20"
+        >
+            <a href="/" class="btn btn-outline btn-sm">
+                <Icon name="carbon:arrow-left" class="w-4 h-4" />
+                <span>Back to Home</span>
+            </a>
+
+            <div class="flex items-center">
+                <Icon name="carbon:moon" class="w-4 h-4" />
+                <input
+                    type="checkbox"
+                    data-toggle-theme="lofi,black"
+                    data-act-class="ACTIVECLASS"
+                    class="toggle toggle-sm mx-1 bg-secondary"
+                />
+                <Icon name="carbon:light" class="w-4 h-4" />
+            </div>
+        </div>
+
+        <main
+            class="mx-auto flex-grow max-w-3xl w-[95vw] pt-24 pb-8 relative z-10"
+        >
+            <div class="text-center mb-10">
+                <h1
+                    class="text-3xl md:text-4xl font-bold mb-4"
+                    style="font-family: 'Cinzel', serif;"
+                >
+                    Blogs
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base">
+                    Thoughts, tutorials, and insights on engineering, and
+                    programming.
+                </p>
+            </div>
+
+            <div class="divider w-full bg-secondary h-px mb-6"></div>
+
+            <!-- Filter Section -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-gray-400 mb-3">
+                    Popular Tags
+                </h3>
+                <div class="flex flex-wrap gap-2" id="blog-filter-container">
+                    {
+                        sortedTags.map(([tag, count]) => (
+                            <button
+                                class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all"
+                                data-tag={tag}
+                            >
+                                {tag} ({count})
+                            </button>
+                        ))
+                    }
+                    <button
+                        class="clear-btn px-3 py-0.5 text-xs rounded-full border border-red-600 text-red-400 hover:bg-red-600/20 transition-all hidden"
+                        id="blog-clear-filter"
+                    >
+                        <Icon name="carbon:close" class="w-3 h-3 inline mr-1" />
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="blogs-grid">
+                {
+                    blogs.map((item, index) => (
+                        <div
+                            class={`blog-filter-item ${index >= 6 ? "hidden-item hidden" : ""}`}
+                            data-tags={JSON.stringify(
+                                item.frontmatter.tags || [],
+                            )}
+                        >
+                            <BlogCard
+                                title={item.frontmatter.title}
+                                description={item.frontmatter.description}
+                                tags={item.frontmatter.tags}
+                                url={item.url}
+                                thumbnail={item.frontmatter.thumbnail}
+                                date={item.frontmatter.date}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div
+                id="blog-no-results"
+                class="hidden text-center py-8 text-gray-400"
+            >
+                No blogs found for this tag.
+            </div>
+
+            {
+                blogs.length > 6 && (
+                    <div
+                        class="flex justify-center mt-8"
+                        id="blog-load-more-container"
+                    >
+                        <button
+                            class="btn btn-outline btn-sm"
+                            id="blog-load-more-btn"
+                        >
+                            Load more posts
+                        </button>
+                    </div>
+                )
+            }
+
+            <!-- Quote Section -->
+            <div class="quote-section mt-16 mb-8">
+                <div
+                    class="quote-card relative bg-base-300/30 border border-gray-700 rounded-lg p-8"
+                >
+                    <div
+                        class="quote-mark absolute text-6xl text-gray-600/50 font-serif"
+                        style="top: 1rem; left: 1.5rem;"
+                    >
+                        "
+                    </div>
+                    <p
+                        class="italic text-gray-300 text-sm md:text-base pl-8 pr-4"
+                    >
+                        "A genius in not born but is educated and trained"
+                    </p>
+                    <p class="text-right text-gray-400 mt-4 text-sm">
+                        — László Polgár
+                    </p>
+                </div>
+            </div>
+        </main>
+    </body>
+    <div class="relative z-10">
+        <Footer />
+    </div>
+</html>
+
+<style is:global>
+    body {
+        font-family: "DM Sans Variable", sans-serif;
+    }
+
+    [data-theme="black"] body {
+        background: #000000;
+    }
+
+    @media only screen and (max-width: 480px) {
+        * {
+            font-size: 12px;
+        }
+    }
+
+    .tag-capsule {
+        background-color: rgba(60, 60, 60, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        transition: all 0.2s ease;
+    }
+
+    .tag-capsule:hover {
+        background-color: rgba(80, 80, 80, 0.9);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .filter-btn {
+        background-color: transparent;
+        color: #9ca3af;
+    }
+
+    .filter-btn:hover {
+        color: #ffffff;
+    }
+
+    .filter-btn.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        function initBlogFilters() {
+            var filterContainer = document.getElementById(
+                "blog-filter-container",
+            );
+            if (!filterContainer) return;
+
+            var filterBtns = filterContainer.querySelectorAll(".filter-btn");
+            var clearBtn = document.getElementById("blog-clear-filter");
+            var blogCards = document.querySelectorAll(".blog-filter-item");
+            var noResults = document.getElementById("blog-no-results");
+            var activeFilter = null;
+
+            function updateFilter(tag) {
+                activeFilter = tag;
+                var visibleCount = 0;
+
+                for (var i = 0; i < blogCards.length; i++) {
+                    var card = blogCards[i];
+                    var tagsAttr = card.getAttribute("data-tags");
+                    var cardTags = [];
+                    try {
+                        cardTags = JSON.parse(tagsAttr || "[]");
+                    } catch (e) {}
+                    if (!tag || cardTags.indexOf(tag) !== -1) {
+                        card.style.display = "";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+
+                if (visibleCount === 0 && noResults) {
+                    noResults.classList.remove("hidden");
+                } else if (noResults) {
+                    noResults.classList.add("hidden");
+                }
+
+                for (var j = 0; j < filterBtns.length; j++) {
+                    var btn = filterBtns[j];
+                    if (btn.getAttribute("data-tag") === tag) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                }
+
+                if (tag && clearBtn) {
+                    clearBtn.classList.remove("hidden");
+                } else if (clearBtn) {
+                    clearBtn.classList.add("hidden");
+                }
+            }
+
+            for (var k = 0; k < filterBtns.length; k++) {
+                (function (btn) {
+                    btn.addEventListener("click", function () {
+                        var tag = btn.getAttribute("data-tag");
+                        if (activeFilter === tag) {
+                            updateFilter(null);
+                        } else {
+                            updateFilter(tag);
+                        }
+                    });
+                })(filterBtns[k]);
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener("click", function () {
+                    updateFilter(null);
+                });
+            }
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initBlogFilters);
+        } else {
+            initBlogFilters();
+        }
+    })();
+</script>
+
+<script is:inline>
+    (function () {
+        function initBlogLoadMore() {
+            var loadMoreBtn = document.getElementById("blog-load-more-btn");
+            var loadMoreContainer = document.getElementById(
+                "blog-load-more-container",
+            );
+            if (!loadMoreBtn) return;
+
+            loadMoreBtn.addEventListener("click", function () {
+                var hiddenItems = document.querySelectorAll(
+                    "#blogs-grid .hidden-item",
+                );
+                for (var i = 0; i < hiddenItems.length; i++) {
+                    hiddenItems[i].classList.remove("hidden-item");
+                    hiddenItems[i].classList.remove("hidden");
+                }
+                if (loadMoreContainer) {
+                    loadMoreContainer.style.display = "none";
+                }
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initBlogLoadMore);
+        } else {
+            initBlogLoadMore();
+        }
+    })();
+</script>

@@ -57,7 +57,7 @@ const { frontmatter } = Astro.props;
     <div class="max-w-4xl mx-auto px-4 py-8">
       <!-- Back Button -->
       <a
-        href="/#projects"
+        href="/projects"
         class="back-to-projects inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6"
       >
         <Icon name="carbon:arrow-left" class="w-4 h-4" />
@@ -143,22 +143,12 @@ const { frontmatter } = Astro.props;
 
       <!-- Back Button Bottom -->
       <div class="mt-12 pt-8 border-t border-base-300">
-        <a href="/#projects" class="back-to-projects btn btn-outline btn-sm">
+        <a href="/projects" class="back-to-projects btn btn-outline btn-sm">
           <Icon name="carbon:arrow-left" class="w-4 h-4" />
           Back to Projects
         </a>
       </div>
     </div>
-
-    <script>
-      document.querySelectorAll(".back-to-projects").forEach((button) => {
-        button.addEventListener("click", (e) => {
-          e.preventDefault();
-          sessionStorage.setItem("openProjectsAccordion", "true");
-          window.location.href = "/#projects";
-        });
-      });
-    </script>
 
     <style is:global>
       .project-content {
