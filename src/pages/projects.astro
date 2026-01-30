@@ -108,7 +108,7 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
         </div>
 
         <main
-            class="mx-auto flex-grow max-w-3xl w-[95vw] pt-24 pb-8 relative z-10"
+            class="mx-auto flex-grow max-w-3xl w-[90vw] pt-24 pb-8 relative z-10"
         >
             <div class="text-center mb-10">
                 <h1
@@ -267,6 +267,31 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
         background-color: rgba(255, 255, 255, 0.1);
         border-color: #ffffff;
         color: #ffffff;
+    }
+
+    /* Light Mode Styles */
+    [data-theme="lofi"] .filter-btn {
+        color: #4b5563;
+        border-color: #9ca3af;
+    }
+    [data-theme="lofi"] .filter-btn:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #000000;
+    }
+    [data-theme="lofi"] .filter-btn.active {
+        background-color: #000000;
+        color: #ffffff;
+        border-color: #000000;
+    }
+    [data-theme="lofi"] .quote-card {
+        background-color: rgba(0, 0, 0, 0.02);
+        border-color: #e5e7eb;
+    }
+    [data-theme="lofi"] .quote-card p {
+        color: #374151;
+    }
+    [data-theme="lofi"] .quote-mark {
+        color: #d1d5db;
     }
 </style>
 
