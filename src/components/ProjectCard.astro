@@ -91,7 +91,11 @@ const isFullyWorking =
   >
     <!-- Title row with icons on right -->
     <div class="flex items-start justify-between mb-2">
-      <h2 class="card-title text-xl font-bold text-white">{title}</h2>
+      <h2
+        class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors"
+      >
+        {title}
+      </h2>
       <div class="flex items-center gap-2 ml-2 flex-shrink-0">
         {
           url && url !== "#" && (
@@ -214,6 +218,53 @@ const isFullyWorking =
     background-color: rgba(234, 179, 8, 0.2);
     border: 1px solid rgba(234, 179, 8, 0.5);
     color: #eab308;
+  }
+
+  /* Light Mode Overrides */
+  :global([data-theme="lofi"]) .project-card {
+    background-color: #ffffff;
+    border-color: #e5e7eb;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  :global([data-theme="lofi"]) .project-card:hover {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  :global([data-theme="lofi"]) .card-body {
+    background-color: #f9fafb;
+  }
+  :global([data-theme="lofi"]) .card-title {
+    color: #111827;
+  }
+  :global([data-theme="lofi"]) .prose {
+    color: #4b5563;
+  }
+  :global([data-theme="lofi"]) .text-gray-300 {
+    color: #4b5563;
+  }
+  :global([data-theme="lofi"]) .text-gray-400 {
+    color: #6b7280;
+  }
+  :global([data-theme="lofi"]) .text-gray-400:hover {
+    color: #111827;
+  }
+  :global([data-theme="lofi"]) .tag-capsule {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+    color: #374151;
+  }
+  :global([data-theme="lofi"]) .status-working {
+    background-color: #dcfce7;
+    border-color: #86efac;
+    color: #15803d;
+  }
+  :global([data-theme="lofi"]) .status-building {
+    background-color: #fef9c3;
+    border-color: #fde047;
+    color: #854d0e;
   }
 </style>
 
