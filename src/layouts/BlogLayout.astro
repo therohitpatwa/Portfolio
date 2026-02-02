@@ -119,14 +119,6 @@ const { frontmatter } = Astro.props;
       </article>
 
       <!-- Social Share (Optional) -->
-      <div class="mt-12 pt-8 border-t border-base-300">
-        <div class="flex items-center justify-between">
-          <a href="/blogs" class="back-to-blog btn btn-outline btn-sm">
-            <Icon name="carbon:arrow-left" class="w-4 h-4" />
-            Back to Blogs
-          </a>
-        </div>
-      </div>
     </div>
   </body>
 </html>
@@ -218,5 +210,13 @@ const { frontmatter } = Astro.props;
 
   .blog-content em {
     font-style: italic;
+  }
+
+  /* Copy Button Styles */
+  :root {
+    --code-copy-btn-fg: oklch(var(--bc) / 0.6);
+    --code-copy-btn-bg: oklch(var(--b1));
+    --code-copy-btn-border: oklch(var(--bc) / 0.2);
+    --code-copy-btn-hover-bg: oklch(var(--b2));
   }
 </style>
