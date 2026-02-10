@@ -2,58 +2,85 @@
 // Component will fetch data on the client side from our API
 ---
 
-<div class="activity-status flex flex-col md:flex-row md:items-center md:gap-2 text-sm" id="wakatime-status">
+<div
+  class="activity-status flex flex-col md:flex-row md:items-center md:gap-2 text-sm"
+  id="wakatime-status"
+>
   <div class="flex items-center gap-1.5 whitespace-nowrap">
     <span class="font-bold status-text activity-text">Loading...</span>
-    <svg class="w-4 h-4 intellij-icon flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="12" fill="#000000"/>
-      <path d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z" fill="#FF6BCB" opacity="0.8"/>
-      <path d="M4 8L10 10L8 16L4 14Z" fill="#FF8C42" opacity="0.8"/>
-      <path d="M6 18L10 16L12 20L8 22Z" fill="#9B59B6" opacity="0.8"/>
-      <path d="M14 6L20 8L18 14L14 12Z" fill="#3498DB" opacity="0.9"/>
-      <rect x="8" y="8" width="8" height="8" fill="#000000" rx="0.5"/>
-      <rect x="9.5" y="10" width="1" height="4" fill="#FFFFFF"/>
-      <path d="M12.5 10 L13.5 10 L13.5 12.5 Q13.5 13.5 12.5 13.5 L11.5 13.5" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-linecap="round"/>
-      <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF"/>
-      <line x1="9" y1="15.5" x2="10.5" y2="15.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round"/>
+    <svg
+      class="w-4 h-4 intellij-icon flex-shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12" cy="12" r="12" fill="#000000"></circle>
+      <path
+        d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z"
+        fill="#FF6BCB"
+        opacity="0.8"></path>
+      <path d="M4 8L10 10L8 16L4 14Z" fill="#FF8C42" opacity="0.8"></path>
+      <path d="M6 18L10 16L12 20L8 22Z" fill="#9B59B6" opacity="0.8"></path>
+      <path d="M14 6L20 8L18 14L14 12Z" fill="#3498DB" opacity="0.9"></path>
+      <rect x="8" y="8" width="8" height="8" fill="#000000" rx="0.5"></rect>
+      <rect x="9.5" y="10" width="1" height="4" fill="#FFFFFF"></rect>
+      <path
+        d="M12.5 10 L13.5 10 L13.5 12.5 Q13.5 13.5 12.5 13.5 L11.5 13.5"
+        stroke="#FFFFFF"
+        stroke-width="1"
+        fill="none"
+        stroke-linecap="round"></path>
+      <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF"></rect>
+      <line
+        x1="9"
+        y1="15.5"
+        x2="10.5"
+        y2="15.5"
+        stroke="#FFFFFF"
+        stroke-width="0.8"
+        stroke-linecap="round"></line>
     </svg>
     <span class="font-bold status-suffix activity-text">IntelliJ</span>
   </div>
-  <span class="text-xs md:text-sm font-semibold whitespace-nowrap time-worked activity-text-secondary">
+  <span
+    class="text-xs md:text-sm font-semibold whitespace-nowrap time-worked activity-text-secondary"
+  >
     Fetching activity...
   </span>
 </div>
 
 <script>
   async function fetchWakatimeData() {
-    const statusText = document.querySelector('.status-text');
-    const statusSuffix = document.querySelector('.status-suffix');
-    const timeWorked = document.querySelector('.time-worked');
-    
+    const statusText = document.querySelector(".status-text");
+    const statusSuffix = document.querySelector(".status-suffix");
+    const timeWorked = document.querySelector(".time-worked");
+
     try {
-      const response = await fetch('/api/wakatime');
-      
+      const response = await fetch("/api/wakatime");
+
       if (response.ok) {
         const data = await response.json();
-        
-        if (statusText) statusText.textContent = data.status || 'Offline in';
-        if (statusSuffix) statusSuffix.textContent = data.statusSuffix || 'IntelliJ';
-        if (timeWorked) timeWorked.textContent = `${data.period} worked ${data.timeWorked}`;
+
+        if (statusText) statusText.textContent = data.status || "Offline in";
+        if (statusSuffix)
+          statusSuffix.textContent = data.statusSuffix || "IntelliJ";
+        if (timeWorked)
+          timeWorked.textContent = `${data.period} worked ${data.timeWorked}`;
       } else {
-        if (statusText) statusText.textContent = 'Offline in';
-        if (statusSuffix) statusSuffix.textContent = 'IntelliJ';
-        if (timeWorked) timeWorked.textContent = 'Today worked 0m';
+        if (statusText) statusText.textContent = "Offline in";
+        if (statusSuffix) statusSuffix.textContent = "IntelliJ";
+        if (timeWorked) timeWorked.textContent = "Today worked 0m";
       }
     } catch (error) {
-      if (statusText) statusText.textContent = 'Offline in';
-      if (statusSuffix) statusSuffix.textContent = 'IntelliJ';
-      if (timeWorked) timeWorked.textContent = 'Unable to fetch';
+      if (statusText) statusText.textContent = "Offline in";
+      if (statusSuffix) statusSuffix.textContent = "IntelliJ";
+      if (timeWorked) timeWorked.textContent = "Unable to fetch";
     }
   }
 
   // Fetch on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fetchWakatimeData);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fetchWakatimeData);
   } else {
     fetchWakatimeData();
   }
@@ -66,15 +93,15 @@
   .activity-status {
     font-family: inherit;
   }
-  
+
   .activity-text {
     color: oklch(var(--bc));
   }
-  
+
   .activity-text-secondary {
     color: oklch(var(--bc) / 0.7);
   }
-  
+
   .intellij-icon {
     flex-shrink: 0;
     opacity: 0.7;
