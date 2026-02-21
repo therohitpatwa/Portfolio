@@ -27,7 +27,7 @@ const normalizeVideoPath = (path: string | undefined) => {
 
 const normalizedVideoUrl = normalizeVideoPath(video_url);
 const normalizedThumbnail = normalizeVideoPath(video_thumbnail);
-const uniqueId = title.replace(/\s+/g, "-").toLowerCase();
+const uniqueId = (title || "project").replace(/\s+/g, "-").toLowerCase();
 
 const isFullyWorking =
   status === "Fully Functional" ||
