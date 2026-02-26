@@ -228,6 +228,46 @@ import { Icon } from "astro-icon/components";
     background-color: rgba(80, 80, 80, 0.9);
     border-color: rgba(255, 255, 255, 0.3);
   }
+
+  /* Diagonal hatched border strips — left & right edges, desktop only */
+  @media (min-width: 768px) {
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 1cm;
+      z-index: 50;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        rgba(255, 255, 255, 0.12) 4px,
+        rgba(255, 255, 255, 0.12) 5px
+      );
+    }
+
+    body::before {
+      left: 0;
+    }
+
+    body::after {
+      right: 0;
+    }
+
+    [data-theme="lofi"] body::before,
+    [data-theme="lofi"] body::after {
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        rgba(0, 0, 0, 0.1) 4px,
+        rgba(0, 0, 0, 0.1) 5px
+      );
+    }
+  }
 </style>
 
 <script>
