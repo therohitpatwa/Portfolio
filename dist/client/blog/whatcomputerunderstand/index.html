@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-4dqtj3le> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What &amp; How Computer Understand ? - Rohit Patwa</title><link rel="icon" type="image/png" href="/favicon.png"><script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
+    </script><script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.CbAjBMaU.js"></script><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/about.CEDXVYFb.css">
+<style>@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}.blog-content{color:oklch(var(--bc))}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4{font-weight:700;margin-top:2rem;margin-bottom:1rem}.blog-content h2{font-size:1.875rem}.blog-content h3{font-size:1.5rem}.blog-content p{margin-bottom:1rem;line-height:1.75}.blog-content ul,.blog-content ol{margin-left:1.5rem;margin-bottom:1rem}.blog-content li{margin-bottom:.5rem}.blog-content code{background-color:oklch(var(--b2));padding:.2rem .4rem;border-radius:.25rem;font-size:.875em}.blog-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.blog-content pre code{background-color:transparent;padding:0}.blog-content a{color:oklch(var(--p));text-decoration:underline}.blog-content a:hover{color:oklch(var(--pf))}.blog-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic;color:oklch(var(--bc) / .7)}.blog-content img{border-radius:.5rem;margin:1.5rem 0}.blog-content strong{font-weight:600;color:oklch(var(--bc))}.blog-content em{font-style:italic}:root{--code-copy-btn-fg: oklch(var(--bc) / .6);--code-copy-btn-bg: oklch(var(--b1));--code-copy-btn-border: oklch(var(--bc) / .2);--code-copy-btn-hover-bg: oklch(var(--b2))}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style></head> <body class="min-h-screen bg-base-100" data-astro-cid-4dqtj3le> <div class="max-w-3xl mx-auto px-4 pt-4 md:pt-8 pb-12" data-astro-cid-4dqtj3le> <div class="md:bg-base-100/80 md:backdrop-blur-md md:shadow-2xl md:rounded-[2.5rem] md:border md:border-base-content/5 p-6 md:p-12 md:mt-4 md:mb-12" data-astro-cid-4dqtj3le> <!-- Top Navigation --> <div class="flex justify-between items-center mb-6" data-astro-cid-4dqtj3le> <a href="/blogs" class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:arrow-left">  <symbol id="ai:carbon:arrow-left"><path fill="currentColor" d="m14 26l1.41-1.41L7.83 17H28v-2H7.83l7.58-7.59L14 6L4 16z"/></symbol><use  xlink:href="#ai:carbon:arrow-left"></use>  </svg>
+Back to Blogs
+</a> <button class="theme-toggle-btn flex items-center gap-1.5 cursor-pointer outline-none hover:opacity-80 transition-opacity" aria-label="Toggle theme"> <!-- Moon Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-moon" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <!-- Track & Knob --> <div class="relative w-9 h-5 rounded-full border-2 border-current flex items-center px-0.5 transition-colors duration-300 toggle-track"> <div class="w-3 h-3 rounded-full bg-current transform transition-transform duration-300 toggle-knob"></div> </div> <!-- Sun Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-sun" data-icon="carbon:sun">  <symbol id="ai:carbon:sun"><path fill="currentColor" d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6M5.394 6.813L6.81 5.399l3.505 3.506L8.9 10.319zM2 15.005h5v2H2zm3.394 10.193L8.9 21.692l1.414 1.414l-3.505 3.506zM15 25.005h2v5h-2zm6.687-1.9l1.414-1.414l3.506 3.506l-1.414 1.414zm3.313-8.1h5v2h-5zm-3.313-6.101l3.506-3.506l1.414 1.414l-3.506 3.506zM15 2.005h2v5h-2z"/></symbol><use  xlink:href="#ai:carbon:sun"></use>  </svg> </button> <script>
+    (function () {
+        function updateAllIcons(theme) {
+            document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+                const moon = btn.querySelector(".icon-moon");
+                const sun = btn.querySelector(".icon-sun");
+                const track = btn.querySelector(".toggle-track");
+                const knob = btn.querySelector(".toggle-knob");
+
+                if (theme === "lofi") {
+                    // Light mode styling
+                    if (knob) knob.style.transform = "translateX(16px)";
+                    if (moon) {
+                        moon.classList.remove("text-base-content");
+                        moon.classList.add("text-gray-400");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-gray-400");
+                        sun.classList.add("text-base-content");
+                    }
+                    if (track) track.classList.add("border-gray-300");
+                } else {
+                    // Dark mode styling
+                    if (knob) knob.style.transform = "translateX(0px)";
+                    if (moon) {
+                        moon.classList.remove("text-gray-400");
+                        moon.classList.add("text-base-content");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-base-content");
+                        sun.classList.add("text-gray-400");
+                    }
+                    if (track) track.classList.remove("border-gray-300");
+                }
+            });
+        }
+
+        // Initial icon state
+        const currentTheme = localStorage.getItem("theme") || "black";
+        updateAllIcons(currentTheme);
+
+        document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                let theme = document.documentElement.getAttribute("data-theme");
+                let newTheme = theme === "lofi" ? "black" : "lofi";
+
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+
+                // Update inline styles that were set by index.astro to prevent flicker
+                var bgColor = newTheme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+
+                // Update theme-init style block
+                const themeInit = document.getElementById("theme-init");
+                if (themeInit) {
+                    themeInit.innerHTML =
+                        "html,body{background-color:" +
+                        bgColor +
+                        " !important; transition: background-color 0.3s ease !important;}";
+                }
+
+                updateAllIcons(newTheme);
+            });
+        });
+    })();
+</script> </div> <!-- Blog Header --> <div class="mb-8 rounded-lg overflow-hidden" data-astro-cid-4dqtj3le> <img src="/blogthumbnail/computer/whatcomputerunderstand.webp" alt="What &#38; How Computer Understand ?" class="w-full h-64 md:h-96 object-cover" data-astro-cid-4dqtj3le> </div> <article class="prose prose-lg max-w-none" data-astro-cid-4dqtj3le> <!-- Title and Meta --> <div class="mb-8" data-astro-cid-4dqtj3le> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-4dqtj3le> <span class="badge badge-outline" data-astro-cid-4dqtj3le>Computer</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Tech</span> </div> <h1 class="text-4xl font-bold mb-4" data-astro-cid-4dqtj3le>What &amp; How Computer Understand ?</h1> <p class="text-lg text-secondary mb-4" data-astro-cid-4dqtj3le> What a computer understands and how a computer understand  ?. </p> <div class="flex items-center gap-4 text-sm text-secondary" data-astro-cid-4dqtj3le> <div class="flex items-center gap-2" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:calendar">  <symbol id="ai:carbon:calendar"><path fill="currentColor" d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 22H6V12h20zm0-16H6V6h4v2h2V6h8v2h2V6h4z"/></symbol><use  xlink:href="#ai:carbon:calendar"></use>  </svg> <span data-astro-cid-4dqtj3le>January 08, 2026</span> </div> </div> </div> <!-- Blog Content --> <div class="blog-content" data-astro-cid-4dqtj3le> <hr/>
+<p>So in this blog, i am going to explain what a computer actually understands and how it works behind the scenes. You might be surprised to learn that no matter how colorful or complex things look on screen, deep inside, a computer only understands one simple language: binary (0 and 1).</p>
+<h2 id="parts-of-a-computer">Parts of a Computer</h2>
+<p>So basically, there are four main parts of a computer:</p>
+<ol>
+<li>Monitor</li>
+<li>C.P.U.</li>
+<li>Keyboard</li>
+<li>Mouse</li>
+</ol>
+<img src="/blogthumbnail/computer/desktop.webp" alt="desktop image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h2 id="what-is-a-computer">What is a Computer?</h2>
+<p>A computer is an <strong>electronic device</strong>.</p>
+<p>Why is it called an electronic device?</p>
+<p>Because it is made of electronic components like <strong>RAM, ROM, CPU, and Motherboard</strong> etc. These electronic components are made of electronic elements such as <strong>Registers, Capacitors, Diodes, Transistors</strong>, etc.</p>
+<p>Now, these electronic elements understand only <strong>current</strong> or <strong>no current</strong>.</p>
+<p>So, electronic components are made of electronic elements, which means they also understand only current or no current. And since a computer is made of electronic components, it also understands only <strong>current or no current</strong>.</p>
+<blockquote>
+<p>So we can say computer understand only presence of current and nothing else.</p>
+</blockquote>
+<img src="/blogthumbnail/computer/computerinternal.webp" alt="computer Internal image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h2 id="the-0-and-1-convention">The 0 and 1 Convention</h2>
+<p>For our convenience, we made a convention:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">State</th><th style="text-align:left">Status</th><th style="text-align:left">Value</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Presence of Current</strong></td><td style="text-align:left">ON</td><td style="text-align:left"><strong>1</strong></td></tr><tr><td style="text-align:left"><strong>Absence of Current</strong></td><td style="text-align:left">OFF</td><td style="text-align:left"><strong>0</strong></td></tr></tbody></table>
+<p>That’s why we say computers understand only <strong>0 and 1</strong>.</p>
+<p>Now we made a number system using 0 and 1 called <strong>Binary Number System</strong>.
+That’s why we call computer understand only <strong>Binary</strong>.</p>
+<hr/>
+<p>Now we have concluded that a computer understands only current, but a computer consists of—</p>
+<p>Text</p>
+<p>Image</p>
+<p>Video</p>
+<p>Audio</p>
+<p>So, how are these types of data converted into current (0 &amp; 1)?</p>
+<h2 class="text-center">Text into Current (0 &amp; 1)</h2>
+<p>Text consists of <strong>alphabets</strong>, <strong>numbers</strong>, and <strong>symbols</strong>.
+Now, every character has a unique numerical value called an ASCII value.</p>
+<img src="/blogthumbnail/computer/ASCII.webp" alt="number in ram image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p><strong>Now, how is it stored in RAM?</strong></p>
+<p>So basically, RAM is made of millions of capacitors.</p>
+<ul>
+<li>Capacitor charged – 1</li>
+<li>Capacitor uncharged – 0</li>
+</ul>
+<p>Let the computer store the value 5 in RAM.</p>
+<p>So, the binary of 5 is – 101 (One capacitor charged, one capacitor uncharged, and one capacitor charged)</p>
+<img src="/blogthumbnail/computer/numberinramm.webp" alt="number in ram image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>Similarly, Let the computer store the value A in RAM.
+So, the ASCII value of A is – 65,
+and the binary of 65 is – 1000001.</p>
+<p>Now, RAM is made of electronic elements, and after the electricity is gone, the capacitors of RAM become uncharged and the data is lost. That’s why RAM is called <strong>volatile memory</strong>.</p>
+<hr/>
+<p><strong>Now, how is it stored in the hard disk?</strong></p>
+<p>So basically, a hard disk is made of millions of magnetic materials arranged randomly (magnets).</p>
+<ul>
+<li>North pole up – 1</li>
+<li>North pole down – 0</li>
+</ul>
+<p>Let the computer store the value 5 in HDD.</p>
+<p>So, the binary of 5 is – 101
+(One magnet with north pole up, one magnet with north pole down, and one magnet with north pole up)</p>
+<img src="/blogthumbnail/computer/numberinhdd.webp" alt="number in hdd image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>Once these magnetic directions are set, they remain the same even when power is turned off.
+No electricity is required to keep the magnets in that state thats why it is called <strong>non-volatile memory</strong>.</p>
+<hr/>
+<p><h2 class="text-center">Image into Current (0 &amp; 1)</h2>
+Now, every image is made of tiny square dots called pixels. Each pixel is a combination of colors (RGB – Red, Green, Blue).</p>
+<img src="/blogthumbnail/computer/image.webp" alt="image image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>Now, color is the vibration of atoms, and the vibration of atoms means moving electrons. Moving electrons are called current, so an image is also ultimately current.</p>
+<p>Now, how is it stored in digital form?</p>
+<ul>
+<li>Red value – (0–255)</li>
+<li>Green value – (0–255)</li>
+<li>Blue value – (0–255)</li>
+</ul>
+<p>Example Pixel</p>
+<ul>
+<li>R = 255</li>
+<li>G = 0</li>
+<li>B = 0</li>
+</ul>
+<p>This pixel represents pure red.</p>
+<hr/>
+<p><h2 class="text-center">Audio into Current (0 &amp; 1)</h2>
+Audio is a wave caused by vibrations in air.</p>
+<p>A microphone converts these vibrations into electrical signals.
+These signals are then converted into numbers using sampling.</p>
+<p>Each sample is stored in binary form — again as 0s and 1s.</p>
+<p>So even sound, in the computer, becomes binary data.</p>
+<hr/>
+<p><h2 class="text-center">Video into Current (0 &amp; 1)</h2>
+A video is simply a sequence of images (frames) shown very quickly, along with sound.
+So we can understand conversion of video into current by image’s and audio’s conversion.</p>
+<hr/>
+<p>So whatever computer consist deep down everything is current (0 &amp; 1) and it doesnt understand anything else whatever we see on the screen everything is just a representation of current (0 &amp; 1) thats why we call computer a dumb machine.</p> </div> </article> </div> <!-- Social Share (Optional) --> </div>  </body></html>

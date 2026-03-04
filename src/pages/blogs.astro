@@ -107,22 +107,26 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
     <body class="flex flex-col min-h-screen relative">
         <ParticleBackground />
         <div
-            class="flex justify-between items-center absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-20"
+            class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
         >
-            <a href="/" class="btn btn-outline btn-sm">
-                <Icon name="carbon:arrow-left" class="w-4 h-4" />
-                <span>Back to Home</span>
-            </a>
+            <div
+                class="w-full max-w-[52rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-between items-center pointer-events-auto"
+            >
+                <a href="/" class="btn btn-outline btn-sm">
+                    <Icon name="carbon:arrow-left" class="w-4 h-4" />
+                    <span>Back to Home</span>
+                </a>
 
-            <div class="flex items-center">
-                <Icon name="carbon:moon" class="w-4 h-4" />
-                <input
-                    type="checkbox"
-                    data-toggle-theme="lofi,black"
-                    data-act-class="ACTIVECLASS"
-                    class="toggle toggle-sm mx-1 bg-secondary"
-                />
-                <Icon name="carbon:light" class="w-4 h-4" />
+                <div class="flex items-center">
+                    <Icon name="carbon:moon" class="w-4 h-4" />
+                    <input
+                        type="checkbox"
+                        data-toggle-theme="lofi,black"
+                        data-act-class="ACTIVECLASS"
+                        class="toggle toggle-sm mx-1 bg-secondary"
+                    />
+                    <Icon name="carbon:light" class="w-4 h-4" />
+                </div>
             </div>
         </div>
 

@@ -48,22 +48,51 @@ const { frontmatter } = Astro.props;
       import { themeChange } from "theme-change";
       themeChange();
     </script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("input[data-toggle-theme]");
+        if (toggle) {
+          toggle.checked =
+            document.documentElement.getAttribute("data-theme") === "lofi";
+          toggle.addEventListener("change", () => {
+            const theme = document.documentElement.getAttribute("data-theme");
+            if (theme) localStorage.setItem("theme", theme);
+          });
+        }
+      });
+    </script>
     <script
       defer
       src="https://cloud.umami.is/script.js"
       data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script>
   </head>
-  <body class="min-h-screen bg-base-100">
-    <div class="max-w-4xl mx-auto px-4 py-8">
-      <!-- Back Button -->
-      <a
-        href="/projects"
-        class="back-to-projects inline-flex items-center gap-2 text-sm hover:text-primary transition-colors mb-6"
+  <body
+    class="min-h-screen bg-base-100 flex flex-col relative w-full overflow-x-hidden"
+  >
+    <div
+      class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
+    >
+      <div
+        class="w-full max-w-[52rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-between items-center pointer-events-auto"
       >
-        <Icon name="carbon:arrow-left" class="w-4 h-4" />
-        Back to Projects
-      </a>
+        <a href="/projects" class="btn btn-outline btn-sm">
+          <Icon name="carbon:arrow-left" class="w-4 h-4" />
+          <span>Back to Projects</span>
+        </a>
 
+        <div class="flex items-center">
+          <Icon name="carbon:moon" class="w-4 h-4" />
+          <input
+            type="checkbox"
+            data-toggle-theme="lofi,black"
+            data-act-class="ACTIVECLASS"
+            class="toggle toggle-sm mx-1 bg-secondary"
+          />
+          <Icon name="carbon:light" class="w-4 h-4" />
+        </div>
+      </div>
+    </div>
+    <div class="max-w-3xl mx-auto px-4 py-8 pt-20 w-[95vw]">
       <article class="prose prose-lg max-w-none">
         <!-- Project Video -->
         {
@@ -140,14 +169,6 @@ const { frontmatter } = Astro.props;
           )
         }
       </article>
-
-      <!-- Back Button Bottom -->
-      <div class="mt-12 pt-8 border-t border-base-300">
-        <a href="/projects" class="back-to-projects btn btn-outline btn-sm">
-          <Icon name="carbon:arrow-left" class="w-4 h-4" />
-          Back to Projects
-        </a>
-      </div>
     </div>
 
     <style is:global>
@@ -224,6 +245,58 @@ const { frontmatter } = Astro.props;
       .project-content img {
         border-radius: 0.5rem;
         margin: 1.5rem 0;
+      }
+
+      /* Sleek vertical frame — left & right edges of content, desktop only */
+      @media (min-width: 768px) {
+        body::before,
+        body::after {
+          content: "";
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          z-index: 50;
+          pointer-events: none;
+          background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255, 255, 255, 0.1) 10%,
+            rgba(255, 255, 255, 0.1) 90%,
+            transparent
+          );
+        }
+
+        body::before {
+          left: calc(50% - 26rem);
+        }
+
+        body::after {
+          right: calc(50% - 26rem);
+        }
+
+        [data-theme="lofi"] body::before,
+        [data-theme="lofi"] body::after {
+          background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 0, 0, 0.25) 10%,
+            rgba(0, 0, 0, 0.25) 90%,
+            transparent
+          );
+        }
+
+        .particle-bounds {
+          left: calc(50% - 26rem);
+          width: 52rem;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .particle-bounds {
+          left: 0;
+          width: 100%;
+        }
       }
     </style>
   </body>

@@ -1,0 +1,788 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-j7pv25f6> <head><script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
+    </script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.16.6"><title>Rohit Patwa - Full Stack Developer</title><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="preload" href="/profile.webp" as="image" type="image/webp"><link rel="preload" href="/MyResume.pdf" as="document" type="application/pdf"><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/index.DEthUsNY.css">
+<style>@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}.project-content{color:oklch(var(--bc))}.project-content h2{font-size:1.875rem;font-weight:700;margin-top:2rem;margin-bottom:1rem}.project-content h3{font-size:1.5rem;font-weight:600;margin-top:1.5rem;margin-bottom:.75rem}.project-content p{margin-bottom:1rem;line-height:1.75}.project-content ul,.project-content ol{margin-left:1.5rem;margin-bottom:1rem}.project-content li{margin-bottom:.5rem}.project-content code{background-color:oklch(var(--b2));padding:.125rem .25rem;border-radius:.25rem;font-size:.875em}.project-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.project-content pre code{background-color:transparent;padding:0}.project-content a{color:oklch(var(--p));text-decoration:underline}.project-content a:hover{color:oklch(var(--pf))}.project-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic}.project-content img{border-radius:.5rem;margin:1.5rem 0}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}.blog-content{color:oklch(var(--bc))}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4{font-weight:700;margin-top:2rem;margin-bottom:1rem}.blog-content h2{font-size:1.875rem}.blog-content h3{font-size:1.5rem}.blog-content p{margin-bottom:1rem;line-height:1.75}.blog-content ul,.blog-content ol{margin-left:1.5rem;margin-bottom:1rem}.blog-content li{margin-bottom:.5rem}.blog-content code{background-color:oklch(var(--b2));padding:.2rem .4rem;border-radius:.25rem;font-size:.875em}.blog-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.blog-content pre code{background-color:transparent;padding:0}.blog-content a{color:oklch(var(--p));text-decoration:underline}.blog-content a:hover{color:oklch(var(--pf))}.blog-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic;color:oklch(var(--bc) / .7)}.blog-content img{border-radius:.5rem;margin:1.5rem 0}.blog-content strong{font-weight:600;color:oklch(var(--bc))}.blog-content em{font-style:italic}:root{--code-copy-btn-fg: oklch(var(--bc) / .6);--code-copy-btn-bg: oklch(var(--b1));--code-copy-btn-border: oklch(var(--bc) / .2);--code-copy-btn-hover-bg: oklch(var(--b2))}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style>
+<link rel="stylesheet" href="/_astro/about.CEDXVYFb.css">
+<style>.project-card[data-astro-cid-mspuyifq]{background-color:#1e1e1ee6;border:1px solid rgba(150,150,150,.2);border-radius:.5rem;overflow:hidden;transition:all .3s ease}.project-card[data-astro-cid-mspuyifq]:hover{transform:translateY(-2px);box-shadow:0 10px 25px #0000004d;border-color:#96969666}.video-header[data-astro-cid-mspuyifq]{position:relative}.play-button[data-astro-cid-mspuyifq]{background:transparent}.play-icon-circle[data-astro-cid-mspuyifq]{width:64px;height:64px;border-radius:50%;background-color:#3c3c3ccc;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:opacity .2s ease}.video-header[data-astro-cid-mspuyifq]:hover .play-button[data-astro-cid-mspuyifq],.video-header[data-astro-cid-mspuyifq]:active .play-button[data-astro-cid-mspuyifq],.video-header[data-astro-cid-mspuyifq]:focus-within .play-button[data-astro-cid-mspuyifq]{opacity:1}.status-capsule[data-astro-cid-mspuyifq]{display:inline-flex;align-items:center;gap:.25rem}.status-working[data-astro-cid-mspuyifq]{background-color:#22c55e33;border:1px solid rgba(34,197,94,.5);color:#22c55e}.status-building[data-astro-cid-mspuyifq]{background-color:#eab30833;border:1px solid rgba(234,179,8,.5);color:#eab308}[data-theme=lofi] .project-card[data-astro-cid-mspuyifq]{background-color:#fff;border-color:#e5e7eb;box-shadow:0 4px 6px -1px #0000001a,0 2px 4px -1px #0000000f}[data-theme=lofi] .project-card[data-astro-cid-mspuyifq]:hover{box-shadow:0 10px 15px -3px #0000001a,0 4px 6px -2px #0000000d}[data-theme=lofi] .card-body[data-astro-cid-mspuyifq]{background-color:#f9fafb}[data-theme=lofi] .card-title[data-astro-cid-mspuyifq]{color:#111827}[data-theme=lofi] .prose[data-astro-cid-mspuyifq],[data-theme=lofi] .text-gray-300[data-astro-cid-mspuyifq]{color:#4b5563}[data-theme=lofi] .text-gray-400[data-astro-cid-mspuyifq]{color:#6b7280}[data-theme=lofi] .text-gray-400[data-astro-cid-mspuyifq]:hover{color:#111827}[data-theme=lofi] .tag-capsule[data-astro-cid-mspuyifq]{background-color:#f3f4f6;border-color:#d1d5db;color:#374151}[data-theme=lofi] .status-working[data-astro-cid-mspuyifq]{background-color:#dcfce7;border-color:#86efac;color:#15803d}[data-theme=lofi] .status-building[data-astro-cid-mspuyifq]{background-color:#fef9c3;border-color:#fde047;color:#854d0e}
+.blog-card[data-astro-cid-e3grugc2]{background-color:#1e1e1ee6;border:1px solid rgba(150,150,150,.2);border-radius:.5rem;overflow:hidden;transition:all .3s ease}.blog-card[data-astro-cid-e3grugc2]:hover{transform:translateY(-2px);box-shadow:0 10px 25px #0000004d;border-color:#96969666}.line-clamp-2[data-astro-cid-e3grugc2]{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}[data-theme=lofi] .blog-card[data-astro-cid-e3grugc2]{background-color:#fff;border-color:#e5e7eb;box-shadow:0 4px 6px -1px #0000001a,0 2px 4px -1px #0000000f}[data-theme=lofi] .blog-card[data-astro-cid-e3grugc2]:hover{box-shadow:0 10px 15px -3px #0000001a,0 4px 6px -2px #0000000d}[data-theme=lofi] .card-body[data-astro-cid-e3grugc2]{background-color:#f9fafb}[data-theme=lofi] .card-title[data-astro-cid-e3grugc2]{color:#111827}[data-theme=lofi] .text-gray-300[data-astro-cid-e3grugc2]{color:#4b5563}[data-theme=lofi] .tag-capsule[data-astro-cid-e3grugc2]{background-color:#f3f4f6;border-color:#d1d5db;color:#374151}[data-theme=lofi] .badge-outline[data-astro-cid-e3grugc2]{color:#4b5563;border-color:#d1d5db}
+</style></head> <body class="flex flex-col min-h-screen relative" data-astro-cid-j7pv25f6> <div class="relative z-10 pt-6 md:pt-8 mx-auto max-w-3xl w-[95vw] px-4 md:px-8" data-astro-cid-j7pv25f6> <div class="flex justify-end mb-2 relative z-20" data-astro-cid-j7pv25f6> <button class="theme-toggle-btn flex items-center gap-1.5 cursor-pointer outline-none hover:opacity-80 transition-opacity" aria-label="Toggle theme"> <!-- Moon Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-moon" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <!-- Track & Knob --> <div class="relative w-9 h-5 rounded-full border-2 border-current flex items-center px-0.5 transition-colors duration-300 toggle-track"> <div class="w-3 h-3 rounded-full bg-current transform transition-transform duration-300 toggle-knob"></div> </div> <!-- Sun Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-sun" data-icon="carbon:sun">  <symbol id="ai:carbon:sun"><path fill="currentColor" d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6M5.394 6.813L6.81 5.399l3.505 3.506L8.9 10.319zM2 15.005h5v2H2zm3.394 10.193L8.9 21.692l1.414 1.414l-3.505 3.506zM15 25.005h2v5h-2zm6.687-1.9l1.414-1.414l3.506 3.506l-1.414 1.414zm3.313-8.1h5v2h-5zm-3.313-6.101l3.506-3.506l1.414 1.414l-3.506 3.506zM15 2.005h2v5h-2z"/></symbol><use  xlink:href="#ai:carbon:sun"></use>  </svg> </button> <script>
+    (function () {
+        function updateAllIcons(theme) {
+            document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+                const moon = btn.querySelector(".icon-moon");
+                const sun = btn.querySelector(".icon-sun");
+                const track = btn.querySelector(".toggle-track");
+                const knob = btn.querySelector(".toggle-knob");
+
+                if (theme === "lofi") {
+                    // Light mode styling
+                    if (knob) knob.style.transform = "translateX(16px)";
+                    if (moon) {
+                        moon.classList.remove("text-base-content");
+                        moon.classList.add("text-gray-400");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-gray-400");
+                        sun.classList.add("text-base-content");
+                    }
+                    if (track) track.classList.add("border-gray-300");
+                } else {
+                    // Dark mode styling
+                    if (knob) knob.style.transform = "translateX(0px)";
+                    if (moon) {
+                        moon.classList.remove("text-gray-400");
+                        moon.classList.add("text-base-content");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-base-content");
+                        sun.classList.add("text-gray-400");
+                    }
+                    if (track) track.classList.remove("border-gray-300");
+                }
+            });
+        }
+
+        // Initial icon state
+        const currentTheme = localStorage.getItem("theme") || "black";
+        updateAllIcons(currentTheme);
+
+        document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                let theme = document.documentElement.getAttribute("data-theme");
+                let newTheme = theme === "lofi" ? "black" : "lofi";
+
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+
+                // Update inline styles that were set by index.astro to prevent flicker
+                var bgColor = newTheme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+
+                // Update theme-init style block
+                const themeInit = document.getElementById("theme-init");
+                if (themeInit) {
+                    themeInit.innerHTML =
+                        "html,body{background-color:" +
+                        bgColor +
+                        " !important; transition: background-color 0.3s ease !important;}";
+                }
+
+                updateAllIcons(newTheme);
+            });
+        });
+    })();
+</script> </div> <!-- Mobile Layout: Original centered style, no anime banner --><article class="md:hidden flex flex-col items-center gap-4 w-full" data-astro-cid-3ef6ksr2> <div class="flex-shrink-0 w-20 rounded-full shadow-sm overflow-hidden" data-astro-cid-3ef6ksr2> <img alt="Rohit Patwa - Full Stack Developer Profile Picture" src="/profile.webp" class="grayscale-[50] hover:grayscale-0" width="96" height="96" loading="eager" decoding="async" data-astro-cid-3ef6ksr2> </div> <div class="text-center" data-astro-cid-3ef6ksr2> <div class="flex justify-center items-center mb-2" data-astro-cid-3ef6ksr2> <h1 class="text-3xl font-extrabold tracking-tight" style="font-family: 'Cinzel', serif;" data-astro-cid-3ef6ksr2> Rohit Patwa </h1> </div> <h2 class="text-lg mb-2 text-secondary" data-astro-cid-3ef6ksr2> Full Stack Developer </h2> <div class="flex items-center justify-center mt-1" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4 mr-1" data-astro-cid-3ef6ksr2="true" data-icon="carbon:location">  <symbol id="ai:carbon:location"><path fill="currentColor" d="M16 18a5 5 0 1 1 5-5a5.006 5.006 0 0 1-5 5m0-8a3 3 0 1 0 3 3a3.003 3.003 0 0 0-3-3"/><path fill="currentColor" d="m16 30l-8.436-9.949a35.076 35.076 0 0 1-.348-.451A10.889 10.889 0 0 1 5 13a11 11 0 0 1 22 0a10.884 10.884 0 0 1-2.215 6.597l-.001.003s-.3.394-.345.447ZM8.813 18.395s.233.308.286.374L16 26.908l6.91-8.15c.044-.055.278-.365.279-.366A8.901 8.901 0 0 0 25 13a9 9 0 1 0-18 0a8.905 8.905 0 0 0 1.813 5.395"/></symbol><use  xlink:href="#ai:carbon:location"></use>  </svg> <p class="text-sm text-secondary" data-astro-cid-3ef6ksr2>Lucknow Uttar Pradesh, India</p> </div> </div> </article> <!-- Desktop Layout: Partial-width banner with PFP overlapping bottom-left --> <article class="hidden md:block w-full" data-astro-cid-3ef6ksr2> <!-- Banner (partial width) --> <div class="pfp-banner-wrapper" data-astro-cid-3ef6ksr2> <video class="pfp-banner-video" autoplay muted loop playsinline preload="auto" data-astro-cid-3ef6ksr2> <source src="/anime-bg.mp4" type="video/mp4" data-astro-cid-3ef6ksr2> </video> <div class="pfp-banner-overlay" data-astro-cid-3ef6ksr2></div> </div> <!-- PFP overlapping bottom-left of banner --> <div class="pfp-info-row" data-astro-cid-3ef6ksr2> <div class="pfp-circle" data-astro-cid-3ef6ksr2> <img alt="Rohit Patwa - Full Stack Developer Profile Picture" src="/profile.webp" class="grayscale-[50] hover:grayscale-0 transition-all duration-500" width="96" height="96" loading="eager" decoding="async" data-astro-cid-3ef6ksr2> </div> </div> <!-- Name heading below --> <div class="pfp-name-text" data-astro-cid-3ef6ksr2> <h1 class="text-2xl md:text-3xl font-bold tracking-tight" style="font-family: 'Cinzel', serif;" data-astro-cid-3ef6ksr2>
+Hi, I'm Rohit Patwa <span class="text-secondary font-normal" data-astro-cid-3ef6ksr2>— A Full Stack Developer.</span> </h1> </div> </article>  </div> <div class="particles-wrapper" data-astro-cid-j7pv25f6> <div id="particles-container" class="fixed inset-0 w-full h-full" style="z-index: 1; pointer-events: none;"></div> <script type="module" src="/_astro/ParticleBackground.astro_astro_type_script_index_0_lang.CrE5hlC9.js"></script> </div> <div class="mx-auto max-w-3xl w-[95vw] px-4 md:px-8 flex flex-col mb-4 overflow-hidden relative z-10" data-astro-cid-j7pv25f6> <!-- Row 1: Available Badge + Activity Status --> <div class="flex items-center justify-between mb-2 gap-2 md:gap-3 flex-nowrap min-w-0" data-astro-cid-j7pv25f6> <div class="available-capsule flex items-center bg-gradient-to-r from-green-950/40 to-green-900/40 backdrop-blur-lg border border-green-800/20 px-3 py-2 rounded-full flex-shrink-0 shadow-lg shadow-green-950/15 hover:shadow-green-950/25 transition-all duration-300" data-astro-cid-j7pv25f6> <div class="relative mr-2" data-astro-cid-j7pv25f6> <div class="w-3 h-3 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg shadow-green-400/60 animate-pulse" data-astro-cid-j7pv25f6></div> <div class="absolute inset-0 w-3 h-3 bg-green-400/30 rounded-full animate-ping" data-astro-cid-j7pv25f6></div> <div class="absolute inset-0 w-3 h-3 bg-green-500/20 rounded-full animate-pulse" data-astro-cid-j7pv25f6></div> </div> <span class="text-green-200/90 text-xs font-semibold tracking-wide whitespace-nowrap" data-astro-cid-j7pv25f6>Available for work</span> </div> <div class="flex-shrink-0 min-w-0" data-astro-cid-j7pv25f6> <div class="activity-status flex flex-col md:flex-row md:items-center md:gap-2 text-sm" id="wakatime-status" data-astro-cid-kis5aulg> <div class="flex items-center gap-1.5 whitespace-nowrap" data-astro-cid-kis5aulg> <span class="font-bold status-text activity-text" data-astro-cid-kis5aulg>Loading...</span> <svg class="w-4 h-4 intellij-icon flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-kis5aulg> <circle cx="12" cy="12" r="12" fill="#000000" data-astro-cid-kis5aulg></circle> <path d="M6 4L12 8L18 4L16 12L18 20L12 16L6 20L8 12Z" fill="#FF6BCB" opacity="0.8" data-astro-cid-kis5aulg></path> <path d="M4 8L10 10L8 16L4 14Z" fill="#FF8C42" opacity="0.8" data-astro-cid-kis5aulg></path> <path d="M6 18L10 16L12 20L8 22Z" fill="#9B59B6" opacity="0.8" data-astro-cid-kis5aulg></path> <path d="M14 6L20 8L18 14L14 12Z" fill="#3498DB" opacity="0.9" data-astro-cid-kis5aulg></path> <rect x="8" y="8" width="8" height="8" fill="#000000" rx="0.5" data-astro-cid-kis5aulg></rect> <rect x="9.5" y="10" width="1" height="4" fill="#FFFFFF" data-astro-cid-kis5aulg></rect> <path d="M12.5 10 L13.5 10 L13.5 12.5 Q13.5 13.5 12.5 13.5 L11.5 13.5" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-linecap="round" data-astro-cid-kis5aulg></path> <rect x="11.5" y="13" width="1" height="1" fill="#FFFFFF" data-astro-cid-kis5aulg></rect> <line x1="9" y1="15.5" x2="10.5" y2="15.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round" data-astro-cid-kis5aulg></line> </svg> <span class="font-bold status-suffix activity-text" data-astro-cid-kis5aulg>IntelliJ</span> </div> <span class="text-xs md:text-sm font-semibold whitespace-nowrap time-worked activity-text-secondary" data-astro-cid-kis5aulg>
+Fetching activity...
+</span> </div> <script type="module">async function a(){const t=document.querySelector(".status-text"),e=document.querySelector(".status-suffix"),n=document.querySelector(".time-worked");try{const i=await fetch("/api/wakatime");if(i.ok){const o=await i.json();t&&(t.textContent=o.status||"Offline in"),e&&(e.textContent=o.statusSuffix||"IntelliJ"),n&&(n.textContent=`${o.period} worked ${o.timeWorked}`)}else t&&(t.textContent="Offline in"),e&&(e.textContent="IntelliJ"),n&&(n.textContent="Today worked 0m")}catch{t&&(t.textContent="Offline in"),e&&(e.textContent="IntelliJ"),n&&(n.textContent="Unable to fetch")}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",a):a();setInterval(a,300*1e3);</script>  </div> </div> <!-- Row 2: Spotify Player --> <div class="mb-3" data-astro-cid-j7pv25f6> <div class="spotify-player-container" id="spotify-player-container" data-astro-cid-gjzfdndw> <div class="flip-card" id="flip-card" data-astro-cid-gjzfdndw> <div class="flip-card-inner" id="flip-card-inner" data-astro-cid-gjzfdndw> <!-- Front Face (Compact View) --> <div class="flip-card-front" data-astro-cid-gjzfdndw> <div class="spotify-card compact" data-astro-cid-gjzfdndw> <div class="track-info flex items-center gap-3" data-astro-cid-gjzfdndw> <div class="album-art-wrapper" data-astro-cid-gjzfdndw> <img id="album-art-front" src="" alt="Album Art" class="album-art hidden" data-astro-cid-gjzfdndw> <div id="album-placeholder-front" class="album-placeholder" data-astro-cid-gjzfdndw> <svg class="w-8 h-8 text-green-500" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-gjzfdndw> <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" data-astro-cid-gjzfdndw></path> </svg> </div> </div> <div class="track-details flex-1 min-w-0" data-astro-cid-gjzfdndw> <div class="status-row flex items-center gap-2" data-astro-cid-gjzfdndw> <span class="spotify-icon" data-astro-cid-gjzfdndw> <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-gjzfdndw> <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" data-astro-cid-gjzfdndw></path> </svg> </span> <span id="play-status-front" class="text-xs font-medium opacity-70" data-astro-cid-gjzfdndw>Last played by Rohit</span> </div> <p id="track-title-front" class="track-title font-bold truncate" data-astro-cid-gjzfdndw>
+Loading...
+</p> <p id="track-artist-front" class="track-artist text-sm opacity-70 truncate" data-astro-cid-gjzfdndw>
+—
+</p> </div> <button id="play-btn-front" class="play-btn" title="Play" data-astro-cid-gjzfdndw> <svg class="play-icon w-5 h-5" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-gjzfdndw> <path d="M8 5v14l11-7z" data-astro-cid-gjzfdndw></path> </svg> </button> </div> </div> </div> <!-- Back Face (Player View with Slider) --> <div class="flip-card-back" data-astro-cid-gjzfdndw> <div class="spotify-card compact-player" data-astro-cid-gjzfdndw> <!-- Compact player: just song info, play button, and slider --> <div class="compact-player-header flex items-center justify-between gap-3 mb-2" data-astro-cid-gjzfdndw> <div class="track-info-compact flex-1 min-w-0" data-astro-cid-gjzfdndw> <p id="track-title-back" class="track-title-compact font-bold truncate text-sm" data-astro-cid-gjzfdndw>
+Loading...
+</p> <p id="track-artist-back" class="track-artist-compact text-xs opacity-70 truncate" data-astro-cid-gjzfdndw>
+—
+</p> </div> <button id="play-btn" class="play-btn-compact" title="Pause" data-astro-cid-gjzfdndw> <svg id="pause-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-gjzfdndw> <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" data-astro-cid-gjzfdndw></path> </svg> </button> </div> <!-- Progress Bar (Interactive Slider) --> <div class="progress-container-compact" data-astro-cid-gjzfdndw> <div class="progress-bar-wrapper" id="progress-bar-wrapper" data-astro-cid-gjzfdndw> <div id="progress-bar" class="progress-bar" data-astro-cid-gjzfdndw></div> </div> <div class="time-display flex justify-between text-xs opacity-60 mt-1" data-astro-cid-gjzfdndw> <span id="current-time" data-astro-cid-gjzfdndw>0:00</span> <span id="total-time" data-astro-cid-gjzfdndw>0:00</span> </div> </div> </div> </div> </div> </div> </div> <script type="module" src="/_astro/SpotifyPlayer.astro_astro_type_script_index_0_lang.BJWRAp4m.js"></script> <script type="module" src="/_astro/SpotifyPlayer.astro_astro_type_script_index_1_lang.CiEaduFU.js"></script>  </div> <div class="divider w-full bg-secondary h-px" data-astro-cid-j7pv25f6></div> </div> <main class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll pt-4 pb-2 grid w-[95vw] px-4 md:px-8 relative z-10" data-astro-cid-j7pv25f6> <div class="container" data-astro-cid-j7pv25f6> <div class="join join-vertical gap-1 accordion-container" data-astro-cid-d6puh33w> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="about"> <input aria-label="About" type="checkbox" id="about" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:identification">  <symbol id="ai:carbon:identification"><path fill="currentColor" d="M28 6v20H4V6zm0-2H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/><path fill="currentColor" d="M6 10h7v2H6zm0 4h4v2H6zm17 4h-6a3 3 0 0 0-3 3v2h2v-2a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2h2v-2a3 3 0 0 0-3-3m-3-1a4 4 0 1 0-4-4a4 4 0 0 0 4 4m0-6a2 2 0 1 1-2 2a2 2 0 0 1 2-2"/></symbol><use  xlink:href="#ai:carbon:identification"></use>  </svg> About </div> </div> <div class="collapse-content">  <article class="text-justify about-content" data-astro-cid-d6puh33w> <p>Yup! I’m a <strong>Full-Stack developer</strong> skilled in building scalable web applications using <strong>Spring Framework</strong>, <strong>React</strong> and modern UI frameworks.
+Experienced in developing <strong>RESTful APIs</strong>, managing databases with <strong>MySQL</strong>, and deploying production
+ready apps.</p> </article>  </div> </div> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="work"> <input aria-label="Work" type="checkbox" id="work" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:construction">  <symbol id="ai:carbon:construction"><path fill="currentColor" d="M29.34 16.06a1 1 0 0 0-1.108.3l-3.772 4.526l-5.435-.988l-3.602-8.952A3.014 3.014 0 0 0 12.612 9h-4.06a3.002 3.002 0 0 0-1.543.428L2 12.434v6.4l5 .91V30h2v-9.893l3.565.648L14 24.2V30h2v-6.2l-1.091-2.618l8.081 1.469l-4.758 5.709A1 1 0 0 0 19 30h10a1 1 0 0 0 1-1V17a1 1 0 0 0-.66-.94M4 17.166v-3.6l3-1.8v5.945zm5 .909V11h3.614a1.014 1.014 0 0 1 .945.67l3.14 7.805zM28 28h-6.865L28 19.762zM12.5 8A3.5 3.5 0 1 1 16 4.5A3.504 3.504 0 0 1 12.5 8m0-5A1.5 1.5 0 1 0 14 4.5A1.502 1.502 0 0 0 12.5 3"/></symbol><use  xlink:href="#ai:carbon:construction"></use>  </svg> Work </div> </div> <div class="collapse-content"> <div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full md:w-112 lg:w-128 hover:shadow-lg transition-all my-4"> <div class="card-body"> <div class="grid grid-cols-3 gap-4 mb-2"> <div class="self-start col-span-2 justify-self-start text-left"> <h1 class="uppercase card-title font-extrabold tracking-tighter md:text-2xl">FreeLancer</h1> <div class="flex items-center mt-2"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4 mr-1" data-icon="carbon:location">  <use  xlink:href="#ai:carbon:location"></use>  </svg> <p class="text-sm font-light text-secondary">Uttar Pradesh, India</p> </div> </div> <div class="self-center justify-self-end"> <div class="badge w-max h-max text-center badge-outline inline-block align-middle shadow-md font-mono"> 2026 - Present </div> </div> </div> <div class="grid grid-cols-3 gap-4 place-items-center"> <div class="self-start col-span-2 justify-self-start text-left"> <article class="prose text-secondary"> <ul>
+<li>Skilled in building responsive and user-friendly web applications using modern technologies.</li>
+<li>Proficient in developing full-stack solutions with clean and efficient code.</li>
+</ul> </article> <div class="flex flex-wrap content-around gap-2 my-4"> <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">FullStack</span><span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">Frontend</span><span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">Backend</span> </div> </div> <div class="self-center justify-self-end"> <div class="flex flex-col gap-2 items-end">    <a href="https://github.com/therohitpatwa" target="_blank" rel="noopener noreferrer" class="link link-hover text-xs flex items-center gap-1"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-3 h-3" data-icon="carbon:link">  <symbol id="ai:carbon:link"><path fill="currentColor" d="M29.25 6.76a6 6 0 0 0-8.5 0l1.42 1.42a4 4 0 1 1 5.67 5.67l-8 8a4 4 0 1 1-5.67-5.66l1.41-1.42l-1.41-1.42l-1.42 1.42a6 6 0 0 0 0 8.5A6 6 0 0 0 17 25a6 6 0 0 0 4.27-1.76l8-8a6 6 0 0 0-.02-8.48"/><path fill="currentColor" d="M4.19 24.82a4 4 0 0 1 0-5.67l8-8a4 4 0 0 1 5.67 0A3.94 3.94 0 0 1 19 14a4 4 0 0 1-1.17 2.85L15.71 19l1.42 1.42l2.12-2.12a6 6 0 0 0-8.51-8.51l-8 8a6 6 0 0 0 0 8.51A6 6 0 0 0 7 28a6.07 6.07 0 0 0 4.28-1.76l-1.42-1.42a4 4 0 0 1-5.67 0"/></symbol><use  xlink:href="#ai:carbon:link"></use>  </svg> Proof of Work </a> </div> </div> </div> </div> </div> </div> </div> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="skills"> <input aria-label="Skills" type="checkbox" id="skills" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:skill-level">  <symbol id="ai:carbon:skill-level"><path fill="currentColor" d="M30 30h-8V4h8zm-6-2h4V6h-4zm-4 2h-8V12h8zm-6-2h4V14h-4zm-4 2H2V18h8zm-6-2h4v-8H4z"/></symbol><use  xlink:href="#ai:carbon:skill-level"></use>  </svg> Skills </div> </div> <div class="collapse-content">  <div class="card card-compact card-bordered border border-[oklch(var(--s))] w-full hover:shadow-lg transition-all p-4" data-astro-cid-d6puh33w> <div class="flex flex-wrap gap-2" data-astro-cid-d6puh33w> <span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #A8B9CC" data-astro-cid-d6puh33w="true" data-icon="mdi:language-c">  <symbol id="ai:mdi:language-c"><path fill="currentColor" d="m15.45 15.97l.42 2.44c-.26.14-.68.27-1.24.39c-.57.13-1.24.2-2.01.2c-2.21-.04-3.87-.7-4.98-1.96c-1.14-1.27-1.68-2.88-1.68-4.83C6 9.9 6.68 8.13 8 6.89C9.28 5.64 10.92 5 12.9 5c.75 0 1.4.07 1.94.19s.94.25 1.2.4l-.6 2.49l-1.04-.34c-.4-.1-.87-.15-1.4-.15c-1.15-.01-2.11.36-2.86 1.1c-.76.73-1.14 1.85-1.18 3.34c.01 1.36.37 2.42 1.08 3.2c.71.77 1.7 1.17 2.99 1.18l1.33-.12c.43-.08.79-.19 1.09-.32"/></symbol><use  xlink:href="#ai:mdi:language-c"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>C</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #ED8B00" data-astro-cid-d6puh33w="true" data-icon="mdi:language-java">  <symbol id="ai:mdi:language-java"><path fill="currentColor" d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36c-.94 1.4.46 2.91 2.33 4.64c-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96c-.38-.15-.75-.33-1.1-.54c-1.36.31-2.76.37-4.14.18c-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26c-1.31-.13-.45-.77-.45-.77c-3.4 1.13 1.88 2.4 6.6 1.02c-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03c-.71-.31.63-.74 1.05-.83c.23-.06.46-.08.69-.08c-.79-.54-5.13 1.1-2.19 1.56c7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49c0 0-1.51.26-3.02.4c-1.6.16-3.21.18-4.81.06c-2.35-.31 1.29-1.2 1.29-1.2c-1.1 0-2.18.26-3.16.75c-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1c5.01-1.31 3.17-4.64.77-3.81c-.13.06-.24.14-.31.25c.14-.05.28-.09.43-.12c1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14c0 0 .46.38 2.81.53c3.6.23 9.13-.13 9.26-1.83c.03.01-.23.65-2.95 1.16"/></symbol><use  xlink:href="#ai:mdi:language-java"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Java</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #3B82F6" data-astro-cid-d6puh33w="true" data-icon="mdi:database">  <symbol id="ai:mdi:database"><path fill="currentColor" d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4s8-1.79 8-4s-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></symbol><use  xlink:href="#ai:mdi:database"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>JDBC</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #3B82F6" data-astro-cid-d6puh33w="true" data-icon="mdi:server">  <symbol id="ai:mdi:server"><path fill="currentColor" d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></symbol><use  xlink:href="#ai:mdi:server"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Servlet</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #6DB33F" data-astro-cid-d6puh33w="true" data-icon="mdi:leaf">  <symbol id="ai:mdi:leaf"><path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8"/></symbol><use  xlink:href="#ai:mdi:leaf"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Spring Core</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #6DB33F" data-astro-cid-d6puh33w="true" data-icon="mdi:sprout">  <symbol id="ai:mdi:sprout"><path fill="currentColor" d="M2 22v-2s5-2 10-2s10 2 10 2v2zm9.3-12.9c-1.2-3.9-7.3-3-7.3-3s.2 7.8 5.9 6.6C9.5 9.8 8 9 8 9c2.8 0 3 3.4 3 3.4V17h2v-4.2s0-3.9 3-4.9c0 0-2 3-2 5c7 .7 7-8.9 7-8.9s-8.9-1-9.7 5.1"/></symbol><use  xlink:href="#ai:mdi:sprout"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Spring Boot</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #6DB33F" data-astro-cid-d6puh33w="true" data-icon="mdi:shield-lock">  <symbol id="ai:mdi:shield-lock"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></symbol><use  xlink:href="#ai:mdi:shield-lock"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Spring Security</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #9333EA" data-astro-cid-d6puh33w="true" data-icon="mdi:lan">  <symbol id="ai:mdi:lan"><path fill="currentColor" d="M10 2c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h1v2H2v2h4v2H5c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2H8v-2h8v2h-1c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2h-1v-2h4v-2h-9V9h1c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2zm0 2h4v3h-4zM5 17h4v3H5zm10 0h4v3h-4z"/></symbol><use  xlink:href="#ai:mdi:lan"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Microservices</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #E34F26" data-astro-cid-d6puh33w="true" data-icon="mdi:language-html5">  <symbol id="ai:mdi:language-html5"><path fill="currentColor" d="m12 17.56l4.07-1.13l.55-6.1H9.38L9.2 8.3h7.6l.2-1.99H7l.56 6.01h6.89l-.23 2.58l-2.22.6l-2.22-.6l-.14-1.66h-2l.29 3.19zM4.07 3h15.86L18.5 19.2L12 21l-6.5-1.8z"/></symbol><use  xlink:href="#ai:mdi:language-html5"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>HTML</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #1572B6" data-astro-cid-d6puh33w="true" data-icon="mdi:language-css3">  <symbol id="ai:mdi:language-css3"><path fill="currentColor" d="m5 3l-.65 3.34h13.59L17.5 8.5H3.92l-.66 3.33h13.59l-.76 3.81l-5.48 1.81l-4.75-1.81l.33-1.64H2.85l-.79 4l7.85 3l9.05-3l1.2-6.03l.24-1.21L21.94 3z"/></symbol><use  xlink:href="#ai:mdi:language-css3"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>CSS</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #F7DF1E" data-astro-cid-d6puh33w="true" data-icon="mdi:language-javascript">  <symbol id="ai:mdi:language-javascript"><path fill="currentColor" d="M3 3h18v18H3zm4.73 15.04c.4.85 1.19 1.55 2.54 1.55c1.5 0 2.53-.8 2.53-2.55v-5.78h-1.7V17c0 .86-.35 1.08-.9 1.08c-.58 0-.82-.4-1.09-.87zm5.98-.18c.5.98 1.51 1.73 3.09 1.73c1.6 0 2.8-.83 2.8-2.36c0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02c0-.41.31-.73.81-.73c.48 0 .8.21 1.09.73l1.31-.87c-.55-.96-1.33-1.33-2.4-1.33c-1.51 0-2.48.96-2.48 2.23c0 1.38.81 2.03 2.03 2.55l.42.18c.78.34 1.24.55 1.24 1.13c0 .48-.45.83-1.15.83c-.83 0-1.31-.43-1.67-1.03z"/></symbol><use  xlink:href="#ai:mdi:language-javascript"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>JavaScript</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #61DAFB" data-astro-cid-d6puh33w="true" data-icon="mdi:react">  <symbol id="ai:mdi:react"><path fill="currentColor" d="M12 10.11c1.03 0 1.87.84 1.87 1.89c0 1-.84 1.85-1.87 1.85c-1.03 0-1.87-.85-1.87-1.85c0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7c-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 0 1-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86c.27.06.57.11.88.16zm6.54-.76l.81-1.5l-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03c-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47c.54.03 1.11.03 1.71.03c.6 0 1.17 0 1.71-.03c.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7c.52.59 1.03 1.23 1.51 1.9c.82.08 1.63.2 2.4.36c.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86c-.27-.06-.57-.11-.88-.16zm1.45-7.05c1.47.84 1.63 3.05 1.01 5.63c2.54.75 4.37 1.99 4.37 3.68c0 1.69-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63c-1.46.84-3.45-.12-5.37-1.95c-1.92 1.83-3.91 2.79-5.38 1.95c-1.46-.84-1.62-3.05-1-5.63c-2.54-.75-4.37-1.99-4.37-3.68c0-1.69 1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1-5.63c1.47-.84 3.46.12 5.38 1.95c1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26c2.1-.63 3.28-1.53 3.28-2.26c0-.73-1.18-1.63-3.28-2.26c-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26c-2.1.63-3.28 1.53-3.28 2.26c0 .73 1.18 1.63 3.28 2.26c.25-.76.55-1.51.89-2.26m9 2.26l-.3.51c.31-.05.61-.1.88-.16c-.07-.28-.18-.57-.29-.86zm-2.89 4.04c1.59 1.5 2.97 2.08 3.59 1.7c.64-.35.83-1.82.32-3.96c-.77.16-1.58.28-2.4.36c-.48.67-.99 1.31-1.51 1.9M8.08 9.74l.3-.51c-.31.05-.61.1-.88.16c.07.28.18.57.29.86zm2.89-4.04C9.38 4.2 8 3.62 7.37 4c-.63.35-.82 1.82-.31 3.96a22.7 22.7 0 0 1 2.4-.36c.48-.67.99-1.31 1.51-1.9"/></symbol><use  xlink:href="#ai:mdi:react"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>React.js</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #4479A1" data-astro-cid-d6puh33w="true" data-icon="mdi:database">  <use  xlink:href="#ai:mdi:database"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>MySQL</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #C71A36" data-astro-cid-d6puh33w="true" data-icon="mdi:hammer-wrench">  <symbol id="ai:mdi:hammer-wrench"><path fill="currentColor" d="m13.78 15.3l6 6l2.11-2.16l-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11l7.41-7.4L8.5 9.96l-.72.7l-1.45-1.41v2.86l-.7.7l-3.52-3.56l.7-.7h2.81l-1.4-1.41l3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4l-.71.71l1.79 1.78l1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5l2.67-2.67c.28.47.42.97.42 1.6c0 1.92-1.55 3.47-3.5 3.47"/></symbol><use  xlink:href="#ai:mdi:hammer-wrench"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Maven</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #F05032" data-astro-cid-d6puh33w="true" data-icon="mdi:git">  <symbol id="ai:mdi:git"><path fill="currentColor" d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2a2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82"/></symbol><use  xlink:href="#ai:mdi:git"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Git</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #FFFFFF" data-astro-cid-d6puh33w="true" data-icon="mdi:github">  <symbol id="ai:mdi:github"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></symbol><use  xlink:href="#ai:mdi:github"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>GitHub</span> </span><span class="skill-capsule flex items-center gap-2 px-3 py-0.5 rounded-lg" data-astro-cid-d6puh33w> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-3.5 h-3.5 skill-icon" style="color: #FCC624" data-astro-cid-d6puh33w="true" data-icon="mdi:linux">  <symbol id="ai:mdi:linux"><path fill="currentColor" d="M14.62 8.35c-.42.28-1.75 1.04-1.95 1.19c-.39.31-.75.29-1.14-.01c-.2-.16-1.53-.92-1.95-1.19c-.48-.31-.45-.7.08-.92c1.64-.69 3.28-.64 4.91.03c.49.21.51.6.05.9m7.22 7.28c-.93-2.09-2.2-3.99-3.84-5.66a4.31 4.31 0 0 1-1.06-1.88c-.1-.33-.17-.67-.24-1.01c-.2-.88-.29-1.78-.7-2.61c-.73-1.58-2-2.4-3.84-2.47c-1.81.05-3.16.81-3.95 2.4c-.21.43-.36.88-.46 1.34c-.17.76-.32 1.55-.5 2.32c-.15.65-.45 1.21-.96 1.71c-1.61 1.57-2.9 3.37-3.88 5.35c-.14.29-.28.58-.37.88c-.19.66.29 1.12.99.96c.44-.09.88-.18 1.3-.31c.41-.15.57-.05.67.35c.65 2.15 2.07 3.66 4.24 4.5c4.12 1.56 8.93-.66 9.97-4.58c.07-.27.17-.37.47-.27c.46.14.93.24 1.4.35c.49.09.85-.16.92-.64c.03-.26-.06-.49-.16-.73"/></symbol><use  xlink:href="#ai:mdi:linux"></use>  </svg> <span class="skill-text" data-astro-cid-d6puh33w>Linux</span> </span> </div> </div>  </div> </div>   <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="projects"> <input aria-label="Projects" type="checkbox" id="projects" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:tools">  <symbol id="ai:carbon:tools"><path fill="currentColor" d="M12.1 2a9.8 9.8 0 0 0-5.4 1.6l6.4 6.4a2.1 2.1 0 0 1 .2 3a2.1 2.1 0 0 1-3-.2L3.7 6.4A9.84 9.84 0 0 0 2 12.1a10.14 10.14 0 0 0 10.1 10.1a10.9 10.9 0 0 0 2.6-.3l6.7 6.7a5 5 0 0 0 7.1-7.1l-6.7-6.7a10.9 10.9 0 0 0 .3-2.6A10 10 0 0 0 12.1 2m8 10.1a7.61 7.61 0 0 1-.3 2.1l-.3 1.1l.8.8l6.7 6.7a2.88 2.88 0 0 1 .9 2.1A2.72 2.72 0 0 1 27 27a2.9 2.9 0 0 1-4.2 0l-6.7-6.7l-.8-.8l-1.1.3a7.61 7.61 0 0 1-2.1.3a8.27 8.27 0 0 1-5.7-2.3A7.63 7.63 0 0 1 4 12.1a8.33 8.33 0 0 1 .3-2.2l4.4 4.4a4.14 4.14 0 0 0 5.9.2a4.14 4.14 0 0 0-.2-5.9L10 4.2a6.45 6.45 0 0 1 2-.3a8.27 8.27 0 0 1 5.7 2.3a8.49 8.49 0 0 1 2.4 5.9"/></symbol><use  xlink:href="#ai:carbon:tools"></use>  </svg> Projects </div> </div> <div class="collapse-content">  <div class="projects-container" data-astro-cid-d6puh33w> <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch" id="projects-grid" data-astro-cid-d6puh33w> <div class="project-item " data-astro-cid-d6puh33w> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/reveal.webp" alt="TheDoraDoor thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-thedoradoor" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-thedoradoor" data-thumbnail-id="thumbnail-thedoradoor" data-play-btn-id="play-btn-thedoradoor" id="play-btn-thedoradoor" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <symbol id="ai:carbon:play-filled"><path fill="none" d="M11 23a1 1 0 0 1-1-1V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788l-12 6A1.001 1.001 0 0 1 11 23"/><path fill="currentColor" d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2m7.447 14.895l-12 6A1 1 0 0 1 10 22V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788"/></symbol><use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-thedoradoor" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> TheDoraDoor </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <symbol id="ai:mdi:earth"><path fill="currentColor" d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93c0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></symbol><use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <symbol id="ai:carbon:logo-github"><path fill="currentColor" fill-rule="evenodd" d="M16 2a14 14 0 0 0-4.43 27.28c.7.13 1-.3 1-.67v-2.38c-3.89.84-4.71-1.88-4.71-1.88a3.71 3.71 0 0 0-1.62-2.05c-1.27-.86.1-.85.1-.85a2.94 2.94 0 0 1 2.14 1.45a3 3 0 0 0 4.08 1.16a2.93 2.93 0 0 1 .88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4 5.4 0 0 1 1.44-3.76a5 5 0 0 1 .14-3.7s1.17-.38 3.85 1.43a13.3 13.3 0 0 1 7 0c2.67-1.81 3.84-1.43 3.84-1.43a5 5 0 0 1 .14 3.7a5.4 5.4 0 0 1 1.44 3.76c0 5.38-3.27 6.56-6.39 6.91a3.33 3.33 0 0 1 .95 2.59v3.84c0 .46.25.81 1 .67A14 14 0 0 0 16 2"/></symbol><use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> TheDoraDoor is an File Sharing App </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Plain Http Library </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Next.js </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Fullstack </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-building" data-astro-cid-mspuyifq> Building </span> <a href="/projects/01TheDoraDoor" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <symbol id="ai:carbon:arrow-right"><path fill="currentColor" d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10z"/></symbol><use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-item " data-astro-cid-d6puh33w> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/pixelnova.webp" alt="Pixel Nova thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-pixel-nova" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-pixel-nova" data-thumbnail-id="thumbnail-pixel-nova" data-play-btn-id="play-btn-pixel-nova" id="play-btn-pixel-nova" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-pixel-nova" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/pixelnova.mp4" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Pixel Nova </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> It is an image processing application built with Java and the JavaFX framework. At its core, it’s a desktop tool that allows a user to apply various filters like greyscale, colortint etc. to a digital image. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Async Programming </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> JavaFx </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Backend </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/02PixelNova" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-item hidden-project hidden" data-astro-cid-d6puh33w> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/reveal.webp" alt="Logger System thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-logger-system" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-logger-system" data-thumbnail-id="thumbnail-logger-system" data-play-btn-id="play-btn-logger-system" id="play-btn-logger-system" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-logger-system" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Logger System </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq>  </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Backend </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-building" data-astro-cid-mspuyifq> Building </span> <a href="/projects/03LoggerSystem" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-item hidden-project hidden" data-astro-cid-d6puh33w> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/webserver.webp" alt="Multithreaded WebServer thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-multithreaded-webserver" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-multithreaded-webserver" data-thumbnail-id="thumbnail-multithreaded-webserver" data-play-btn-id="play-btn-multithreaded-webserver" id="play-btn-multithreaded-webserver" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-multithreaded-webserver" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Multithreaded WebServer </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/WebServer" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/WebServer" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> It is a client-server communication model in Java capable of handling multiple client requests simultaneously using sockets and threads. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Multithreading </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> ThreadPool </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> CLI </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/04Webserver" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-item hidden-project hidden" data-astro-cid-d6puh33w> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/numsy.webp" alt="Numsy thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-numsy" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-numsy" data-thumbnail-id="thumbnail-numsy" data-play-btn-id="play-btn-numsy" id="play-btn-numsy" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-numsy" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/numsy.mp4" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Numsy </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/Numsy/packages" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/Numsy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> Numsy is a lightweight Java utility library for basic number manipulation, formatting, and checks. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Maven </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Github packages </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> CLI </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/05Numsy" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div> </div> <div class="flex justify-center mt-6" data-astro-cid-d6puh33w> <a href="/projects" class="btn btn-outline btn-sm" data-astro-cid-d6puh33w> <span data-astro-cid-d6puh33w>View All Projects</span> </a> </div> </div>  </div> </div> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="blog"> <input aria-label="Blogs" type="checkbox" id="blog" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:blog">  <symbol id="ai:carbon:blog"><path fill="currentColor" d="M4 24h10v2H4zm0-6h10v2H4zm22-4H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2M6 6v6h20V6zm20 22h-6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2m-6-8v6h6v-6z"/></symbol><use  xlink:href="#ai:carbon:blog"></use>  </svg> Blogs </div> </div> <div class="collapse-content">  <div class="blog-container" data-astro-cid-d6puh33w> <div class="blog-grid grid grid-cols-1 md:grid-cols-2 gap-4" id="blog-grid" data-astro-cid-d6puh33w> <div class="blog-item " data-astro-cid-d6puh33w> <div class="blog-card w-full h-full flex flex-col" data-astro-cid-e3grugc2> <div class="relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-e3grugc2> <img src="/blogthumbnail/maven/maven.webp" alt="Publish Your own Java Maven Package." class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" loading="lazy" data-astro-cid-e3grugc2> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-e3grugc2> <h2 class="card-title text-xl font-bold text-white mb-2" data-astro-cid-e3grugc2>Publish Your own Java Maven Package.</h2> <p class="text-sm text-gray-300 mb-4 line-clamp-2" data-astro-cid-e3grugc2> A complete step-by-step guide to building, publishing, and using a Java utility library. </p> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-e3grugc2> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Maven Package </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> GitHub Packages </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Tech </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-e3grugc2> <div class="badge badge-outline text-xs" data-astro-cid-e3grugc2>January 13, 2026</div> <a href="/blog/maven" class="btn btn-primary btn-sm" data-astro-cid-e3grugc2>
+Read More
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-e3grugc2="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  </div><div class="blog-item " data-astro-cid-d6puh33w> <div class="blog-card w-full h-full flex flex-col" data-astro-cid-e3grugc2> <div class="relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-e3grugc2> <img src="/blogthumbnail/computer/whatcomputerunderstand.webp" alt="What &#38; How Computer Understand ?" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" loading="lazy" data-astro-cid-e3grugc2> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-e3grugc2> <h2 class="card-title text-xl font-bold text-white mb-2" data-astro-cid-e3grugc2>What &amp; How Computer Understand ?</h2> <p class="text-sm text-gray-300 mb-4 line-clamp-2" data-astro-cid-e3grugc2> What a computer understands and how a computer understand  ?. </p> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-e3grugc2> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Computer </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Tech </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-e3grugc2> <div class="badge badge-outline text-xs" data-astro-cid-e3grugc2>January 08, 2026</div> <a href="/blog/whatcomputerunderstand" class="btn btn-primary btn-sm" data-astro-cid-e3grugc2>
+Read More
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-e3grugc2="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  </div><div class="blog-item hidden-blog hidden" data-astro-cid-d6puh33w> <div class="blog-card w-full h-full flex flex-col" data-astro-cid-e3grugc2> <div class="relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-e3grugc2> <img src="/blogthumbnail/year2026/year2026.webp" alt="2026 - 365 Chapters" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" loading="lazy" data-astro-cid-e3grugc2> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-e3grugc2> <h2 class="card-title text-xl font-bold text-white mb-2" data-astro-cid-e3grugc2>2026 - 365 Chapters</h2> <p class="text-sm text-gray-300 mb-4 line-clamp-2" data-astro-cid-e3grugc2> Blog of my daily activities of my life in 2026. </p> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-e3grugc2> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> 2026 </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> 365 days blogs </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Snaps </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> My life logs </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Personal </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-e3grugc2> <div class="badge badge-outline text-xs" data-astro-cid-e3grugc2>January 01, 2026</div> <a href="/blog/year2026" class="btn btn-primary btn-sm" data-astro-cid-e3grugc2>
+Read More
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-e3grugc2="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  </div><div class="blog-item hidden-blog hidden" data-astro-cid-d6puh33w> <div class="blog-card w-full h-full flex flex-col" data-astro-cid-e3grugc2> <div class="relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-e3grugc2> <img src="/blogthumbnail/myfav/myfav.webp" alt="My Favourites" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" loading="lazy" data-astro-cid-e3grugc2> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-e3grugc2> <h2 class="card-title text-xl font-bold text-white mb-2" data-astro-cid-e3grugc2>My Favourites</h2> <p class="text-sm text-gray-300 mb-4 line-clamp-2" data-astro-cid-e3grugc2> Shows, Songs, Movies and Books that have inspired and entertained me. </p> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-e3grugc2> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Movies </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Webseries </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Anime </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Rap Songs </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Books </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-e3grugc2> Personal </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-e3grugc2> <div class="badge badge-outline text-xs" data-astro-cid-e3grugc2>November 26, 2025</div> <a href="/blog/myfavourites" class="btn btn-primary btn-sm" data-astro-cid-e3grugc2>
+Read More
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-e3grugc2="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  </div> </div> <div class="flex justify-center mt-6" data-astro-cid-d6puh33w> <a href="/blogs" class="btn btn-outline btn-sm" data-astro-cid-d6puh33w> <span data-astro-cid-d6puh33w>View All Blogs</span> </a> </div> </div>  </div> </div> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="files"> <input aria-label="Resume" type="checkbox" id="files" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:volume-file-storage">  <symbol id="ai:carbon:volume-file-storage"><path fill="currentColor" d="m25.707 17.293l-5-5A1 1 0 0 0 20 12h-6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V18a1 1 0 0 0-.293-.707M23.586 18H20v-3.586ZM14 28V14h4v4a2 2 0 0 0 2 2h4v8Z"/><path fill="currentColor" d="M8 27H4a2.002 2.002 0 0 1-2-2V5a2.002 2.002 0 0 1 2-2h7.586A1.987 1.987 0 0 1 13 3.586L16.414 7H28a2.002 2.002 0 0 1 2 2v8h-2V9H15.586l-4-4H4v20h4Z"/></symbol><use  xlink:href="#ai:carbon:volume-file-storage"></use>  </svg> Resume </div> </div> <div class="collapse-content">  <div class="flex justify-center w-full" data-astro-cid-d6puh33w> <div class="card card-compact card-bordered border-[oklch(var(--s))] w-96 md:w-112 lg:w-128 hover:shadow-lg transition-all" data-astro-cid-d6puh33w> <figure data-astro-cid-d6puh33w> <object data="/MyResume.pdf" type="application/pdf" width="100%" data-astro-cid-d6puh33w></object> </figure> <div class="card-body" data-astro-cid-d6puh33w> <h2 class="card-title" data-astro-cid-d6puh33w>Resume</h2> <p data-astro-cid-d6puh33w>View and download my resume by clicking on the button below</p> <div class="card-actions justify-end" data-astro-cid-d6puh33w> <a target="_blank" href="/MyResume.pdf" data-astro-cid-d6puh33w> <button class="btn btn-outline" data-astro-cid-d6puh33w> <p data-astro-cid-d6puh33w>Download resume</p> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-6 h-6 ml-1" data-astro-cid-d6puh33w="true" data-icon="carbon:document-pdf">  <symbol id="ai:carbon:document-pdf"><path fill="currentColor" d="M30 18v-2h-6v10h2v-4h3v-2h-3v-2zm-11 8h-4V16h4a3.003 3.003 0 0 1 3 3v4a3.003 3.003 0 0 1-3 3m-2-2h2a1.001 1.001 0 0 0 1-1v-4a1.001 1.001 0 0 0-1-1h-2zm-6-8H6v10h2v-3h3a2.003 2.003 0 0 0 2-2v-3a2.002 2.002 0 0 0-2-2m-3 5v-3h3l.001 3z"/><path fill="currentColor" d="M22 14v-4a.91.91 0 0 0-.3-.7l-7-7A.909.909 0 0 0 14 2H4a2.006 2.006 0 0 0-2 2v24a2 2 0 0 0 2 2h16v-2H4V4h8v6a2.006 2.006 0 0 0 2 2h6v2Zm-8-4V4.4l5.6 5.6Z"/></symbol><use  xlink:href="#ai:carbon:document-pdf"></use>  </svg> </button> </a> </div> </div> </div> </div>  </div> </div> <div class="collapse collapse-arrow ease-in-out duration-700 accordion-item" data-accordion-id="contact"> <input aria-label="Contact" type="checkbox" id="contact" class="accordion-checkbox"> <div class="collapse-title font-extrabold tracking-tight md:text-2xl" style="font-family: 'Cinzel', serif;"> <div class="flex"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 mr-4" data-icon="carbon:location-person">  <symbol id="ai:carbon:location-person"><path fill="currentColor" d="M20 19h-2v-2h-4v2h-2v-2a2.002 2.002 0 0 1 2-2h4a2.002 2.002 0 0 1 2 2zm-4-5a3 3 0 1 1 3-3a3.003 3.003 0 0 1-3 3m0-4a1 1 0 1 0 1 1a1.001 1.001 0 0 0-1-1"/><path fill="currentColor" d="m16 30l-8.436-9.949a35.076 35.076 0 0 1-.348-.451A10.889 10.889 0 0 1 5 13a11 11 0 0 1 22 0a10.884 10.884 0 0 1-2.215 6.597l-.001.003s-.3.394-.345.447ZM8.813 18.395s.233.308.286.374L16 26.908l6.91-8.15c.044-.055.278-.365.279-.366A8.901 8.901 0 0 0 25 13a9 9 0 0 0-18 0a8.905 8.905 0 0 0 1.813 5.395"/></symbol><use  xlink:href="#ai:carbon:location-person"></use>  </svg> Contact </div> </div> <div class="collapse-content">  <div class="flex flex-wrap content-around gap-4 justify-center" data-astro-cid-d6puh33w> <a target="_blank" rel="noopener noreferrer" href="tel:+91 9792430836"> <button class="btn btn-outline btn-md mr-2"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-6 h-6" data-icon="carbon:phone">  <symbol id="ai:carbon:phone"><path fill="currentColor" d="M26 29h-.17C6.18 27.87 3.39 11.29 3 6.23A3 3 0 0 1 5.76 3h5.51a2 2 0 0 1 1.86 1.26L14.65 8a2 2 0 0 1-.44 2.16l-2.13 2.15a9.37 9.37 0 0 0 7.58 7.6l2.17-2.15a2 2 0 0 1 2.17-.41l3.77 1.51A2 2 0 0 1 29 20.72V26a3 3 0 0 1-3 3M6 5a1 1 0 0 0-1 1v.08C5.46 12 8.41 26 25.94 27a1 1 0 0 0 1.06-.94v-5.34l-3.77-1.51l-2.87 2.85l-.48-.06c-8.7-1.09-9.88-9.79-9.88-9.88l-.06-.48l2.84-2.87L11.28 5Z"/></symbol><use  xlink:href="#ai:carbon:phone"></use>  </svg> Call Me </button> </a><a target="_blank" rel="noopener noreferrer" href="mailto:therohitpatwa@gmail.com"> <button class="btn btn-outline btn-md mr-2"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-6 h-6" data-icon="carbon:email">  <symbol id="ai:carbon:email"><path fill="currentColor" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z"/></symbol><use  xlink:href="#ai:carbon:email"></use>  </svg> Email </button> </a><a target="_blank" rel="noopener noreferrer" href="https://github.com/therohitpatwa"> <button class="btn btn-outline btn-md mr-2"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-6 h-6" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> Github </button> </a><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/therohitpatwa/"> <button class="btn btn-outline btn-md mr-2"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-6 h-6" data-icon="carbon:logo-linkedin">  <symbol id="ai:carbon:logo-linkedin"><path fill="currentColor" d="M26.2 4H5.8C4.8 4 4 4.8 4 5.7v20.5c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V5.7c0-.9-.8-1.7-1.8-1.7M11.1 24.4H7.6V13h3.5zm-1.7-13c-1.1 0-2.1-.9-2.1-2.1c0-1.2.9-2.1 2.1-2.1c1.1 0 2.1.9 2.1 2.1s-1 2.1-2.1 2.1m15.1 12.9H21v-5.6c0-1.3 0-3.1-1.9-3.1S17 17.1 17 18.5v5.7h-3.5V13h3.3v1.5h.1c.5-.9 1.7-1.9 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.2z"/></symbol><use  xlink:href="#ai:carbon:logo-linkedin"></use>  </svg> Linkedin </button> </a><a target="_blank" rel="noopener noreferrer" href="https://x.com/therohitpatwa"> <button class="btn btn-outline btn-md mr-2"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-icon="mdi:twitter">  <symbol id="ai:mdi:twitter"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23"/></symbol><use  xlink:href="#ai:mdi:twitter"></use>  </svg> twitter </button> </a> </div>  </div> </div> </div> <script type="module">document.addEventListener("DOMContentLoaded",function(){const c=document.querySelectorAll(".accordion-container .accordion-checkbox");c.forEach(n=>{n.addEventListener("change",function(){this.checked&&c.forEach(e=>{e!==this&&(e.checked=!1)})})})});</script> </div> </main> <div class="relative z-10" data-astro-cid-j7pv25f6> <footer class="flex justify-center items-center bg-transparent py-4"> <p class="flex items-center text-center font-light text-sm text-secondary">
+&copy; 2026 developed by
+<a target="_blank" rel="noopener noreferrer" class="link ml-1" href="https://github.com/therohitpatwa">Rohit Patwa</a> </p> <img class="rounded-full w-4 h-4 ml-2 shadow-md border border-black" src="/in.png" alt="Indian Flag" width="16" height="16" loading="lazy" decoding="async"> </footer> </div>  <script type="module">window.addEventListener("load",()=>{if(sessionStorage.getItem("openProjectsAccordion")==="true"&&(sessionStorage.removeItem("openProjectsAccordion"),setTimeout(()=>{const o=document.getElementById("projects");o&&(o.checked=!0,document.getElementById("projects")?.scrollIntoView({behavior:"smooth",block:"start"}))},100)),sessionStorage.getItem("openBlogAccordion")==="true"&&(sessionStorage.removeItem("openBlogAccordion"),setTimeout(()=>{const o=document.getElementById("blog");o&&(o.checked=!0,document.getElementById("blog")?.scrollIntoView({behavior:"smooth",block:"start"}))},100)),window.location.hash){const o=window.location.hash.substring(1);setTimeout(()=>{const e=document.getElementById(o);e&&(e.checked=!0,e.scrollIntoView({behavior:"smooth",block:"start"}))},100)}document.querySelectorAll(".accordion-checkbox").forEach(o=>{o.addEventListener("change",()=>{const e=o;!e.checked&&window.location.hash===`#${e.id}`&&history.pushState("",document.title,window.location.pathname+window.location.search)})})});</script></body></html>

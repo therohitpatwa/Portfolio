@@ -94,16 +94,22 @@ import { Icon } from "astro-icon/components";
     </div>
     <ParticleBackground />
     <div
-      class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-20"
+      class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
     >
-      <Icon name="carbon:moon" class="w-4 h-4" />
-      <input
-        type="checkbox"
-        data-toggle-theme="lofi,black"
-        data-act-class="ACTIVECLASS"
-        class="toggle toggle-sm mx-1 bg-secondary"
-      />
-      <Icon name="carbon:light" class="w-4 h-4" />
+      <div
+        class="w-full max-w-[52rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-end items-center pointer-events-auto"
+      >
+        <div class="flex items-center">
+          <Icon name="carbon:moon" class="w-4 h-4" />
+          <input
+            type="checkbox"
+            data-toggle-theme="lofi,black"
+            data-act-class="ACTIVECLASS"
+            class="toggle toggle-sm mx-1 bg-secondary"
+          />
+          <Icon name="carbon:light" class="w-4 h-4" />
+        </div>
+      </div>
     </div>
 
     <div
@@ -229,7 +235,7 @@ import { Icon } from "astro-icon/components";
     border-color: rgba(255, 255, 255, 0.3);
   }
 
-  /* Diagonal hatched border strips — left & right edges, desktop only */
+  /* Sleek vertical frame — left & right edges of content, desktop only */
   @media (min-width: 768px) {
     body::before,
     body::after {
@@ -237,35 +243,47 @@ import { Icon } from "astro-icon/components";
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 1cm;
+      width: 1px;
       z-index: 50;
       pointer-events: none;
-      background: repeating-linear-gradient(
-        -45deg,
+      background: linear-gradient(
+        to bottom,
         transparent,
-        transparent 4px,
-        rgba(255, 255, 255, 0.12) 4px,
-        rgba(255, 255, 255, 0.12) 5px
+        rgba(255, 255, 255, 0.1) 10%,
+        rgba(255, 255, 255, 0.1) 90%,
+        transparent
       );
     }
 
     body::before {
-      left: 0;
+      left: calc(50% - 26rem);
     }
 
     body::after {
-      right: 0;
+      right: calc(50% - 26rem);
     }
 
     [data-theme="lofi"] body::before,
     [data-theme="lofi"] body::after {
-      background: repeating-linear-gradient(
-        -45deg,
+      background: linear-gradient(
+        to bottom,
         transparent,
-        transparent 4px,
-        rgba(0, 0, 0, 0.1) 4px,
-        rgba(0, 0, 0, 0.1) 5px
+        rgba(0, 0, 0, 0.25) 10%,
+        rgba(0, 0, 0, 0.25) 90%,
+        transparent
       );
+    }
+
+    .particle-bounds {
+      left: calc(50% - 26rem);
+      width: 52rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .particle-bounds {
+      left: 0;
+      width: 100%;
     }
   }
 </style>

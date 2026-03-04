@@ -1,0 +1,880 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-aid3sr62> <head><script>
+            (function () {
+                var theme = localStorage.getItem("theme") || "black";
+                var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.setAttribute("data-theme", theme);
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+                document.write(
+                    '<style id="theme-init">html,body{background-color:' +
+                        bgColor +
+                        " !important;transition:none !important;}</style>",
+                );
+                if (!localStorage.getItem("theme"))
+                    localStorage.setItem("theme", "black");
+            })();
+        </script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.16.6"><title>All Projects - Rohit Patwa</title><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet"><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/about.CEDXVYFb.css">
+<style>@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}.project-content{color:oklch(var(--bc))}.project-content h2{font-size:1.875rem;font-weight:700;margin-top:2rem;margin-bottom:1rem}.project-content h3{font-size:1.5rem;font-weight:600;margin-top:1.5rem;margin-bottom:.75rem}.project-content p{margin-bottom:1rem;line-height:1.75}.project-content ul,.project-content ol{margin-left:1.5rem;margin-bottom:1rem}.project-content li{margin-bottom:.5rem}.project-content code{background-color:oklch(var(--b2));padding:.125rem .25rem;border-radius:.25rem;font-size:.875em}.project-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.project-content pre code{background-color:transparent;padding:0}.project-content a{color:oklch(var(--p));text-decoration:underline}.project-content a:hover{color:oklch(var(--pf))}.project-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic}.project-content img{border-radius:.5rem;margin:1.5rem 0}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+.project-card[data-astro-cid-mspuyifq]{background-color:#1e1e1ee6;border:1px solid rgba(150,150,150,.2);border-radius:.5rem;overflow:hidden;transition:all .3s ease}.project-card[data-astro-cid-mspuyifq]:hover{transform:translateY(-2px);box-shadow:0 10px 25px #0000004d;border-color:#96969666}.video-header[data-astro-cid-mspuyifq]{position:relative}.play-button[data-astro-cid-mspuyifq]{background:transparent}.play-icon-circle[data-astro-cid-mspuyifq]{width:64px;height:64px;border-radius:50%;background-color:#3c3c3ccc;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:opacity .2s ease}.video-header[data-astro-cid-mspuyifq]:hover .play-button[data-astro-cid-mspuyifq],.video-header[data-astro-cid-mspuyifq]:active .play-button[data-astro-cid-mspuyifq],.video-header[data-astro-cid-mspuyifq]:focus-within .play-button[data-astro-cid-mspuyifq]{opacity:1}.status-capsule[data-astro-cid-mspuyifq]{display:inline-flex;align-items:center;gap:.25rem}.status-working[data-astro-cid-mspuyifq]{background-color:#22c55e33;border:1px solid rgba(34,197,94,.5);color:#22c55e}.status-building[data-astro-cid-mspuyifq]{background-color:#eab30833;border:1px solid rgba(234,179,8,.5);color:#eab308}[data-theme=lofi] .project-card[data-astro-cid-mspuyifq]{background-color:#fff;border-color:#e5e7eb;box-shadow:0 4px 6px -1px #0000001a,0 2px 4px -1px #0000000f}[data-theme=lofi] .project-card[data-astro-cid-mspuyifq]:hover{box-shadow:0 10px 15px -3px #0000001a,0 4px 6px -2px #0000000d}[data-theme=lofi] .card-body[data-astro-cid-mspuyifq]{background-color:#f9fafb}[data-theme=lofi] .card-title[data-astro-cid-mspuyifq]{color:#111827}[data-theme=lofi] .prose[data-astro-cid-mspuyifq],[data-theme=lofi] .text-gray-300[data-astro-cid-mspuyifq]{color:#4b5563}[data-theme=lofi] .text-gray-400[data-astro-cid-mspuyifq]{color:#6b7280}[data-theme=lofi] .text-gray-400[data-astro-cid-mspuyifq]:hover{color:#111827}[data-theme=lofi] .tag-capsule[data-astro-cid-mspuyifq]{background-color:#f3f4f6;border-color:#d1d5db;color:#374151}[data-theme=lofi] .status-working[data-astro-cid-mspuyifq]{background-color:#dcfce7;border-color:#86efac;color:#15803d}[data-theme=lofi] .status-building[data-astro-cid-mspuyifq]{background-color:#fef9c3;border-color:#fde047;color:#854d0e}
+body{font-family:DM Sans Variable,sans-serif}[data-theme=black] body{background:#000}.particles-wrapper{position:fixed;top:0;bottom:0;left:50%;transform:translate(-50%);width:min(90vw,48rem);z-index:1;pointer-events:none;overflow:hidden}.particles-wrapper #particles-container{position:absolute;inset:0}@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}@media only screen and (max-width:480px){*{font-size:12px}}.tag-capsule{background-color:#3c3c3ccc;border:1px solid rgba(255,255,255,.2);color:#fff;transition:all .2s ease}.tag-capsule:hover{background-color:#505050e6;border-color:#ffffff4d}.filter-btn{background-color:transparent;color:#9ca3af}.filter-btn:hover{color:#fff}.filter-btn.active{background-color:#ffffff1a;border-color:#fff;color:#fff}[data-theme=lofi] .filter-btn{color:#4b5563;border-color:#9ca3af}[data-theme=lofi] .filter-btn:hover{background-color:#0000000d;color:#000}[data-theme=lofi] .filter-btn.active{background-color:#000;color:#fff;border-color:#000}[data-theme=lofi] .quote-card{background-color:#00000005;border-color:#e5e7eb}[data-theme=lofi] .quote-card p{color:#374151}[data-theme=lofi] .quote-mark{color:#d1d5db}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style></head> <body class="flex flex-col min-h-screen relative" data-astro-cid-aid3sr62> <div class="particles-wrapper" data-astro-cid-aid3sr62> <div id="particles-container" class="fixed inset-0 w-full h-full" style="z-index: 1; pointer-events: none;"></div> <script type="module" src="/_astro/ParticleBackground.astro_astro_type_script_index_0_lang.CrE5hlC9.js"></script> </div> <main class="mx-auto flex-grow max-w-3xl w-[95vw] px-4 md:px-8 pt-4 md:pt-8 pb-8 relative z-10" data-astro-cid-aid3sr62> <div class="flex justify-between items-center mb-6" data-astro-cid-aid3sr62> <a href="/" class="btn btn-outline btn-sm" data-astro-cid-aid3sr62> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-aid3sr62="true" data-icon="carbon:arrow-left">  <symbol id="ai:carbon:arrow-left"><path fill="currentColor" d="m14 26l1.41-1.41L7.83 17H28v-2H7.83l7.58-7.59L14 6L4 16z"/></symbol><use  xlink:href="#ai:carbon:arrow-left"></use>  </svg> <span data-astro-cid-aid3sr62>Back to Home</span> </a> <button class="theme-toggle-btn flex items-center gap-1.5 cursor-pointer outline-none hover:opacity-80 transition-opacity" aria-label="Toggle theme"> <!-- Moon Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-moon" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <!-- Track & Knob --> <div class="relative w-9 h-5 rounded-full border-2 border-current flex items-center px-0.5 transition-colors duration-300 toggle-track"> <div class="w-3 h-3 rounded-full bg-current transform transition-transform duration-300 toggle-knob"></div> </div> <!-- Sun Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-sun" data-icon="carbon:sun">  <symbol id="ai:carbon:sun"><path fill="currentColor" d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6M5.394 6.813L6.81 5.399l3.505 3.506L8.9 10.319zM2 15.005h5v2H2zm3.394 10.193L8.9 21.692l1.414 1.414l-3.505 3.506zM15 25.005h2v5h-2zm6.687-1.9l1.414-1.414l3.506 3.506l-1.414 1.414zm3.313-8.1h5v2h-5zm-3.313-6.101l3.506-3.506l1.414 1.414l-3.506 3.506zM15 2.005h2v5h-2z"/></symbol><use  xlink:href="#ai:carbon:sun"></use>  </svg> </button> <script>
+    (function () {
+        function updateAllIcons(theme) {
+            document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+                const moon = btn.querySelector(".icon-moon");
+                const sun = btn.querySelector(".icon-sun");
+                const track = btn.querySelector(".toggle-track");
+                const knob = btn.querySelector(".toggle-knob");
+
+                if (theme === "lofi") {
+                    // Light mode styling
+                    if (knob) knob.style.transform = "translateX(16px)";
+                    if (moon) {
+                        moon.classList.remove("text-base-content");
+                        moon.classList.add("text-gray-400");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-gray-400");
+                        sun.classList.add("text-base-content");
+                    }
+                    if (track) track.classList.add("border-gray-300");
+                } else {
+                    // Dark mode styling
+                    if (knob) knob.style.transform = "translateX(0px)";
+                    if (moon) {
+                        moon.classList.remove("text-gray-400");
+                        moon.classList.add("text-base-content");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-base-content");
+                        sun.classList.add("text-gray-400");
+                    }
+                    if (track) track.classList.remove("border-gray-300");
+                }
+            });
+        }
+
+        // Initial icon state
+        const currentTheme = localStorage.getItem("theme") || "black";
+        updateAllIcons(currentTheme);
+
+        document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                let theme = document.documentElement.getAttribute("data-theme");
+                let newTheme = theme === "lofi" ? "black" : "lofi";
+
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+
+                // Update inline styles that were set by index.astro to prevent flicker
+                var bgColor = newTheme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+
+                // Update theme-init style block
+                const themeInit = document.getElementById("theme-init");
+                if (themeInit) {
+                    themeInit.innerHTML =
+                        "html,body{background-color:" +
+                        bgColor +
+                        " !important; transition: background-color 0.3s ease !important;}";
+                }
+
+                updateAllIcons(newTheme);
+            });
+        });
+    })();
+</script> </div> <div class="text-center mb-10" data-astro-cid-aid3sr62> <h1 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Cinzel', serif;" data-astro-cid-aid3sr62>
+Projects
+</h1> <p class="text-gray-400 text-sm md:text-base" data-astro-cid-aid3sr62>
+Things I’ve built, explored, and experimented with.
+</p> </div> <div class="divider w-full bg-secondary h-px mb-6" data-astro-cid-aid3sr62></div> <!-- Filter Section --> <div class="mb-8" data-astro-cid-aid3sr62> <h3 class="text-sm font-semibold text-gray-400 mb-3" data-astro-cid-aid3sr62>
+Filter by Category
+</h3> <div class="flex flex-wrap gap-2" id="project-filter-container" data-astro-cid-aid3sr62> <button class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all" data-category="CLI" data-astro-cid-aid3sr62> CLI </button><button class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all" data-category="Frontend" data-astro-cid-aid3sr62> Frontend </button><button class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all" data-category="Backend" data-astro-cid-aid3sr62> Backend </button><button class="filter-btn px-3 py-0.5 text-xs rounded-full border border-gray-600 hover:border-gray-400 transition-all" data-category="Fullstack" data-astro-cid-aid3sr62> Fullstack </button> <button class="clear-btn px-3 py-0.5 text-xs rounded-full border border-red-600 text-red-400 hover:bg-red-600/20 transition-all hidden" id="project-clear-filter" data-astro-cid-aid3sr62> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-3 h-3 inline mr-1" data-astro-cid-aid3sr62="true" data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use  xlink:href="#ai:carbon:close"></use>  </svg>
+Clear
+</button> </div> </div> <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="projects-grid" data-astro-cid-aid3sr62> <div class="project-filter-item " data-category="Fullstack" data-astro-cid-aid3sr62> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/reveal.webp" alt="TheDoraDoor thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-thedoradoor" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-thedoradoor" data-thumbnail-id="thumbnail-thedoradoor" data-play-btn-id="play-btn-thedoradoor" id="play-btn-thedoradoor" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <symbol id="ai:carbon:play-filled"><path fill="none" d="M11 23a1 1 0 0 1-1-1V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788l-12 6A1.001 1.001 0 0 1 11 23"/><path fill="currentColor" d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2m7.447 14.895l-12 6A1 1 0 0 1 10 22V10a1 1 0 0 1 1.447-.894l12 6a1 1 0 0 1 0 1.788"/></symbol><use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-thedoradoor" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> TheDoraDoor </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <symbol id="ai:mdi:earth"><path fill="currentColor" d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93c0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></symbol><use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <symbol id="ai:carbon:logo-github"><path fill="currentColor" fill-rule="evenodd" d="M16 2a14 14 0 0 0-4.43 27.28c.7.13 1-.3 1-.67v-2.38c-3.89.84-4.71-1.88-4.71-1.88a3.71 3.71 0 0 0-1.62-2.05c-1.27-.86.1-.85.1-.85a2.94 2.94 0 0 1 2.14 1.45a3 3 0 0 0 4.08 1.16a2.93 2.93 0 0 1 .88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4 5.4 0 0 1 1.44-3.76a5 5 0 0 1 .14-3.7s1.17-.38 3.85 1.43a13.3 13.3 0 0 1 7 0c2.67-1.81 3.84-1.43 3.84-1.43a5 5 0 0 1 .14 3.7a5.4 5.4 0 0 1 1.44 3.76c0 5.38-3.27 6.56-6.39 6.91a3.33 3.33 0 0 1 .95 2.59v3.84c0 .46.25.81 1 .67A14 14 0 0 0 16 2"/></symbol><use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> TheDoraDoor is an File Sharing App </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Plain Http Library </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Next.js </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Fullstack </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-building" data-astro-cid-mspuyifq> Building </span> <a href="/projects/01TheDoraDoor" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <symbol id="ai:carbon:arrow-right"><path fill="currentColor" d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10z"/></symbol><use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-filter-item " data-category="Backend" data-astro-cid-aid3sr62> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/pixelnova.webp" alt="Pixel Nova thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-pixel-nova" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-pixel-nova" data-thumbnail-id="thumbnail-pixel-nova" data-play-btn-id="play-btn-pixel-nova" id="play-btn-pixel-nova" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-pixel-nova" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/pixelnova.mp4" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Pixel Nova </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/PixelNova-AsyncImageProcessor" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> It is an image processing application built with Java and the JavaFX framework. At its core, it’s a desktop tool that allows a user to apply various filters like greyscale, colortint etc. to a digital image. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Async Programming </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> JavaFx </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Backend </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/02PixelNova" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-filter-item " data-category="Backend" data-astro-cid-aid3sr62> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/reveal.webp" alt="Logger System thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-logger-system" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-logger-system" data-thumbnail-id="thumbnail-logger-system" data-play-btn-id="play-btn-logger-system" id="play-btn-logger-system" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-logger-system" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Logger System </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq>  </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Backend </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-building" data-astro-cid-mspuyifq> Building </span> <a href="/projects/03LoggerSystem" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-filter-item " data-category="CLI" data-astro-cid-aid3sr62> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/webserver.webp" alt="Multithreaded WebServer thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-multithreaded-webserver" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-multithreaded-webserver" data-thumbnail-id="thumbnail-multithreaded-webserver" data-play-btn-id="play-btn-multithreaded-webserver" id="play-btn-multithreaded-webserver" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-multithreaded-webserver" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Multithreaded WebServer </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/WebServer" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/WebServer" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> It is a client-server communication model in Java capable of handling multiple client requests simultaneously using sockets and threads. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Multithreading </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> ThreadPool </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> CLI </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/04Webserver" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div><div class="project-filter-item " data-category="CLI" data-astro-cid-aid3sr62> <div class="project-card w-full h-full flex flex-col" data-astro-cid-mspuyifq> <div class="video-header relative w-full aspect-video bg-base-300 rounded-t-lg overflow-hidden" data-astro-cid-mspuyifq> <div class="video-container relative w-full h-full" data-astro-cid-mspuyifq> <img src="/projectthumbnail/numsy.webp" alt="Numsy thumbnail" class="w-full h-full object-cover rounded-t-lg" id="thumbnail-numsy" style="image-rendering: auto;" data-astro-cid-mspuyifq> <button class="play-button absolute inset-0 flex items-center justify-center transition-all cursor-pointer border-0 bg-transparent opacity-0 hover:opacity-100 group" data-video-id="video-numsy" data-thumbnail-id="thumbnail-numsy" data-play-btn-id="play-btn-numsy" id="play-btn-numsy" type="button" data-astro-cid-mspuyifq> <div class="play-icon-circle" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-8 h-8 text-white" data-astro-cid-mspuyifq="true" data-icon="carbon:play-filled">  <use  xlink:href="#ai:carbon:play-filled"></use>  </svg> </div> </button> <video class="hidden w-full h-full object-cover rounded-t-lg" controls id="video-numsy" preload="none" data-astro-cid-mspuyifq> <source src="/projectvideos/numsy.mp4" type="video/mp4" data-astro-cid-mspuyifq>
+Your browser does not support the video tag.
+</video> </div> </div> <div class="card-body bg-base-300/50 rounded-b-lg p-4 flex flex-col flex-grow" data-astro-cid-mspuyifq> <!-- Title row with icons on right --> <div class="flex items-start justify-between mb-2" data-astro-cid-mspuyifq> <h2 class="card-title text-xl font-bold text-white group-hover:text-primary transition-colors" data-astro-cid-mspuyifq> Numsy </h2> <div class="flex items-center gap-2 ml-2 flex-shrink-0" data-astro-cid-mspuyifq> <a href="https://github.com/therohitpatwa/Numsy/packages" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Website" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="mdi:earth">  <use  xlink:href="#ai:mdi:earth"></use>  </svg> </a> <a href="https://github.com/therohitpatwa/Numsy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="GitHub" data-astro-cid-mspuyifq> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-5 h-5" data-astro-cid-mspuyifq="true" data-icon="carbon:logo-github">  <use  xlink:href="#ai:carbon:logo-github"></use>  </svg> </a> </div> </div> <article class="prose prose-invert text-sm text-gray-300 mb-4" data-astro-cid-mspuyifq> Numsy is a lightweight Java utility library for basic number manipulation, formatting, and checks. </article> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-mspuyifq> <span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Maven </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Java </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> Github packages </span><span class="tag-capsule px-3 py-1 rounded-lg text-xs font-medium" data-astro-cid-mspuyifq> CLI </span> </div> <div class="flex items-center justify-between mt-auto" data-astro-cid-mspuyifq> <!-- Status Capsule --> <span class="status-capsule px-3 py-1 rounded-full text-xs font-medium status-working" data-astro-cid-mspuyifq> Fully Functional </span> <a href="/projects/05Numsy" class="btn btn-primary btn-sm" data-astro-cid-mspuyifq>
+View Details
+<svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-mspuyifq="true" data-icon="carbon:arrow-right">  <use  xlink:href="#ai:carbon:arrow-right"></use>  </svg> </a> </div> </div> </div>  <script>
+  (function () {
+    function initVideoPlayers() {
+      const playButtons = document.querySelectorAll(".play-button");
+
+      playButtons.forEach((button) => {
+        const videoId = button.getAttribute("data-video-id");
+        const thumbnailId = button.getAttribute("data-thumbnail-id");
+        const playBtnId = button.getAttribute("data-play-btn-id");
+
+        const video = document.getElementById(videoId);
+        const thumbnail = document.getElementById(thumbnailId);
+        const playBtn = document.getElementById(playBtnId);
+
+        if (!video || !thumbnail || !playBtn) return;
+
+        let isVideoPlaying = false;
+        let isHovering = false;
+
+        function showThumbnail() {
+          thumbnail.style.display = "block";
+          playBtn.style.display = "flex";
+          video.classList.add("hidden");
+          video.style.display = "none";
+          if (video instanceof HTMLVideoElement) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        function updatePlayButtonVisibility() {
+          if (isVideoPlaying) {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+            return;
+          }
+
+          const thumbnailVisible =
+            thumbnail.style.display !== "none" &&
+            !thumbnail.classList.contains("hidden") &&
+            getComputedStyle(thumbnail).display !== "none";
+
+          if (thumbnailVisible) {
+            playBtn.style.display = "flex";
+            playBtn.style.opacity = isHovering ? "1" : "0";
+          } else {
+            playBtn.style.opacity = "0";
+            playBtn.style.display = "none";
+          }
+        }
+
+        function showVideo() {
+          isVideoPlaying = true;
+          thumbnail.style.display = "none";
+          playBtn.style.display = "none";
+          playBtn.style.opacity = "0";
+          video.classList.remove("hidden");
+          video.style.display = "block";
+          if (video instanceof HTMLVideoElement) {
+            video.play().catch(() => {
+              isVideoPlaying = false;
+              showThumbnail();
+            });
+          }
+        }
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showVideo();
+        });
+
+        const videoHeader = thumbnail.closest(".video-header");
+        if (videoHeader) {
+          videoHeader.addEventListener("mouseenter", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+
+          videoHeader.addEventListener("mouseleave", function () {
+            isHovering = false;
+            updatePlayButtonVisibility();
+          });
+
+          videoHeader.addEventListener("touchstart", function () {
+            if (!isVideoPlaying) {
+              isHovering = true;
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+
+        if (video instanceof HTMLVideoElement) {
+          video.addEventListener("play", function () {
+            isVideoPlaying = true;
+            thumbnail.style.display = "none";
+            playBtn.style.display = "none";
+            playBtn.style.opacity = "0";
+            video.classList.remove("hidden");
+            video.style.display = "block";
+          });
+
+          video.addEventListener("ended", function () {
+            isVideoPlaying = false;
+            showThumbnail();
+            updatePlayButtonVisibility();
+          });
+
+          video.addEventListener("pause", function () {
+            if (video.currentTime > 0) {
+              isVideoPlaying = false;
+              thumbnail.style.display = "block";
+              playBtn.style.display = "flex";
+              video.classList.add("hidden");
+              video.style.display = "none";
+              updatePlayButtonVisibility();
+            }
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initVideoPlayers);
+    } else {
+      initVideoPlayers();
+    }
+  })();
+</script> </div> </div> <div id="project-no-results" class="hidden text-center py-8 text-gray-400" data-astro-cid-aid3sr62>
+No projects found for this category.
+</div>  <!-- Quote Section --> <div class="quote-section mt-16 mb-8" data-astro-cid-aid3sr62> <div class="quote-card relative bg-base-300/30 border border-gray-700 rounded-lg p-8" data-astro-cid-aid3sr62> <div class="quote-mark absolute text-6xl text-gray-600/50 font-serif" style="top: 1rem; left: 1.5rem;" data-astro-cid-aid3sr62>
+"
+</div> <p class="italic text-gray-300 text-sm md:text-base pl-8 pr-4" data-astro-cid-aid3sr62>
+"Work so hard that failure is not an option."
+</p> <p class="text-right text-gray-400 mt-4 text-sm" data-astro-cid-aid3sr62>— Rohit</p> </div> </div> </main> <div class="relative z-10" data-astro-cid-aid3sr62> <footer class="flex justify-center items-center bg-transparent py-4"> <p class="flex items-center text-center font-light text-sm text-secondary">
+&copy; 2026 developed by
+<a target="_blank" rel="noopener noreferrer" class="link ml-1" href="https://github.com/therohitpatwa">Rohit Patwa</a> </p> <img class="rounded-full w-4 h-4 ml-2 shadow-md border border-black" src="/in.png" alt="Indian Flag" width="16" height="16" loading="lazy" decoding="async"> </footer> </div>  <script>
+    (function () {
+        function initProjectFilters() {
+            var filterContainer = document.getElementById(
+                "project-filter-container",
+            );
+            if (!filterContainer) return;
+
+            var filterBtns = filterContainer.querySelectorAll(".filter-btn");
+            var clearBtn = document.getElementById("project-clear-filter");
+            var projectCards = document.querySelectorAll(
+                ".project-filter-item",
+            );
+            var noResults = document.getElementById("project-no-results");
+            var activeFilter = null;
+
+            function updateFilter(category) {
+                activeFilter = category;
+                var visibleCount = 0;
+
+                for (var i = 0; i < projectCards.length; i++) {
+                    var card = projectCards[i];
+                    var cardCategory = card.getAttribute("data-category");
+                    if (!category || cardCategory === category) {
+                        card.style.display = "";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+
+                if (visibleCount === 0 && noResults) {
+                    noResults.classList.remove("hidden");
+                } else if (noResults) {
+                    noResults.classList.add("hidden");
+                }
+
+                for (var j = 0; j < filterBtns.length; j++) {
+                    var btn = filterBtns[j];
+                    if (btn.getAttribute("data-category") === category) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                }
+
+                if (category && clearBtn) {
+                    clearBtn.classList.remove("hidden");
+                } else if (clearBtn) {
+                    clearBtn.classList.add("hidden");
+                }
+            }
+
+            for (var k = 0; k < filterBtns.length; k++) {
+                (function (btn) {
+                    btn.addEventListener("click", function () {
+                        var category = btn.getAttribute("data-category");
+                        if (activeFilter === category) {
+                            updateFilter(null);
+                        } else {
+                            updateFilter(category);
+                        }
+                    });
+                })(filterBtns[k]);
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener("click", function () {
+                    updateFilter(null);
+                });
+            }
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initProjectFilters);
+        } else {
+            initProjectFilters();
+        }
+    })();
+</script> <script>
+    (function () {
+        function initLoadMore() {
+            var loadMoreBtn = document.getElementById("load-more-btn");
+            var loadMoreContainer = document.getElementById(
+                "load-more-container",
+            );
+            if (!loadMoreBtn) return;
+
+            loadMoreBtn.addEventListener("click", function () {
+                var hiddenItems = document.querySelectorAll(".hidden-item");
+                for (var i = 0; i < hiddenItems.length; i++) {
+                    hiddenItems[i].classList.remove("hidden-item");
+                    hiddenItems[i].classList.remove("hidden");
+                }
+                if (loadMoreContainer) {
+                    loadMoreContainer.style.display = "none";
+                }
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initLoadMore);
+        } else {
+            initLoadMore();
+        }
+    })();
+</script></body></html>

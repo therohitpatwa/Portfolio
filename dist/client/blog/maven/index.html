@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-4dqtj3le> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Publish Your own Java Maven Package. - Rohit Patwa</title><link rel="icon" type="image/png" href="/favicon.png"><script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
+    </script><script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.CbAjBMaU.js"></script><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/about.CEDXVYFb.css">
+<style>@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:4px;z-index:50;pointer-events:none;background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(255,255,255,.15) 3px,rgba(255,255,255,.15) 4px)}body:before{left:calc(50% - 390px)}body:after{right:calc(50% - 390px)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.35) 3px,rgba(0,0,0,.35) 4px)}}.blog-content{color:oklch(var(--bc))}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4{font-weight:700;margin-top:2rem;margin-bottom:1rem}.blog-content h2{font-size:1.875rem}.blog-content h3{font-size:1.5rem}.blog-content p{margin-bottom:1rem;line-height:1.75}.blog-content ul,.blog-content ol{margin-left:1.5rem;margin-bottom:1rem}.blog-content li{margin-bottom:.5rem}.blog-content code{background-color:oklch(var(--b2));padding:.2rem .4rem;border-radius:.25rem;font-size:.875em}.blog-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.blog-content pre code{background-color:transparent;padding:0}.blog-content a{color:oklch(var(--p));text-decoration:underline}.blog-content a:hover{color:oklch(var(--pf))}.blog-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic;color:oklch(var(--bc) / .7)}.blog-content img{border-radius:.5rem;margin:1.5rem 0}.blog-content strong{font-weight:600;color:oklch(var(--bc))}.blog-content em{font-style:italic}:root{--code-copy-btn-fg: oklch(var(--bc) / .6);--code-copy-btn-bg: oklch(var(--b1));--code-copy-btn-border: oklch(var(--bc) / .2);--code-copy-btn-hover-bg: oklch(var(--b2))}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style></head> <body class="min-h-screen bg-base-100" data-astro-cid-4dqtj3le> <div class="max-w-3xl mx-auto px-4 pt-4 md:pt-8 pb-12" data-astro-cid-4dqtj3le> <div class="md:bg-base-100/80 md:backdrop-blur-md md:shadow-2xl md:rounded-[2.5rem] md:border md:border-base-content/5 p-6 md:p-12 md:mt-4 md:mb-12" data-astro-cid-4dqtj3le> <!-- Top Navigation --> <div class="flex justify-between items-center mb-6" data-astro-cid-4dqtj3le> <a href="/blogs" class="back-to-blog inline-flex items-center gap-2 text-sm hover:text-primary transition-colors" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:arrow-left">  <symbol id="ai:carbon:arrow-left"><path fill="currentColor" d="m14 26l1.41-1.41L7.83 17H28v-2H7.83l7.58-7.59L14 6L4 16z"/></symbol><use  xlink:href="#ai:carbon:arrow-left"></use>  </svg>
+Back to Blogs
+</a> <button class="theme-toggle-btn flex items-center gap-1.5 cursor-pointer outline-none hover:opacity-80 transition-opacity" aria-label="Toggle theme"> <!-- Moon Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-moon" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <!-- Track & Knob --> <div class="relative w-9 h-5 rounded-full border-2 border-current flex items-center px-0.5 transition-colors duration-300 toggle-track"> <div class="w-3 h-3 rounded-full bg-current transform transition-transform duration-300 toggle-knob"></div> </div> <!-- Sun Icon --> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-[18px] h-[18px] transition-colors duration-300 icon-sun" data-icon="carbon:sun">  <symbol id="ai:carbon:sun"><path fill="currentColor" d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6M5.394 6.813L6.81 5.399l3.505 3.506L8.9 10.319zM2 15.005h5v2H2zm3.394 10.193L8.9 21.692l1.414 1.414l-3.505 3.506zM15 25.005h2v5h-2zm6.687-1.9l1.414-1.414l3.506 3.506l-1.414 1.414zm3.313-8.1h5v2h-5zm-3.313-6.101l3.506-3.506l1.414 1.414l-3.506 3.506zM15 2.005h2v5h-2z"/></symbol><use  xlink:href="#ai:carbon:sun"></use>  </svg> </button> <script>
+    (function () {
+        function updateAllIcons(theme) {
+            document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+                const moon = btn.querySelector(".icon-moon");
+                const sun = btn.querySelector(".icon-sun");
+                const track = btn.querySelector(".toggle-track");
+                const knob = btn.querySelector(".toggle-knob");
+
+                if (theme === "lofi") {
+                    // Light mode styling
+                    if (knob) knob.style.transform = "translateX(16px)";
+                    if (moon) {
+                        moon.classList.remove("text-base-content");
+                        moon.classList.add("text-gray-400");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-gray-400");
+                        sun.classList.add("text-base-content");
+                    }
+                    if (track) track.classList.add("border-gray-300");
+                } else {
+                    // Dark mode styling
+                    if (knob) knob.style.transform = "translateX(0px)";
+                    if (moon) {
+                        moon.classList.remove("text-gray-400");
+                        moon.classList.add("text-base-content");
+                    }
+                    if (sun) {
+                        sun.classList.remove("text-base-content");
+                        sun.classList.add("text-gray-400");
+                    }
+                    if (track) track.classList.remove("border-gray-300");
+                }
+            });
+        }
+
+        // Initial icon state
+        const currentTheme = localStorage.getItem("theme") || "black";
+        updateAllIcons(currentTheme);
+
+        document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                let theme = document.documentElement.getAttribute("data-theme");
+                let newTheme = theme === "lofi" ? "black" : "lofi";
+
+                document.documentElement.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+
+                // Update inline styles that were set by index.astro to prevent flicker
+                var bgColor = newTheme === "lofi" ? "#FFFFFF" : "#000000";
+                document.documentElement.style.cssText =
+                    "background-color: " + bgColor + " !important;";
+
+                // Update theme-init style block
+                const themeInit = document.getElementById("theme-init");
+                if (themeInit) {
+                    themeInit.innerHTML =
+                        "html,body{background-color:" +
+                        bgColor +
+                        " !important; transition: background-color 0.3s ease !important;}";
+                }
+
+                updateAllIcons(newTheme);
+            });
+        });
+    })();
+</script> </div> <!-- Blog Header --> <div class="mb-8 rounded-lg overflow-hidden" data-astro-cid-4dqtj3le> <img src="/blogthumbnail/maven/maven.webp" alt="Publish Your own Java Maven Package." class="w-full h-64 md:h-96 object-cover" data-astro-cid-4dqtj3le> </div> <article class="prose prose-lg max-w-none" data-astro-cid-4dqtj3le> <!-- Title and Meta --> <div class="mb-8" data-astro-cid-4dqtj3le> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-4dqtj3le> <span class="badge badge-outline" data-astro-cid-4dqtj3le>Maven Package</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>GitHub Packages</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Java</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Tech</span> </div> <h1 class="text-4xl font-bold mb-4" data-astro-cid-4dqtj3le>Publish Your own Java Maven Package.</h1> <p class="text-lg text-secondary mb-4" data-astro-cid-4dqtj3le> A complete step-by-step guide to building, publishing, and using a Java utility library. </p> <div class="flex items-center gap-4 text-sm text-secondary" data-astro-cid-4dqtj3le> <div class="flex items-center gap-2" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:calendar">  <symbol id="ai:carbon:calendar"><path fill="currentColor" d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 22H6V12h20zm0-16H6V6h4v2h2V6h8v2h2V6h4z"/></symbol><use  xlink:href="#ai:carbon:calendar"></use>  </svg> <span data-astro-cid-4dqtj3le>January 13, 2026</span> </div> </div> </div> <!-- Blog Content --> <div class="blog-content" data-astro-cid-4dqtj3le> <hr/>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#what-is-numsy">What is Numsy?</a></li>
+<li><a href="#step-by-step-building-the-package">Step-by-Step: Building the Package</a>
+<ul>
+<li><a href="#1-generate-a-maven-project">1. Generate a Maven Project</a></li>
+<li><a href="#2-implement-the-utility-class">2. Implement the Utility Class</a></li>
+</ul>
+</li>
+<li><a href="#publishing-to-github-packages">Publishing to GitHub Packages</a>
+<ul>
+<li><a href="#3-set-up-pomxml">3. Set Up pom.xml</a></li>
+<li><a href="#4-authenticate-with-github">4. Authenticate with GitHub</a></li>
+<li><a href="#5-deploy-the-package">5. Deploy the Package</a></li>
+</ul>
+</li>
+<li><a href="#using-the-numsy-package-in-other-projects">Using the Numsy Package in Other Projects</a></li>
+<li><a href="#final-thoughts">Final Thoughts</a></li>
+</ul>
+<hr/>
+<h2 id="what-is-numsy">What is Numsy?</h2>
+<p><strong>Numsy</strong> is a lightweight Java utility library for basic number manipulation, formatting, and checks.</p>
+<h3 id="current-features">Current Features</h3>
+<ul>
+<li>Check if a number is <strong>Even</strong> or <strong>Odd</strong></li>
+<li>Check if a number is <strong>Prime</strong></li>
+<li>Find <strong>Prime numbers within a range</strong></li>
+<li>Number formatting (add commas)</li>
+<li>Find <strong>GCD</strong></li>
+<li>Find <strong>LCM</strong></li>
+</ul>
+<p>It’s nothing fancy — just a clean, reusable utility layer for common number-related tasks that Java doesn’t provide directly.</p>
+<hr/>
+<h2 id="step-by-step-building-the-package">Step-by-Step: Building the Package</h2>
+<h3 id="1-generate-a-maven-project">1. Generate a Maven Project</h3>
+<p>I used the Maven archetype to quickly scaffold the project:</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.59j39.css"/><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0;--1:#6F42C1">mvn</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#9ECBFF;--1:#032F62">archetype:generate</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#79B8FF;--1:#005CC5">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF;--1:#005CC5">-DgroupId=com.therohitpatwa</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#79B8FF;--1:#005CC5">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF;--1:#005CC5">-DartifactId=Numsy</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#79B8FF;--1:#005CC5">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF;--1:#005CC5">-DarchetypeArtifactId=maven-archetype-quickstart</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#79B8FF;--1:#005CC5">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF;--1:#005CC5">-DinteractiveMode=false</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="mvn archetype:generate \  -DgroupId=com.therohitpatwa \  -DartifactId=Numsy \  -DarchetypeArtifactId=maven-archetype-quickstart \  -DinteractiveMode=false"><div></div></button></div></figure></div>
+<p>This will create a folder structure like this.
+(It will also create test folder, but we won’t bother with that for now. also ignore the .gitignore, give it teste of its own medicine 😁)</p>
+<img src="/blogthumbnail/maven/1.webp" alt="Description" width="900"/>
+<h3 id="2-implement-the-utility-class">2. Implement the Utility class</h3>
+<p>In src/main/java/com/therohitpatwa/Numsy Numsy.java, I added some static method:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="java"><code><div class="ec-line"><div class="code"><span style="--0:#F97583;--1:#BF3441">public</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#F97583;--1:#BF3441">static</span><span style="--0:#E1E4E8;--1:#24292E"> Boolean </span><span style="--0:#B392F0;--1:#6F42C1">isEven</span><span style="--0:#E1E4E8;--1:#24292E">(</span><span style="--0:#F97583;--1:#BF3441">int</span><span style="--0:#E1E4E8;--1:#24292E"> n) { ... }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F97583;--1:#BF3441">public</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#F97583;--1:#BF3441">static</span><span style="--0:#E1E4E8;--1:#24292E"> Boolean </span><span style="--0:#B392F0;--1:#6F42C1">isOdd</span><span style="--0:#E1E4E8;--1:#24292E">(</span><span style="--0:#F97583;--1:#BF3441">int</span><span style="--0:#E1E4E8;--1:#24292E"> n) { ... }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F97583;--1:#BF3441">public</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#F97583;--1:#BF3441">static</span><span style="--0:#E1E4E8;--1:#24292E"> List</span><span style="--0:#F97583;--1:#BF3441">&lt;</span><span style="--0:#E1E4E8;--1:#24292E">Integer</span><span style="--0:#F97583;--1:#BF3441">&gt;</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#B392F0;--1:#6F42C1">primeInRange</span><span style="--0:#E1E4E8;--1:#24292E">(</span><span style="--0:#F97583;--1:#BF3441">int</span><span style="--0:#E1E4E8;--1:#24292E"> start,</span><span style="--0:#F97583;--1:#BF3441">int</span><span style="--0:#E1E4E8;--1:#24292E"> end) { ... }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">So on...</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="public static Boolean isEven(int n) { ... }public static Boolean isOdd(int n) { ... }public static List<Integer> primeInRange(int start,int end) { ... }So on..."><div></div></button></div></figure></div>
+<img src="/blogthumbnail/maven/2.webp" alt="Description" width="900"/>
+<hr/>
+<h2 id="publishing-to-github-packages">Publishing to GitHub Packages</h2>
+<h3 id="3-set-up-pomxml">3. Set Up pom.xml</h3>
+<p>I updated my pom.xml to include the Github packages repository under distribution Management.</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="xml"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">distributionManagement</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">repository</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">id</span><span style="--0:#E1E4E8;--1:#24292E">&gt;github&lt;/</span><span style="--0:#85E89D;--1:#1E7734">id</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">name</span><span style="--0:#E1E4E8;--1:#24292E">&gt;GitHub Packages&lt;/</span><span style="--0:#85E89D;--1:#1E7734">name</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">url</span><span style="--0:#E1E4E8;--1:#24292E">&gt;https://maven.pkg.github.com/Github_Username/numsy&lt;/</span><span style="--0:#85E89D;--1:#1E7734">url</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">repository</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">distributionManagement</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="<distributionManagement>  <repository>    <id>github</id>    <name>GitHub Packages</name>    <url>https://maven.pkg.github.com/Github_Username/numsy</url>  </repository></distributionManagement>"><div></div></button></div></figure></div>
+<h3 id="4-authenticate-with-github">4. Authenticate with GitHub</h3>
+<p>In your Maven setting.xml (In ~/.m2/setting.xml file), added my GitHub credentials like this:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="xml"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">servers</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">server</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">id</span><span style="--0:#E1E4E8;--1:#24292E">&gt;github&lt;/</span><span style="--0:#85E89D;--1:#1E7734">id</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">username</span><span style="--0:#E1E4E8;--1:#24292E">&gt;YOUR_GITHUB_USERNAME&lt;/</span><span style="--0:#85E89D;--1:#1E7734">username</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">password</span><span style="--0:#E1E4E8;--1:#24292E">&gt;YOUR_PERSONAL_ACCESS_TOKEN&lt;/</span><span style="--0:#85E89D;--1:#1E7734">password</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">server</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">servers</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="<servers>  <server>    <id>github</id>    <username>YOUR_GITHUB_USERNAME</username>    <password>YOUR_PERSONAL_ACCESS_TOKEN</password>  </server></servers>"><div></div></button></div></figure></div>
+<p>To create YOUR_PERSONAL_ACCESS_TOKEN:</p>
+<p>go to <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p>
+<p>Create a Classic Token with these scope enables: write:packages read:packages</p>
+<p>Create and Paste it in the setting.xml</p>
+<h3 id="5-deploy-the-package">5. Deploy the Package</h3>
+<p>Run this command to publish:</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0;--1:#6F42C1">mvn</span><span style="--0:#E1E4E8;--1:#24292E"> </span><span style="--0:#9ECBFF;--1:#032F62">deploy</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="mvn deploy"><div></div></button></div></figure></div>
+<p>You’ll see the packages listed under Packages in your GItHub repo if all goes well!</p>
+<img src="/blogthumbnail/maven/3.webp" alt="Description" width="900"/>
+<img src="/blogthumbnail/maven/4.webp" alt="Description" width="900"/>
+<hr/>
+<h2 id="using-the-numsy-package-in-other-projects">Using the Numsy Package in Other Projects</h2>
+<p>In other project’s pom.xml, include the repository and dependency:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="xml"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">dependencies</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">dependency</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">groupId</span><span style="--0:#E1E4E8;--1:#24292E">&gt;com.therohitpatwa&lt;/</span><span style="--0:#85E89D;--1:#1E7734">groupId</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">artifactId</span><span style="--0:#E1E4E8;--1:#24292E">&gt;numsy&lt;/</span><span style="--0:#85E89D;--1:#1E7734">artifactId</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">    </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;</span><span style="--0:#85E89D;--1:#1E7734">version</span><span style="--0:#E1E4E8;--1:#24292E">&gt;1.0-SNAPSHOT&lt;/</span><span style="--0:#85E89D;--1:#1E7734">version</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#24292E">  </span></span><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">dependency</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">&lt;/</span><span style="--0:#85E89D;--1:#1E7734">dependencies</span><span style="--0:#E1E4E8;--1:#24292E">&gt;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="<dependencies>  <dependency>    <groupId>com.therohitpatwa</groupId>    <artifactId>numsy</artifactId>    <version>1.0-SNAPSHOT</version>  </dependency></dependencies>"><div></div></button></div></figure></div>
+<p>Now Import</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="java"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#24292E">com.therohitpatwa.Numsy.numsy</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="com.therohitpatwa.Numsy.numsy"><div></div></button></div></figure></div>
+<p>and you can use methods provided in Numsy class of numsy</p>
+<p><strong>Syntax -Numsy.methodName();</strong></p>
+<img src="/blogthumbnail/maven/5.webp" alt="Description" width="900"/>
+<img src="/blogthumbnail/maven/6.webp" alt="Description" width="900"/>
+<hr/>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>I will add more method in Numsy soon. if you would like to use it or contribute, check it out here —
+👉 <a href="https://github.com/therohitpatwa/numsy">Numsy</a></p> </div> </article> </div> <!-- Social Share (Optional) --> </div>  </body></html>
