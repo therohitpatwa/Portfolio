@@ -252,6 +252,12 @@ const { frontmatter } = Astro.props;
     --code-copy-btn-hover-bg: oklch(var(--b2));
   }
 
+  @media only screen and (max-width: 480px) {
+    * {
+      font-size: 12px;
+    }
+  }
+
   /* Sleek vertical frame — left & right edges, desktop only */
   @media (min-width: 768px) {
     body::before,
