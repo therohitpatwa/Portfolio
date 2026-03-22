@@ -97,7 +97,7 @@ import { Icon } from "astro-icon/components";
       class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
     >
       <div
-        class="w-full max-w-[52rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-end items-center pointer-events-auto"
+        class="w-full max-w-[51rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-end items-center pointer-events-auto"
       >
         <div class="flex items-center">
           <Icon name="carbon:moon" class="w-4 h-4" />
@@ -249,18 +249,18 @@ import { Icon } from "astro-icon/components";
       background: linear-gradient(
         to bottom,
         transparent,
-        rgba(255, 255, 255, 0.1) 10%,
-        rgba(255, 255, 255, 0.1) 90%,
+        rgba(255, 255, 255, 0.3) 10%,
+        rgba(255, 255, 255, 0.3) 90%,
         transparent
       );
     }
 
     body::before {
-      left: calc(50% - 26rem);
+      left: calc(50% - 25.5rem);
     }
 
     body::after {
-      right: calc(50% - 26rem);
+      right: calc(50% - 25.5rem);
     }
 
     [data-theme="lofi"] body::before,
@@ -268,15 +268,15 @@ import { Icon } from "astro-icon/components";
       background: linear-gradient(
         to bottom,
         transparent,
-        rgba(0, 0, 0, 0.25) 10%,
-        rgba(0, 0, 0, 0.25) 90%,
+        rgba(0, 0, 0, 0.5) 10%,
+        rgba(0, 0, 0, 0.5) 90%,
         transparent
       );
     }
 
     .particle-bounds {
-      left: calc(50% - 26rem);
-      width: 52rem;
+      left: calc(50% - 25.5rem);
+      width: 51rem;
     }
   }
 

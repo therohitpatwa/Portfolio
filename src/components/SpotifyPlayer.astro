@@ -360,11 +360,10 @@
       if (player && player._options && player._options.getOAuthToken) {
         await player.activateElement();
         audioActivated = true;
-        console.log("Audio activated successfully");
         return true;
       }
     } catch (error) {
-      console.log("Audio activation attempt:", error);
+      console.error("Audio activation attempt:", error);
     }
     return false;
   }
@@ -372,16 +371,10 @@
   // Play track using Spotify Web API
   async function playTrack() {
     if (!accessToken || !currentTrackUri || !deviceId) {
-      console.log("Missing requirements:", {
-        accessToken: !!accessToken,
-        currentTrackUri,
-        deviceId,
-      });
       return;
     }
 
     if (!playerReady) {
-      console.log("Player not ready yet, waiting...");
       // Wait for player to be ready
       await new Promise((resolve) => setTimeout(resolve, 500));
       if (!playerReady) return;
@@ -498,7 +491,6 @@
       deviceId = device_id;
       playerReady = true;
       player.setVolume(0.8);
-      console.log("Spotify player ready with device:", device_id);
     });
 
     // Not Ready
