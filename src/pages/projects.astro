@@ -60,6 +60,9 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
                         document.documentElement.getAttribute("data-theme") ===
                         "lofi";
                     toggle.addEventListener("change", () => {
+                        const sound = new Audio("/sound.wav");
+                        sound.volume = 0.5;
+                        sound.play().catch(() => {});
                         const theme =
                             document.documentElement.getAttribute("data-theme");
                         if (theme) localStorage.setItem("theme", theme);
