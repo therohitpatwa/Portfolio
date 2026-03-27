@@ -2,7 +2,7 @@
 title: about
 name: "Rohit Patwa"
 designation: "Full Stack Developer"
-location: Lucknow Uttar Pradesh, India
+location: Noida Uttar Pradesh, India
 ---
 
 Yup! I'm a **Full-Stack developer** skilled in building scalable web applications using **Spring Framework**, **React** and modern UI frameworks.
