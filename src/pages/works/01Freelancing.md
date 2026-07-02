@@ -5,7 +5,6 @@ url: "https://github.com/therohitpatwa"
 location: Uttar Pradesh, India
 org: "Proof of Work"
 tags: ["FullStack", "Frontend", "Backend"]
+logo: "/work/freelancer.png"
+role: "Fullstack Developer — Remote"
 ---
-
-- Skilled in building responsive and user-friendly web applications using modern technologies.
-- Proficient in developing full-stack solutions with clean and efficient code.

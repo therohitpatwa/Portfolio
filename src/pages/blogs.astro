@@ -303,18 +303,6 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
                 transparent
             );
         }
-
-        .particle-bounds {
-            left: calc(50% - 25.5rem);
-            width: 51rem;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .particle-bounds {
-            left: 0;
-            width: 100%;
-        }
     }
 
     .tag-capsule {
@@ -382,11 +370,16 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
             var clearBtn = document.getElementById("blog-clear-filter");
             var blogCards = document.querySelectorAll(".blog-filter-item");
             var noResults = document.getElementById("blog-no-results");
+            var loadMoreBtn = document.getElementById("blog-load-more-btn");
+            var loadMoreContainer = document.getElementById(
+                "blog-load-more-container",
+            );
             var activeFilter = null;
+            var isLoadedAll = false;
 
             function updateFilter(tag) {
                 activeFilter = tag;
-                var visibleCount = 0;
+                var matchCount = 0;
 
                 for (var i = 0; i < blogCards.length; i++) {
                     var card = blogCards[i];
@@ -395,18 +388,32 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
                     try {
                         cardTags = JSON.parse(tagsAttr || "[]");
                     } catch (e) {}
-                    if (!tag || cardTags.indexOf(tag) !== -1) {
-                        card.style.display = "";
-                        visibleCount++;
+
+                    var matches = !tag || cardTags.indexOf(tag) !== -1;
+                    if (matches) {
+                        matchCount++;
+                        if (isLoadedAll || matchCount <= 6) {
+                            card.classList.remove("hidden");
+                        } else {
+                            card.classList.add("hidden");
+                        }
                     } else {
-                        card.style.display = "none";
+                        card.classList.add("hidden");
                     }
                 }
 
-                if (visibleCount === 0 && noResults) {
+                if (matchCount === 0 && noResults) {
                     noResults.classList.remove("hidden");
                 } else if (noResults) {
                     noResults.classList.add("hidden");
+                }
+
+                if (loadMoreContainer) {
+                    if (matchCount > 6 && !isLoadedAll) {
+                        loadMoreContainer.style.display = "";
+                    } else {
+                        loadMoreContainer.style.display = "none";
+                    }
                 }
 
                 for (var j = 0; j < filterBtns.length; j++) {
@@ -443,43 +450,22 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
                     updateFilter(null);
                 });
             }
+
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener("click", function () {
+                    isLoadedAll = true;
+                    updateFilter(activeFilter);
+                });
+            }
+
+            // Sync the initial DOM state with active filter settings
+            updateFilter(null);
         }
 
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", initBlogFilters);
         } else {
             initBlogFilters();
-        }
-    })();
-</script>
-
-<script is:inline>
-    (function () {
-        function initBlogLoadMore() {
-            var loadMoreBtn = document.getElementById("blog-load-more-btn");
-            var loadMoreContainer = document.getElementById(
-                "blog-load-more-container",
-            );
-            if (!loadMoreBtn) return;
-
-            loadMoreBtn.addEventListener("click", function () {
-                var hiddenItems = document.querySelectorAll(
-                    "#blogs-grid .hidden-item",
-                );
-                for (var i = 0; i < hiddenItems.length; i++) {
-                    hiddenItems[i].classList.remove("hidden-item");
-                    hiddenItems[i].classList.remove("hidden");
-                }
-                if (loadMoreContainer) {
-                    loadMoreContainer.style.display = "none";
-                }
-            });
-        }
-
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", initBlogLoadMore);
-        } else {
-            initBlogLoadMore();
         }
     })();
 </script>

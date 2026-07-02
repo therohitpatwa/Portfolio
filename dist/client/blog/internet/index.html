@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-4dqtj3le> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How the Fu*k Internet Really Works? - Rohit Patwa</title><link rel="icon" type="image/png" href="/favicon.png"><script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
+    </script><script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.CbAjBMaU.js"></script><script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("input[data-toggle-theme]");
+        if (toggle) {
+          toggle.checked =
+            document.documentElement.getAttribute("data-theme") === "lofi";
+          toggle.addEventListener("change", () => {
+            const sound = new Audio("/sound.wav");
+            sound.volume = 0.5;
+            sound.play().catch(() => {});
+            const theme = document.documentElement.getAttribute("data-theme");
+            if (theme) localStorage.setItem("theme", theme);
+          });
+        }
+      });
+    </script><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/about.DTy_cJGj.css">
+<style>@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+.blog-content{color:oklch(var(--bc))}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4{font-weight:700;margin-top:2rem;margin-bottom:1rem}.blog-content h2{font-size:1.875rem}.blog-content h3{font-size:1.5rem}.blog-content p{margin-bottom:1rem;line-height:1.75}.blog-content ul,.blog-content ol{margin-left:1.5rem;margin-bottom:1rem}.blog-content li{margin-bottom:.5rem}.blog-content code{background-color:oklch(var(--b2));padding:.2rem .4rem;border-radius:.25rem;font-size:.875em}.blog-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.blog-content pre code{background-color:transparent;padding:0}.blog-content a{color:oklch(var(--p));text-decoration:underline}.blog-content a:hover{color:oklch(var(--pf))}.blog-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic;color:oklch(var(--bc) / .7)}.blog-content img{border-radius:.5rem;margin:1.5rem 0}.blog-content strong{font-weight:600;color:oklch(var(--bc))}.blog-content em{font-style:italic}:root{--code-copy-btn-fg: oklch(var(--bc) / .6);--code-copy-btn-bg: oklch(var(--b1));--code-copy-btn-border: oklch(var(--bc) / .2);--code-copy-btn-hover-bg: oklch(var(--b2))}@media only screen and (max-width:480px){*{font-size:12px}}@media(min-width:768px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:1px;z-index:50;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 90%,transparent)}body:before{left:calc(50% - 25.5rem)}body:after{right:calc(50% - 25.5rem)}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:linear-gradient(to bottom,transparent,rgba(0,0,0,.5) 10%,rgba(0,0,0,.5) 90%,transparent)}.particle-bounds{left:calc(50% - 25.5rem);width:51rem}}@media(max-width:767px){.particle-bounds{left:0;width:100%}}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style></head> <body class="min-h-screen bg-base-100 flex flex-col relative w-full overflow-x-hidden" data-astro-cid-4dqtj3le> <div class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20" data-astro-cid-4dqtj3le> <div class="w-full max-w-[51rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-between items-center pointer-events-auto" data-astro-cid-4dqtj3le> <a href="/blogs" class="btn btn-outline btn-sm" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:arrow-left">  <symbol id="ai:carbon:arrow-left"><path fill="currentColor" d="m14 26l1.41-1.41L7.83 17H28v-2H7.83l7.58-7.59L14 6L4 16z"/></symbol><use  xlink:href="#ai:carbon:arrow-left"></use>  </svg> <span data-astro-cid-4dqtj3le>Back to Blogs</span> </a> <div class="flex items-center" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <input type="checkbox" data-toggle-theme="lofi,black" data-act-class="ACTIVECLASS" class="toggle toggle-sm mx-1 bg-secondary" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:light">  <symbol id="ai:carbon:light"><path fill="currentColor" d="M15 2h2v5h-2zm6.688 6.9l3.506-3.506l1.414 1.414l-3.506 3.506zM25 15h5v2h-5zm-3.312 8.1l1.414-1.413l3.506 3.506l-1.414 1.414zM15 25h2v5h-2zm-9.606.192L8.9 21.686l1.414 1.414l-3.505 3.506zM2 15h5v2H2zm3.395-8.192l1.414-1.414L10.315 8.9L8.9 10.314zM16 12a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6"/></symbol><use  xlink:href="#ai:carbon:light"></use>  </svg> </div> </div> </div> <div class="max-w-3xl mx-auto px-4 py-8 pt-20 w-[95vw]" data-astro-cid-4dqtj3le> <div class="md:py-8 md:my-12" data-astro-cid-4dqtj3le> <!-- Blog Header --> <div class="mb-8 rounded-lg overflow-hidden" data-astro-cid-4dqtj3le> <img src="/blogthumbnail/internet/internet.webp" alt="How the Fu*k Internet Really Works?" class="w-full h-64 md:h-96 object-cover" data-astro-cid-4dqtj3le> </div> <article class="prose prose-lg max-w-none" data-astro-cid-4dqtj3le> <!-- Title and Meta --> <div class="mb-8" data-astro-cid-4dqtj3le> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-4dqtj3le> <span class="badge badge-outline" data-astro-cid-4dqtj3le>Internet</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>OSI</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>TCP/IP</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>What happen when you hit www.google.com ?</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Tech</span> </div> <h1 class="text-4xl font-bold mb-4" data-astro-cid-4dqtj3le>How the Fu*k Internet Really Works?</h1> <p class="text-lg text-secondary mb-4" data-astro-cid-4dqtj3le> This blog explains what is really internet and how the internet works? </p> <div class="flex items-center gap-4 text-sm text-secondary" data-astro-cid-4dqtj3le> <div class="flex items-center gap-2" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:calendar">  <symbol id="ai:carbon:calendar"><path fill="currentColor" d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 22H6V12h20zm0-16H6V6h4v2h2V6h8v2h2V6h4z"/></symbol><use  xlink:href="#ai:carbon:calendar"></use>  </svg> <span data-astro-cid-4dqtj3le>March 25, 2026</span> </div> </div> </div> <!-- Blog Content --> <div class="blog-content" data-astro-cid-4dqtj3le> <hr/>
+<p>In this blog, I am going to explain what is really internet and how the fu*k it works?</p>
+<h2 id="lets-understand-the-problem-first">Lets understand the problem first-</h2>
+<p>During the Second World War, government officials needed to communicate with each other. They needed to share data from one office computer to another office computer.</p>
+<img src="/blogthumbnail/internet/scientist.webp" alt="scientist image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h2 id="solution-">Solution -</h2>
+<p>So what they did was connect all the computers with each other using cables.</p>
+<img src="/blogthumbnail/internet/arpanet.webp" alt="arpanet image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>Now they were able to communicate with each other. They were able to send and receive data from each computer to another.</p>
+<p>At that time, there were only 4 computers connected to each other.
+This was called ARPANET.
+ARPANET - the first version of the Internet.</p>
+<p>So basically, the Internet is communication between two or more computers, sending and receiving data from each other.</p>
+<h2 id="a-big-picture-of-internet">A big picture of internet</h2>
+<p>Now we started connecting more and more computers to the internet, and it made a big network of computers.
+This network is called the Internet.</p>
+<img src="/blogthumbnail/internet/internetweb.webp" alt="internetweb image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>At that time, this internet was available only to people like government officials, scientists, researchers, etc.</p>
+<h2 id="internet-for-common-people">Internet for common people</h2>
+<p>After a few decades, people also had their personal devices like mobile phones and laptops, and they also wanted to use the Internet.
+And to use the Internet, we need to connect our devices, usually using cables.
+But connecting every device with cables is not possible.</p>
+<p>So at that time, we had the concept of EM waves, and their range is low. So we install towers in every residential area, and the tower is connected by cables to the Internet.
+And we connect our devices to the tower using EM waves.
+And by this, we are able to use the Internet. This way of connection is called data connection 4G/5G connection.</p>
+<img src="/blogthumbnail/internet/emw.webp" alt="emw image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>So when we turn on our mobile data, it connects our device to the tower using EM waves, and indirectly our device is connected to the Internet.
+This is called coming online, so whenever anyone says come online, that means he/she is saying connect your device to the Internet.</p>
+<p>There is another way to connect our device to the internet is using cables. this way of connection is called wifi/ethernet connection.</p>
+<img src="/blogthumbnail/internet/cable.webp" alt="cables image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<p>Now by these methods we are able to use the internet.
+We can send and receive data from each other.
+We can send and recive messages to each other.
+We can watch one videos, listen to music, play games, etc which are stored on some other computer which is connected to the internet.
+we can use websites, apps, etc.</p>
+<p>But the question is how the internet works ?</p>
+<h2 id="how-the-internet-works">How the internet works ?</h2>
+<p>Before this lets understand few terminologies-</p>
+<h3 id="1-client-and-server">1. Client and server</h3>
+<p>Client is a device in internet which is used to request data from a server.</p>
+<p>Server is a device in internet which is used to provide data to a client.</p>
+<p>For example if we are requesing instgram app from browser so our browser is client and the computer which stores instagram webpage is Server.</p>
+<img src="/blogthumbnail/internet/clientserver.webp" alt="client-server image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h3 id="2-ip-address">2. IP Address</h3>
+<p>To identify uniquely every device connected to the internet we assigned a number called IP Address.
+Eg- 192.168.1.1</p>
+<img src="/blogthumbnail/internet/ip.webp" alt="ipaddress image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h3 id="3-port-number">3. Port Number</h3>
+<p>At a device/server we can run multiple service at a time to identify uniquely each service we assigned a number called Port Number.</p>
+<p>For example at a server we can run multiple services like-</p>
+<ul>
+<li>Web server (port 80)</li>
+<li>Mail server (port 25)</li>
+<li>Database server (port 3306)</li>
+<li>FTP server (port 21)</li>
+<li>SSH server (port 22)</li>
+<li>etc.</li>
+</ul>
+<p>At our local machine we can mulitple services like-</p>
+<ul>
+<li>Node Server (port 3000)</li>
+<li>Vite Server (port 5173)</li>
+<li>Spring Boot Server (port 8080)</li>
+<li>MySQL Server (port 3306)</li>
+<li>etc.</li>
+</ul>
+<img src="/blogthumbnail/internet/port.webp" alt="portnumber image" style="height: 350px; width: 100%; object-fit: contain;"/>
+<h3 id="4-protocol">4. Protocol</h3>
+<p>Protocol is a set of rules by usinfg these rules  the communication happens between devices in a network.
+Eg -</p>
+<ul>
+<li>https - request protocol</li>
+<li>TCP/IP - transport protocol</li>
+<li>etc.</li>
+</ul>
+<p>Now lets  instgram website is stored in a server and lets Server address is [157.240.182.14] and instagram service is running on server at port 443.
+So we can say that
+[IP_Address: Port] is unique address of instagram service in the internet. and <a href="http://www.instagram.com">www.instagram.com</a> is just a domain name for people to remember it. which is mapped to this IP address.</p>
+<h2 id="now-understand-what-happens-when-we-hit-wwwinstagramcom-in-our-browser--how-internet-work---osi-layers">Now understand what happens when we hit <a href="http://www.instagram.com">www.instagram.com</a> in our browser ./ How internet work ? / OSI Layers.</h2>
+<ul>
+<li>
+<p>First, when we type <strong><a href="http://www.instagram.com">www.instagram.com</a></strong> in our browser and hit Enter, the browser sends a request to the server using the HTTPS protocol. This request travels through cables (or wireless networks) to the server.
+This is called the <strong>Application Layer</strong>.</p>
+</li>
+<li>
+<p>Before the data is sent, it is encrypted (because of HTTPS) so that it is secure during transmission.
+This is handled by the <strong>Presentation Layer</strong>.</p>
+</li>
+<li>
+<p>A session is then established between the client (our browser) and the server (Instagram server) to maintain communication.
+This is called the <strong>Session Layer</strong>.</p>
+</li>
+<li>
+<p>The request data is broken into smaller chunks called <strong>packets</strong>, and these packets are transmitted using the TCP/IP protocol.
+This is called the <strong>Transport Layer</strong>.</p>
+</li>
+<li>
+<p>Each packet contains a <strong>source IP address</strong> and a <strong>destination IP address</strong>. Routers help send these packets to the destination using the best possible path.
+This is called the <strong>Network Layer</strong>.</p>
+</li>
+<li>
+<p>These packets are then converted into <strong>frames</strong>, which include <strong>MAC addresses</strong> for communication within a local network.
+This is called the <strong>Data Link Layer</strong>.</p>
+</li>
+<li>
+<p>Finally, these frames are converted into <strong>bits (0s and 1s)</strong> and transmitted through physical media like cables or wireless signals.
+This is called the <strong>Physical Layer</strong>.</p>
+</li>
+</ul>
+<p>After the request reaches the server, the server processes it and sends a response back to the client using the same process in reverse order and we are able to see the instagram page in our browser.</p> </div> </article> </div> <!-- Social Share (Optional) --> </div> </body></html>

@@ -1,10 +1,11 @@
 ---
 // Particle Background Component with triangle particles, trails, and scatter on hover
+// Particles only render on mobile (< 768px) for performance
 ---
 
 <div
   id="particles-container"
-  class="fixed top-0 bottom-0 h-full particle-bounds"
+  class="fixed top-0 left-0 bottom-0 w-full h-full md:hidden"
   style="z-index: 1; pointer-events: none;"
 >
 </div>
@@ -14,6 +15,12 @@
   import { loadSlim } from "@tsparticles/slim";
 
   async function initParticles() {
+    const container = document.getElementById("particles-container");
+    if (!container) return;
+
+    // Skip if container is hidden (tablet/desktop via md:hidden)
+    if (getComputedStyle(container).display === "none") return;
+
     await loadSlim(tsParticles);
 
     const getCurrentTheme = () => {
@@ -26,8 +33,8 @@
     };
 
     const loadParticles = async () => {
-      const container = document.getElementById("particles-container");
-      if (!container) return;
+      const el = document.getElementById("particles-container");
+      if (!el) return;
 
       const dark = isDarkTheme();
 

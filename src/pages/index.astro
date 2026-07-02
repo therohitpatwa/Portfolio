@@ -8,6 +8,7 @@ import Header from "../components/Header.astro";
 import ActivityStatus from "../components/ActivityStatus.astro";
 import SpotifyPlayer from "../components/SpotifyPlayer.astro";
 import ParticleBackground from "../components/ParticleBackground.astro";
+
 import { Icon } from "astro-icon/components";
 ---
 
@@ -96,6 +97,7 @@ import { Icon } from "astro-icon/components";
       <Header />
     </div>
     <ParticleBackground />
+
     <div
       class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
     >
@@ -275,18 +277,6 @@ import { Icon } from "astro-icon/components";
         rgba(0, 0, 0, 0.5) 90%,
         transparent
       );
-    }
-
-    .particle-bounds {
-      left: calc(50% - 25.5rem);
-      width: 51rem;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .particle-bounds {
-      left: 0;
-      width: 100%;
     }
   }
 </style>
