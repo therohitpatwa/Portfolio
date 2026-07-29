@@ -302,7 +302,7 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
     }
 
     /* Sleek vertical frame — left & right edges of content, desktop only */
-    @media (min-width: 768px) {
+    @media (min-width: 816px) {
         body::before,
         body::after {
             content: "";
@@ -322,11 +322,11 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
         }
 
         body::before {
-            left: calc(50% - 25.5rem);
+            left: max(0px, calc(50% - 25.5rem));
         }
 
         body::after {
-            right: calc(50% - 25.5rem);
+            right: max(0px, calc(50% - 25.5rem));
         }
 
         [data-theme="lofi"] body::before,

@@ -266,7 +266,7 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
     }
 
     /* Sleek vertical frame — left & right edges of content, desktop only */
-    @media (min-width: 768px) {
+    @media (min-width: 816px) {
         body::before,
         body::after {
             content: "";
@@ -286,11 +286,11 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
         }
 
         body::before {
-            left: calc(50% - 25.5rem);
+            left: max(0px, calc(50% - 25.5rem));
         }
 
         body::after {
-            right: calc(50% - 25.5rem);
+            right: max(0px, calc(50% - 25.5rem));
         }
 
         [data-theme="lofi"] body::before,
