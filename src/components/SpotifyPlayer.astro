@@ -154,6 +154,29 @@
   let audioActivated = false;
   let playerReady = false;
 
+  // Fallback: HTML Audio element used when Spotify premium/API is unavailable
+  let fallbackAudio: HTMLAudioElement | null = null;
+  let isFallbackMode = false;
+
+  const LS_KEY = "spotify_last_track";
+
+  // Save track to localStorage
+  function saveTrackToStorage(data: SpotifyTrack) {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify(data));
+    } catch (_) {}
+  }
+
+  // Load track from localStorage
+  function loadTrackFromStorage(): SpotifyTrack | null {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   // Format milliseconds to mm:ss
   function formatTime(ms: number): string {
     const seconds = Math.floor(ms / 1000);
@@ -162,8 +185,9 @@
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   }
 
-  // Update progress bar
+  // Update progress bar (only used in Spotify mode; fallback uses timeupdate event)
   function updateProgress() {
+    if (isFallbackMode) return; // fallback audio handles its own progress via timeupdate
     if (isPlaying && trackDuration > 0) {
       currentProgress += 1000;
       if (currentProgress > trackDuration) currentProgress = trackDuration;
@@ -259,19 +283,14 @@
 
   // Toggle play/pause and flip card
   function updatePlayButton(playing: boolean) {
-    // Prevent redundant updates
-    if (isPlaying === playing) return;
-
     const flipCardInner = document.getElementById("flip-card-inner");
     const playBtn = document.getElementById("play-btn");
 
     if (playing) {
-      // Flip to back (show player with slider) - INSTANT
       flipCardInner?.classList.add("flipped");
       playBtn?.classList.add("playing");
-      startProgressTimer();
+      if (!isFallbackMode) startProgressTimer(); // fallback uses timeupdate, not interval
     } else {
-      // Flip to front (compact view) - INSTANT
       flipCardInner?.classList.remove("flipped");
       playBtn?.classList.remove("playing");
       stopProgressTimer();
@@ -289,7 +308,12 @@
         cache: bustCache ? "no-store" : "default",
       });
       if (response.ok) {
-        return await response.json();
+        const data = await response.json();
+        // Persist to localStorage whenever we get valid data
+        if (data && !data.noData && !data.error) {
+          saveTrackToStorage(data);
+        }
+        return data;
       }
     } catch (error) {
       console.error("Error fetching track:", error);
@@ -435,6 +459,14 @@
 
   // Pause track
   async function pauseTrack() {
+    if (isFallbackMode) {
+      if (fallbackAudio) {
+        fallbackAudio.pause();
+        currentProgress = fallbackAudio.currentTime * 1000;
+      }
+      updatePlayButton(false);
+      return;
+    }
     if (!player) return;
 
     try {
@@ -445,8 +477,106 @@
     }
   }
 
+  // --- Fallback Audio (local public song) ---
+  // Drop your song at /public/music/fallback.mp3 and album art at /public/music/fallback-art.jpg
+  const FALLBACK_SONG_URL = "/music/Kirdaar - Khwab Dekhta Hu.mp3";
+  const FALLBACK_TRACK = {
+    title: "Khwab Dekhta Hu",
+    artist: "Kirdaar",
+    albumArt: "/music/CoverArt.png",
+  };
+
+  function initFallbackPlayer(_data?: SpotifyTrack) {
+    // Guard: don't double-init (prevents stacked audio elements & duplicate listeners)
+    if (fallbackAudio) return;
+
+    isFallbackMode = true;
+
+    // Inject hardcoded track metadata into the UI
+    const titleFront = document.getElementById("track-title-front");
+    const artistFront = document.getElementById("track-artist-front");
+    const titleBack = document.getElementById("track-title-back");
+    const artistBack = document.getElementById("track-artist-back");
+    const playStatusFront = document.getElementById("play-status-front");
+    const albumArtFront = document.getElementById(
+      "album-art-front",
+    ) as HTMLImageElement;
+    const albumPlaceholderFront = document.getElementById(
+      "album-placeholder-front",
+    );
+
+    if (titleFront) titleFront.textContent = FALLBACK_TRACK.title;
+    if (artistFront) artistFront.textContent = FALLBACK_TRACK.artist;
+    if (titleBack) titleBack.textContent = FALLBACK_TRACK.title;
+    if (artistBack) artistBack.textContent = FALLBACK_TRACK.artist;
+    if (playStatusFront) playStatusFront.textContent = "Last played by Rohit";
+
+    // Show album art
+    if (albumArtFront && albumPlaceholderFront) {
+      albumArtFront.src = FALLBACK_TRACK.albumArt;
+      albumArtFront.classList.remove("hidden");
+      albumPlaceholderFront.classList.add("hidden");
+    }
+
+    // Create the audio element once
+    fallbackAudio = new Audio(FALLBACK_SONG_URL);
+    fallbackAudio.volume = 0.8;
+    // Reset progress for new audio
+    currentProgress = 0;
+    trackDuration = 0;
+
+    fallbackAudio.addEventListener("timeupdate", () => {
+      if (!fallbackAudio) return;
+      currentProgress = fallbackAudio.currentTime * 1000;
+      trackDuration = (fallbackAudio.duration || 0) * 1000;
+      const pct =
+        trackDuration > 0 ? (currentProgress / trackDuration) * 100 : 0;
+      const progressBar = document.getElementById("progress-bar");
+      const currentTimeEl = document.getElementById("current-time");
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (currentTimeEl)
+        currentTimeEl.textContent = formatTime(currentProgress);
+    });
+
+    fallbackAudio.addEventListener("ended", () => {
+      isPlaying = true; // force state so updatePlayButton(false) triggers the flip
+      updatePlayButton(false);
+    });
+
+    fallbackAudio.addEventListener("loadedmetadata", () => {
+      if (!fallbackAudio) return;
+      trackDuration = fallbackAudio.duration * 1000;
+      const totalTimeEl = document.getElementById("total-time");
+      if (totalTimeEl) totalTimeEl.textContent = formatTime(trackDuration);
+    });
+  }
+
+  async function playFallback() {
+    if (fallbackAudio) {
+      try {
+        fallbackAudio.currentTime = currentProgress / 1000;
+        await fallbackAudio.play();
+        updatePlayButton(true);
+      } catch (err) {
+        console.warn("Fallback audio playback failed:", err);
+      }
+    } else {
+      // No preview URL – just flip the card to show the track info
+      updatePlayButton(true);
+      setTimeout(() => updatePlayButton(false), 500);
+    }
+  }
+
   // Toggle play/pause
   function togglePlayback() {
+    if (isFallbackMode) {
+      if (isPlaying) {
+        pauseTrack();
+      } else {
+        playFallback();
+      }
+      return;
+    }
     if (isPlaying) {
       pauseTrack();
     } else {
@@ -529,6 +659,16 @@
     const data = await fetchTrackData(true);
     if (data && !data.noData && !data.error) {
       updateUI(data);
+    } else {
+      // API failed or no premium – always trigger fallback player
+      console.info("Spotify API unavailable – activating local fallback.");
+      const cached = loadTrackFromStorage();
+      // Update UI with cached Spotify data if available (title/art from last visit)
+      if (cached) {
+        updateUI({ ...cached, isPlaying: false, progressMs: 0 });
+      }
+      // Always init fallback player regardless of cache — uses hardcoded FALLBACK_TRACK
+      initFallbackPlayer(cached ?? undefined);
     }
 
     // Setup play button click handlers (both front and back)
@@ -540,14 +680,20 @@
     // Setup interactive slider
     const progressBarWrapper = document.getElementById("progress-bar-wrapper");
     progressBarWrapper?.addEventListener("click", (e) => {
-      if (!trackDuration || !isPlaying) return;
+      if (!trackDuration) return;
 
       const rect = progressBarWrapper.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
-      const percentage = clickX / rect.width;
+      const percentage = Math.max(0, Math.min(1, clickX / rect.width));
       const newPosition = percentage * trackDuration;
 
-      seekToPosition(newPosition);
+      if (isFallbackMode && fallbackAudio) {
+        // Seek local audio directly
+        fallbackAudio.currentTime = newPosition / 1000;
+      } else {
+        // Seek via Spotify Web API
+        seekToPosition(newPosition);
+      }
 
       // Update UI immediately
       currentProgress = newPosition;
@@ -569,7 +715,20 @@
     if (!isPlaying) {
       const data = await fetchTrackData();
       if (data && !data.noData && !data.error) {
+        // If we were in fallback mode and API is back, exit fallback
+        if (isFallbackMode) {
+          isFallbackMode = false;
+          if (fallbackAudio) {
+            fallbackAudio.pause();
+            fallbackAudio = null;
+          }
+        }
         updateUI(data);
+      } else if (!isFallbackMode) {
+        // API just failed – activate fallback with hardcoded track
+        const cached = loadTrackFromStorage();
+        if (cached) updateUI({ ...cached, isPlaying: false, progressMs: 0 });
+        initFallbackPlayer(cached ?? undefined);
       }
     }
   }, 30000);
