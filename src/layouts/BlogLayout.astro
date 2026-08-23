@@ -9,7 +9,30 @@ const { frontmatter } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{frontmatter.title} - Rohit Patwa</title>
+    <title>{frontmatter.title} | Rohit Patwa</title>
+    {frontmatter.description && <meta name="description" content={frontmatter.description} />}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={`${frontmatter.title} | Rohit Patwa`} />
+    {frontmatter.description && <meta property="og:description" content={frontmatter.description} />}
+    {frontmatter.thumbnail && <meta property="og:image" content={frontmatter.thumbnail} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${frontmatter.title} | Rohit Patwa`} />
+    {frontmatter.description && <meta name="twitter:description" content={frontmatter.description} />}
+    {frontmatter.thumbnail && <meta name="twitter:image" content={frontmatter.thumbnail} />}
+    <link rel="canonical" href={Astro.url} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": frontmatter.title,
+      "description": frontmatter.description,
+      "image": frontmatter.thumbnail,
+      "datePublished": frontmatter.date,
+      "author": {
+        "@type": "Person",
+        "name": "Rohit Patwa",
+        "url": "https://therohitpatwa.me"
+      }
+    })} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script is:inline>
       (function () {

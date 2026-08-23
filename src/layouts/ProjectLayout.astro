@@ -9,7 +9,17 @@ const { frontmatter } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{frontmatter.title} - Rohit Patwa</title>
+    <title>{frontmatter.title} | Rohit Patwa</title>
+    {frontmatter.description && <meta name="description" content={frontmatter.description} />}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={`${frontmatter.title} | Rohit Patwa`} />
+    {frontmatter.description && <meta property="og:description" content={frontmatter.description} />}
+    {frontmatter.video_thumbnail && <meta property="og:image" content={frontmatter.video_thumbnail} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${frontmatter.title} | Rohit Patwa`} />
+    {frontmatter.description && <meta name="twitter:description" content={frontmatter.description} />}
+    {frontmatter.video_thumbnail && <meta name="twitter:image" content={frontmatter.video_thumbnail} />}
+    <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script is:inline>
       (function () {
