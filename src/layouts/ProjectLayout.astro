@@ -14,11 +14,11 @@ const { frontmatter } = Astro.props;
     <meta property="og:type" content="article" />
     <meta property="og:title" content={`${frontmatter.title} | Rohit Patwa`} />
     {frontmatter.description && <meta property="og:description" content={frontmatter.description} />}
-    {frontmatter.video_thumbnail && <meta property="og:image" content={frontmatter.video_thumbnail} />}
+    <meta property="og:image" content={new URL(frontmatter.video_thumbnail || "/blogthumbnail/dumbtodev/dumb2dev.webp", Astro.site).href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${frontmatter.title} | Rohit Patwa`} />
     {frontmatter.description && <meta name="twitter:description" content={frontmatter.description} />}
-    {frontmatter.video_thumbnail && <meta name="twitter:image" content={frontmatter.video_thumbnail} />}
+    <meta name="twitter:image" content={new URL(frontmatter.video_thumbnail || "/blogthumbnail/dumbtodev/dumb2dev.webp", Astro.site).href} />
     <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script is:inline>
