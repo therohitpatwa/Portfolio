@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config';
 
 import vercel from "@astrojs/vercel";
 
-// https://astro.build/config
+// https://astro.build/configs
 export default defineConfig({
   site: "https://therohitpatwa.me",
   integrations: [tailwind(), icon(), expressiveCode({
