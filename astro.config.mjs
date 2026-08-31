@@ -20,7 +20,15 @@ export default defineConfig({
         inlineButtonHoverOrFocusBackground: 'var(--code-copy-btn-hover-bg)',
       }
     }
-  }), mdx(), sitemap()],
+  }), mdx(), sitemap({
+    chunks: {
+      blog: (item) => (item.url.includes('/blog/') || item.url.includes('/blogs')) ? item : undefined,
+      projects: (item) => (item.url.includes('/projects/') || item.url.includes('/projects')) ? item : undefined,
+      works: (item) => item.url.includes('/works/') ? item : undefined,
+      contact: (item) => item.url.includes('/contact/') ? item : undefined,
+      about: (item) => item.url.includes('/about/') ? item : undefined,
+    }
+  })],
   output: "static",
   adapter: vercel(),
   image: {

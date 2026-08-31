@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://therohitpatwa.me/sitemap-0.xml</loc>
+    <loc>https://therohitpatwa.me/sitemap-blog-0.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://therohitpatwa.me/sitemap-projects-0.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://therohitpatwa.me/sitemap-works-0.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://therohitpatwa.me/sitemap-contact-0.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://therohitpatwa.me/sitemap-about-0.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://therohitpatwa.me/sitemap-pages-0.xml</loc>
   </sitemap>
 </sitemapindex>
