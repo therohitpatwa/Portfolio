@@ -25,6 +25,7 @@ Now they were able to communicate with each other. They were able to send and re
 
 At that time, there were only 4 computers connected to each other.
 This was called ARPANET.
+
 ARPANET - the first version of the Internet.
 
 So basically, the Internet is communication between two or more computers, sending and receiving data from each other.
@@ -89,7 +90,8 @@ Eg- 192.168.1.1
 
 
 ### 3. Port Number
-At a device/server we can run multiple service at a time to identify uniquely each service we assigned a number called Port Number.
+At a device/server we can run multiple service at a time.
+To identify uniquely each service we assigned a number called Port Number.
 
 For example at a server we can run multiple services like- 
 - Web server (port 80)
@@ -99,7 +101,7 @@ For example at a server we can run multiple services like-
 - SSH server (port 22)
 - etc.
 
-At our local machine we can mulitple services like-
+At our local machine we can run multiple services at a time like-
 - Node Server (port 3000)
 - Vite Server (port 5173)
 - Spring Boot Server (port 8080)
@@ -123,13 +125,21 @@ So we can say that
 [IP_Address: Port] is unique address of instagram service in the internet. and www.instagram.com is just a domain name for people to remember it. which is mapped to this IP address.
 
 
-
-
 ## Now understand what happens when we hit www.instagram.com in our browser.
 
+### 1. DNS Resolve
+- First, when we type **[www.instagram.com](http://www.instagram.com)** in our browser and hit Enter, the browser sends a request to the DNS server to get the IP address of the server.
+- If the IP address is not found in the cache, the request is forwarded to the root DNS server, which directs it to the Top-Level Domain (TLD) server (e.g., .com).
+- The TLD server then sends the request to the authoritative DNS server for [instagram.com](http://instagram.com), which finally returns the IP address of the server hosting the website. And now our browser knows the IP Address and Port number of the server.
 
+### 2. TCP Handshake
+- Before the communication, our browser and server need to establish a connection.
+- Now our browser sends a "SYN" packet (synchronize) to the server's IP address and port. This is the start of the handshake.
+- The server receives the SYN packet and replies with a "SYN-ACK" packet (synchronize-acknowledge). This means the server is ready to communicate.
+- Finally, the browser sends an "ACK" packet back to the server. This completes the handshake, and a secure connection is established.
 
-- First, when we type **[www.instagram.com](http://www.instagram.com)** in our browser and hit Enter, the browser sends a request to the server using the HTTPS protocol. This request travels through cables (or wireless networks) to the server.
+### 3. Communication
+- After getting the IP address and Port number of the server, the browser sends a request to the server using the HTTPS protocol. This request travels through cables (or wireless networks) to the server.
   This is called the **Application Layer**.
 
 - Before the data is sent, it is encrypted (because of HTTPS) so that it is secure during transmission.
@@ -153,7 +163,7 @@ So we can say that
 After the request reaches the server, the server processes it and sends a response back to the client using the same process in reverse order and we are able to see the instagram page in our browser.
 
 
-
+>Ohh! Congratulation, you are using the Internet.
 
 
 

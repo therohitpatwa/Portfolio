@@ -268,18 +268,6 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
         }
     }
 
-    .tag-capsule {
-        background-color: rgba(60, 60, 60, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-        transition: all 0.2s ease;
-    }
-
-    .tag-capsule:hover {
-        background-color: rgba(80, 80, 80, 0.9);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
     .filter-btn {
         background-color: transparent;
         color: #9ca3af;
@@ -434,16 +422,6 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
             }
         }
 
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", initProjectFilters);
-        } else {
-            initProjectFilters();
-        }
-    })();
-</script>
-
-<script is:inline>
-    (function () {
         function initLoadMore() {
             var loadMoreBtn = document.getElementById("load-more-btn");
             var loadMoreContainer = document.getElementById(
@@ -463,10 +441,15 @@ const FILTER_CATEGORIES = ["CLI", "Frontend", "Backend", "Fullstack"];
             });
         }
 
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", initLoadMore);
-        } else {
+        function init() {
+            initProjectFilters();
             initLoadMore();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init);
+        } else {
+            init();
         }
     })();
 </script>

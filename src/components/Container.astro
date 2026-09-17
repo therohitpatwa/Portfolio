@@ -78,7 +78,6 @@ const PDF = "/MyResume.pdf";
               url,
               tags,
               org: url_name,
-              location,
               github_url,
               demo_url,
               blog_url,
@@ -273,11 +272,9 @@ const PDF = "/MyResume.pdf";
         id="projects-grid"
       >
         {
-          projects.map((item, index) => {
+          projects.slice(0, 2).map((item) => {
             return (
-              <div
-                class={`project-item ${index >= 2 ? "hidden-project hidden" : ""}`}
-              >
+              <div class="project-item">
                 <ProjectCard
                   title={item.frontmatter.title}
                   description={item.frontmatter.description}
@@ -313,11 +310,9 @@ const PDF = "/MyResume.pdf";
         id="blog-grid"
       >
         {
-          blogs.map((item, index) => {
+          blogs.slice(0, 2).map((item) => {
             return (
-              <div
-                class={`blog-item ${index >= 2 ? "hidden-blog hidden" : ""}`}
-              >
+              <div class="blog-item">
                 <BlogCard
                   title={item.frontmatter.title}
                   description={item.frontmatter.description}

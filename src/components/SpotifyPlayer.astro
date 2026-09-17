@@ -623,9 +623,6 @@
       player.setVolume(0.8);
     });
 
-    // Not Ready
-    player.addListener("not_ready", () => {});
-
     // State changed
     player.addListener("player_state_changed", (state) => {
       if (!state) return;
