@@ -8,53 +8,73 @@ tags: ["SSL Certificate", "Web Security", "Encryption/Decryption", "Tech"]
 ---
 
 ---
-I dont know what should i write in intro so let me start directly.
+I don't know what should I write in intro so let me start directly.
 
-If we hit a web request, our data travel from our device to server.
+If we hit a web request, our data travels from our device to the server.
 
 <img src="/blogthumbnail/ssl/1.webp" alt="Description" style="height:400px; width:auto;" />
 
-Now what is the problem in this ?
+Now what is the problem in this?
 
-The data is in form of plain text so in the middle of the path, anyone can read this and manipulate our data.
+The data is in the form of plain text, so in the middle of the path, anyone can read this and manipulate our data.
 
 <img src="/blogthumbnail/ssl/2.webp" alt="Description" style="height:400px; width:auto;" />
 
-> This is called Middle Man Attack (MMA).
+> This is called Man in the Middle Attack (MMA).
 
 This is where encryption of our data is needed.
 
-There is two ways to encrypt and decrypt our data.
+There are two ways to encrypt and decrypt our data.
 
 1. Symmetric Encryption
 2. Asymmetric Encryption
 
 ## Symmetric Encryption
-In symmetric encryption client generate an Symmetric key (which can encrypt and decrypt the data).
 
-Client encrypts the data using the Symmetric key and send it to Server along with data.
+In symmetric encryption, the client and server use the same key for encryption and decryption.
+
+Client encrypts the data using the Symmetric key and sends it to Server.
+
 Server decrypts the data using the same key.
 
-Use same key for encryption and decryption.
+Use the same key for encryption and decryption.
 
-Problem in Symmetric Encryption-
+### Problem in Symmetric Encryption
 
-In the Symmetric enecryption MMA attack also can be happen cause Symmetric key (which can decrypt the data) also travel with our data in network.
-and attacker can intercept the key , decrypt the data and manipulate our data.
+In Symmetric Encryption, a Man in the Middle Attack can also happen.
+
+The problem is that both the client and server need to have the same Symmetric key.
+
+But how will the client securely share this key with the server?
+
+If the client sends the Symmetric key through the network, an attacker can intercept the key.
+
+Now the attacker has the key which can decrypt the data.
 
 <img src="/blogthumbnail/ssl/3.webp" alt="Description" style="height:400px; width:auto;" />
 
+So the problem is not just encryption.
+
+The problem is:
+
+> **How can we securely establish/share a key between the client and server?**
+
+To solve this problem, Asymmetric Encryption came into the picture.
+
 ## Asymmetric Encryption
-In Asymmetric Encryption, we use two different keys for encryption and decryption.
 
-1. Public Key - This key is used for encryption.
-2. Private Key - This key is used for decryption.
+In Asymmetric Encryption, we use two different keys.
 
-Server generate both the key , public key is available to everyone but private key is only available to server.
+1. Public Key - This key can be shared with everyone (For Encryption of data).
+2. Private Key - This key is kept secret (For Decryption of data).
 
-Server send public key to client for encryption
-Client ecrypts the data using server's public key and send it to server.
-Server decrypts the data using it's private key.
+Server generates both the keys, public key is available to everyone but private key is only available to the server.
+
+Server sends the public key to the client.
+
+Client can use the server's public key as part of the process of establishing a secure connection.
+
+The private key remains with the server.
 
 But there is still a problem.
 
@@ -64,7 +84,7 @@ When the server sends its public key to the client, the attacker can intercept i
 
 Now the client thinks that the attacker’s public key actually belongs to the server.
 
-When the client sends encrypted data, it is encrypted using the attacker’s public key. The attacker can then decrypt it using their private key, read or modify the data, and re-encrypt it before sending it to the server.
+When the client sends encrypted data, it is encrypted using the attacker’s public key. The attacker can then use their private key to access the data, read or modify it, and send it to the server.
 
 From the server’s perspective, everything looks normal.
 
@@ -72,33 +92,151 @@ The server can also send data back to the client, and the attacker can intercept
 
 <img src="/blogthumbnail/ssl/4.webp" alt="Description" style="height:400px; width:auto;" />
 
-To Solve this Problem SSL Certificate came into the picture.
+> **If anyone can access a server’s public key, how does the browser verify that the key actually belongs to the intended server and not an attacker pretending to be it?** 
 
-## SSL Certificate -
+To solve this problem, SSL Certificate came into the picture.
 
-SSL Certificate is a digital signature of a server which is used to verify the identity of the server.
+## SSL Certificate
 
-SSL Certificate is issued by a Certificate Authority (CA).
+Now the problem is not encryption.
 
-When we install SSL Certificate on a server, it generate a digital signature of the server.
+We already have a way to use cryptography to establish a secure connection.
 
-This Digital Signature is combination of server public key and CA private key combined. 
+The actual problem is:
 
-Now when a client wants to connect to the server, it first check the digital signature of the server.
-If the digital signature is valid, then the client can connect to the server.
+**How does the client know that the public key it received actually belongs to the real server?**
 
-When the digital signature is decrypted using the CA private key, the client can verify that the certificate was indeed issued by the CA and that the server's identity has been verified.
+Because anyone can generate a public-private key pair.
 
-<img src="/blogthumbnail/ssl/5.webp" alt="Description" style="height:400px; width:auto;" />
+So we need someone we can trust who can verify:
 
-## Why SSL Matters
+> "Yes, this public key actually belongs to this website."
 
-At this point you’ve seen how easy it is for a malicious actor to intercept or tamper with data when it travels in plain text. SSL/TLS blocks that middle‑man attack by encrypting the traffic, guaranteeing confidentiality and integrity. It also authenticates the server, so your browser knows it’s really talking to the right website and not an impostor.
+This is where **Certificate Authority (CA)** comes into the picture.
 
-### Takeaway
+A Certificate Authority is a trusted organization that verifies the identity of a website and issues a digital certificate to it called **SSL/TLS Certificate**.
 
-- **Never trust plain‑text HTTP** for any sensitive data.
-- **Use HTTPS** (SSL/TLS) everywhere – even for static sites.
-- **Keep certificates up‑to‑date** and watch for expiration warnings.
+For example, **Let's Encrypt** is a Certificate Authority.
 
+When a server wants to use HTTPS, it has a public-private key pair.
+
+The server keeps the private key secret.
+
+The public key is included inside the SSL/TLS certificate.
+
+The certificate contains information like:
+
+```text
+Domain Name: example.com
+
+Public Key: ABC123...
+
+Issued By: Let's Encrypt
+
+Valid From: ...
+Valid Until: ...
+
+Digital Signature: ...
+```
+
+Now the question is:
+
+**How does the client know that this certificate is actually trustworthy?**
+
+The certificate is digitally signed by a Certificate Authority.
+
+Our browser and operating system already have a list of trusted Certificate Authorities.
+
+So when the browser receives a certificate from the server, it checks things like:
+
+- Is this certificate issued by a trusted Certificate Authority?
+- Is the certificate still valid?
+- Does the certificate belong to the domain we are trying to visit?
+- Is the certificate's signature valid?
+
+If everything is valid, the browser can trust that the public key belongs to that website.
+
+Now our previous problem is solved.
+
+The attacker can still generate their own public-private key pair.
+
+But they cannot simply create a valid certificate for `example.com` that the browser will trust.
+
+Because the certificate needs to be issued and digitally signed by a trusted Certificate Authority.
+
+So now the client can verify:
+
+> "Okay, this public key actually belongs to the server I wanted to talk to."
+
+And now we can establish a secure connection.
+
+## But one more thing
+
+You might be thinking:
+
+**If we already have Asymmetric Encryption, why don't we just use it for everything?**
+
+Because asymmetric cryptography is relatively expensive and slower compared to symmetric encryption.
+
+So HTTPS doesn't simply use asymmetric encryption for the entire communication.
+
+Instead, it uses both.
+
+Asymmetric cryptography is used during the TLS handshake to authenticate the server and establish the necessary shared secret.
+
+Then symmetric encryption is used to encrypt the actual communication.
+
+So the basic idea is:
+
+```text
+Asymmetric Cryptography + SSL Certificate
+        |
+        | Establish secure connection
+        | and shared secret
+        ↓
+Symmetric Encryption
+        |
+        | Encrypt actual data
+        ↓
+      HTTPS
+```
+
+This gives us both:
+
+**Identity + Security + Performance**
+
+And this is why when you visit:
+
+```text
+https://example.com
+```
+
+your browser is not just blindly trusting the server.
+
+It is performing a series of cryptographic checks before trusting the connection.
+
+So, if we go back to our original problem:
+
+```text
+Problem 1:
+Data is travelling in plain text
+        ↓
+Solution:
+Encryption
+```
+
+But then we found another problem:
+
+```text
+Problem 2:
+How do I know I am communicating
+with the real server?
+        ↓
+Solution:
+SSL/TLS Certificate
+```
+
+And that's the whole idea behind an SSL Certificate.
+
+SSL Certificate doesn’t let anyone fuck with your web request, which is why I call it the "character certificate" of your web request.
 
