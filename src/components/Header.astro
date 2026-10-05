@@ -39,11 +39,36 @@ import NavBar from "./NavBar.astro";
         <span>&middot;</span>
         <span class="flex items-center gap-2">
           <span>therohitpatwa@gmail.com</span>
-          <button class="flex items-center justify-center rounded cursor-pointer hover:text-primary transition-colors p-1 -ml-1" onclick="navigator.clipboard.writeText('therohitpatwa@gmail.com')" aria-label="Copy email address" title="Copy email address">
-            <Icon name="carbon:copy" class="w-4 h-4" />
+          <button id="copy-email-btn" class="flex items-center justify-center rounded cursor-pointer hover:text-primary transition-colors p-1 -ml-1" aria-label="Copy email address" title="Copy email address">
+            <Icon name="carbon:copy" id="copy-icon" class="w-4 h-4 block" />
+            <Icon name="carbon:checkmark" id="check-icon" class="w-4 h-4 hidden text-base-content" />
           </button>
         </span>
       </div>
     </div>
   </article>
 </header>
+
+<script>
+  const copyBtn = document.getElementById("copy-email-btn");
+  const copyIcon = document.getElementById("copy-icon");
+  const checkIcon = document.getElementById("check-icon");
+
+  if (copyBtn && copyIcon && checkIcon) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("therohitpatwa@gmail.com").then(() => {
+        copyIcon.classList.remove("block");
+        copyIcon.classList.add("hidden");
+        checkIcon.classList.remove("hidden");
+        checkIcon.classList.add("block");
+
+        setTimeout(() => {
+          checkIcon.classList.remove("block");
+          checkIcon.classList.add("hidden");
+          copyIcon.classList.remove("hidden");
+          copyIcon.classList.add("block");
+        }, 2000);
+      });
+    });
+  }
+</script>
