@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en" class="theme-loaded" data-astro-cid-4dqtj3le> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SSL Certificate: The Character Certificate of Your Web Request | Rohit Patwa</title><meta name="description" content="What is SSL certificate and why there is need of this."><meta property="og:type" content="article"><meta property="og:title" content="SSL Certificate: The Character Certificate of Your Web Request | Rohit Patwa"><meta property="og:description" content="What is SSL certificate and why there is need of this."><meta property="og:image" content="https://therohitpatwa.me/blogthumbnail/ssl/ssl.webp"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SSL Certificate: The Character Certificate of Your Web Request | Rohit Patwa"><meta name="twitter:description" content="What is SSL certificate and why there is need of this."><meta name="twitter:image" content="https://therohitpatwa.me/blogthumbnail/ssl/ssl.webp"><link rel="canonical" href="https://therohitpatwa.me/blog/what-is-ssl-certificate/"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"SSL Certificate: The Character Certificate of Your Web Request","description":"What is SSL certificate and why there is need of this.","image":"/blogthumbnail/ssl/ssl.webp","datePublished":"October 03, 2026","author":{"@type":"Person","name":"Rohit Patwa","url":"https://therohitpatwa.me"}}</script><link rel="icon" type="image/png" href="/favicon.png"><script>
+      (function () {
+        var theme = localStorage.getItem("theme") || "black";
+        var bgColor = theme === "lofi" ? "#FFFFFF" : "#000000";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.cssText =
+          "background-color: " + bgColor + " !important;";
+        // Write body style immediately to prevent flicker
+        document.write(
+          '<style id="theme-init">html,body{background-color:' +
+            bgColor +
+            " !important;transition:none !important;}</style>",
+        );
+        if (!localStorage.getItem("theme"))
+          localStorage.setItem("theme", "black");
+      })();
+    </script><script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.CbAjBMaU.js"></script><script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("input[data-toggle-theme]");
+        if (toggle) {
+          toggle.checked =
+            document.documentElement.getAttribute("data-theme") === "lofi";
+          toggle.addEventListener("change", () => {
+            const sound = new Audio("/sound.wav");
+            sound.volume = 0.5;
+            sound.play().catch(() => {});
+            const theme = document.documentElement.getAttribute("data-theme");
+            if (theme) localStorage.setItem("theme", theme);
+          });
+        }
+      });
+    </script><script defer src="https://cloud.umami.is/script.js" data-website-id="56fd739e-4a15-4f34-bd0f-77341872c698"></script><link rel="stylesheet" href="/_astro/about.DlBS1ir2.css">
+<style>@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-ext-wght-normal.D1bw2c55.woff2) format("woff2-variations");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:DM Sans Variable;font-style:normal;font-display:swap;font-weight:100 1000;src:url(/_astro/dm-sans-latin-wght-normal.DeBecvsH.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+.blog-content{color:oklch(var(--bc))}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4{font-weight:700;margin-top:2rem;margin-bottom:1rem}.blog-content h2{font-size:1.875rem}.blog-content h3{font-size:1.5rem}.blog-content p{margin-bottom:1rem;line-height:1.75}.blog-content ul,.blog-content ol{margin-left:1.5rem;margin-bottom:1rem}.blog-content li{margin-bottom:.5rem}.blog-content code{background-color:oklch(var(--b2));padding:.2rem .4rem;border-radius:.25rem;font-size:.875em}.blog-content pre{background-color:oklch(var(--b2));padding:1rem;border-radius:.5rem;overflow-x:auto;margin-bottom:1rem}.blog-content pre code{background-color:transparent;padding:0}.blog-content a{color:oklch(var(--p));text-decoration:underline}.blog-content a:hover{color:oklch(var(--pf))}.blog-content blockquote{border-left:4px solid oklch(var(--p));padding-left:1rem;margin-left:0;margin-bottom:1rem;font-style:italic;color:oklch(var(--bc) / .7)}.blog-content img{border-radius:.5rem;margin:1.5rem 0}.blog-content strong{font-weight:600;color:oklch(var(--bc))}.blog-content em{font-style:italic}:root{--code-copy-btn-fg: oklch(var(--bc) / .6);--code-copy-btn-bg: oklch(var(--b1));--code-copy-btn-border: oklch(var(--bc) / .2);--code-copy-btn-hover-bg: oklch(var(--b2))}@media only screen and (max-width:480px){*{font-size:12px}}@media(min-width:816px){body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:1px;z-index:50;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.3) 10%,rgba(255,255,255,.3) 90%,transparent)}body:before{left:max(1rem,calc(50% - 25.5rem))}body:after{right:max(1rem,calc(50% - 25.5rem))}[data-theme=lofi] body:before,[data-theme=lofi] body:after{background:linear-gradient(to bottom,transparent,rgba(0,0,0,.5) 10%,rgba(0,0,0,.5) 90%,transparent)}}html[data-theme=lofi],html[data-theme=lofi] body{background-color:#fff!important}html[data-theme=black],html[data-theme=black] body{background-color:#000!important}html.transitions-enabled,html.transitions-enabled body{transition:background-color .3s ease!important}
+</style></head> <body class="min-h-screen bg-base-100 flex flex-col relative w-full overflow-x-hidden" data-astro-cid-4dqtj3le> <!-- Sticky Nav Container (Desktop) --><div class="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none"> <nav class="w-[95vw] max-w-3xl flex items-center justify-start gap-6 py-4 px-4 bg-base-100/70 backdrop-blur-md text-base md:text-lg font-bold pointer-events-auto rounded-b-2xl shadow-sm border-b border-x border-white/5 transition-all duration-300"> <a href="/" class="hover:text-primary transition-colors cursor-pointer">Home</a> <a href="/#work" class="hover:text-primary transition-colors cursor-pointer">Work</a> <a href="/projects" class="hover:text-primary transition-colors cursor-pointer">Project</a> <a href="/blogs" class="hover:text-primary transition-colors cursor-pointer">Blog</a> <a href="/#contact" class="hover:text-primary transition-colors cursor-pointer">Contact</a> <div class="ml-auto flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-icon="carbon:moon">  <symbol id="ai:carbon:moon"><path fill="currentColor" d="M13.503 5.414a15.076 15.076 0 0 0 11.593 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3"/></symbol><use  xlink:href="#ai:carbon:moon"></use>  </svg> <input type="checkbox" data-toggle-theme="lofi,black" data-act-class="ACTIVECLASS" class="toggle toggle-sm bg-secondary"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-icon="carbon:light">  <symbol id="ai:carbon:light"><path fill="currentColor" d="M15 2h2v5h-2zm6.688 6.9l3.506-3.506l1.414 1.414l-3.506 3.506zM25 15h5v2h-5zm-3.312 8.1l1.414-1.413l3.506 3.506l-1.414 1.414zM15 25h2v5h-2zm-9.606.192L8.9 21.686l1.414 1.414l-3.505 3.506zM2 15h5v2H2zm3.395-8.192l1.414-1.414L10.315 8.9L8.9 10.314zM16 12a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6"/></symbol><use  xlink:href="#ai:carbon:light"></use>  </svg> </div> </nav> </div> <!-- Floating Theme Toggle (Mobile Only) --> <div class="fixed top-4 right-4 z-50 md:hidden flex items-center gap-1 bg-base-100/70 backdrop-blur-md px-3 py-2 rounded-full shadow-sm border border-white/5 opacity-90"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-icon="carbon:moon">  <use  xlink:href="#ai:carbon:moon"></use>  </svg> <input type="checkbox" data-toggle-theme="lofi,black" data-act-class="ACTIVECLASS" class="toggle toggle-sm bg-secondary"> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-icon="carbon:light">  <use  xlink:href="#ai:carbon:light"></use>  </svg> </div> <div class="max-w-full mx-auto px-4 py-8 pt-20 w-full" data-astro-cid-4dqtj3le> <div class="md:py-8 md:my-12" data-astro-cid-4dqtj3le> <!-- Blog Header --> <div class="mb-8 rounded-lg overflow-hidden" data-astro-cid-4dqtj3le> <img src="/blogthumbnail/ssl/ssl.webp" alt="SSL Certificate: The Character Certificate of Your Web Request" class="w-full h-64 md:h-96 object-cover" data-astro-cid-4dqtj3le> </div> <article class="prose prose-lg max-w-none" data-astro-cid-4dqtj3le> <!-- Title and Meta --> <div class="mb-8" data-astro-cid-4dqtj3le> <div class="flex flex-wrap gap-2 mb-4" data-astro-cid-4dqtj3le> <span class="badge badge-outline" data-astro-cid-4dqtj3le>SSL Certificate</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Web Security</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Encryption/Decryption</span><span class="badge badge-outline" data-astro-cid-4dqtj3le>Tech</span> </div> <h1 class="text-4xl font-bold mb-4" data-astro-cid-4dqtj3le>SSL Certificate: The Character Certificate of Your Web Request</h1> <p class="text-lg text-secondary mb-4" data-astro-cid-4dqtj3le> What is SSL certificate and why there is need of this. </p> <div class="flex items-center gap-4 text-sm text-secondary" data-astro-cid-4dqtj3le> <div class="flex items-center gap-2" data-astro-cid-4dqtj3le> <svg width="1em" height="1em" viewBox="0 0 32 32" class="w-4 h-4" data-astro-cid-4dqtj3le="true" data-icon="carbon:calendar">  <symbol id="ai:carbon:calendar"><path fill="currentColor" d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 22H6V12h20zm0-16H6V6h4v2h2V6h8v2h2V6h4z"/></symbol><use  xlink:href="#ai:carbon:calendar"></use>  </svg> <span data-astro-cid-4dqtj3le>October 03, 2026</span> </div> </div> </div> <!-- Blog Content --> <div class="blog-content" data-astro-cid-4dqtj3le> <hr/>
+<p>I don’t know what should I write in intro so let me start directly.</p>
+<p>If we hit a web request, our data travels from our device to the server.</p>
+<img src="/blogthumbnail/ssl/1.webp" alt="Description" style="height:400px; width:auto;"/>
+<p>Now what is the problem in this?</p>
+<p>The data is in the form of plain text, so in the middle of the path, anyone can read this and manipulate our data.</p>
+<img src="/blogthumbnail/ssl/2.webp" alt="Description" style="height:400px; width:auto;"/>
+<blockquote>
+<p>This is called Man in the Middle Attack (MMA).</p>
+</blockquote>
+<p>This is where encryption of our data is needed.</p>
+<p>There are two ways to encrypt and decrypt our data.</p>
+<ol>
+<li>Symmetric Encryption</li>
+<li>Asymmetric Encryption</li>
+</ol>
+<h2 id="symmetric-encryption">Symmetric Encryption</h2>
+<p>In symmetric encryption, the client and server use the same key for encryption and decryption.</p>
+<p>Client encrypts the data using the Symmetric key and sends it to Server.</p>
+<p>Server decrypts the data using the same key.</p>
+<p>Use the same key for encryption and decryption.</p>
+<h3 id="problem-in-symmetric-encryption">Problem in Symmetric Encryption</h3>
+<p>In Symmetric Encryption, a Man in the Middle Attack can also happen.</p>
+<p>The problem is that both the client and server need to have the same Symmetric key.</p>
+<p>But how will the client securely share this key with the server?</p>
+<p>If the client sends the Symmetric key through the network, an attacker can intercept the key.</p>
+<p>Now the attacker has the key which can decrypt the data.</p>
+<img src="/blogthumbnail/ssl/3.webp" alt="Description" style="height:400px; width:auto;"/>
+<p>So the problem is not just encryption.</p>
+<p>The problem is:</p>
+<blockquote>
+<p><strong>How can we securely establish/share a key between the client and server?</strong></p>
+</blockquote>
+<p>To solve this problem, Asymmetric Encryption came into the picture.</p>
+<h2 id="asymmetric-encryption">Asymmetric Encryption</h2>
+<p>In Asymmetric Encryption, we use two different keys.</p>
+<ol>
+<li>Public Key - This key can be shared with everyone (For Encryption of data).</li>
+<li>Private Key - This key is kept secret (For Decryption of data).</li>
+</ol>
+<p>Server generates both the keys, public key is available to everyone but private key is only available to the server.</p>
+<p>Server sends the public key to the client.</p>
+<p>Client can use the server’s public key as part of the process of establishing a secure connection.</p>
+<p>The private key remains with the server.</p>
+<p>But there is still a problem.</p>
+<p>An attacker can also generate their own public and private key pair.</p>
+<p>When the server sends its public key to the client, the attacker can intercept it. Instead of forwarding the server’s public key, the attacker sends their own public key to the client.</p>
+<p>Now the client thinks that the attacker’s public key actually belongs to the server.</p>
+<p>When the client sends encrypted data, it is encrypted using the attacker’s public key. The attacker can then use their private key to access the data, read or modify it, and send it to the server.</p>
+<p>From the server’s perspective, everything looks normal.</p>
+<p>The server can also send data back to the client, and the attacker can intercept and manipulate that communication as well.</p>
+<img src="/blogthumbnail/ssl/4.webp" alt="Description" style="height:400px; width:auto;"/>
+<blockquote>
+<p><strong>If anyone can access a server’s public key, how does the browser verify that the key actually belongs to the intended server and not an attacker pretending to be it?</strong></p>
+</blockquote>
+<p>To solve this problem, SSL Certificate came into the picture.</p>
+<h2 id="ssl-certificate">SSL Certificate</h2>
+<p>Now the problem is not encryption.</p>
+<p>We already have a way to use cryptography to establish a secure connection.</p>
+<p>The actual problem is:</p>
+<p><strong>How does the client know that the public key it received actually belongs to the real server?</strong></p>
+<p>Because anyone can generate a public-private key pair.</p>
+<p>So we need someone we can trust who can verify:</p>
+<blockquote>
+<p>“Yes, this public key actually belongs to this website.”</p>
+</blockquote>
+<p>This is where <strong>Certificate Authority (CA)</strong> comes into the picture.</p>
+<p>A Certificate Authority is a trusted organization that verifies the identity of a website and issues a digital certificate to it called <strong>SSL/TLS Certificate</strong>.</p>
+<p>For example, <strong>Let’s Encrypt</strong> is a Certificate Authority.</p>
+<p>When a server wants to use HTTPS, it has a public-private key pair.</p>
+<p>The server keeps the private key secret.</p>
+<p>The public key is included inside the SSL/TLS certificate.</p>
+<p>The certificate contains information like:</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.59j39.css"/><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Domain Name: example.com</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Public Key: ABC123...</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Issued By: Let&#39;s Encrypt</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Valid From: ...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Valid Until: ...</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Digital Signature: ...</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="Domain Name: example.comPublic Key: ABC123...Issued By: Let's EncryptValid From: ...Valid Until: ...Digital Signature: ..."><div></div></button></div></figure></div>
+<p>Now the question is:</p>
+<p><strong>How does the client know that this certificate is actually trustworthy?</strong></p>
+<p>The certificate is digitally signed by a Certificate Authority.</p>
+<p>Our browser and operating system already have a list of trusted Certificate Authorities.</p>
+<p>So when the browser receives a certificate from the server, it checks things like:</p>
+<ul>
+<li>Is this certificate issued by a trusted Certificate Authority?</li>
+<li>Is the certificate still valid?</li>
+<li>Does the certificate belong to the domain we are trying to visit?</li>
+<li>Is the certificate’s signature valid?</li>
+</ul>
+<p>If everything is valid, the browser can trust that the public key belongs to that website.</p>
+<p>Now our previous problem is solved.</p>
+<p>The attacker can still generate their own public-private key pair.</p>
+<p>But they cannot simply create a valid certificate for <code>example.com</code> that the browser will trust.</p>
+<p>Because the certificate needs to be issued and digitally signed by a trusted Certificate Authority.</p>
+<p>So now the client can verify:</p>
+<blockquote>
+<p>“Okay, this public key actually belongs to the server I wanted to talk to.”</p>
+</blockquote>
+<p>And now we can establish a secure connection.</p>
+<h2 id="but-one-more-thing">But one more thing</h2>
+<p>You might be thinking:</p>
+<p><strong>If we already have Asymmetric Encryption, why don’t we just use it for everything?</strong></p>
+<p>Because asymmetric cryptography is relatively expensive and slower compared to symmetric encryption.</p>
+<p>So HTTPS doesn’t simply use asymmetric encryption for the entire communication.</p>
+<p>Instead, it uses both.</p>
+<p>Asymmetric cryptography is used during the TLS handshake to authenticate the server and establish the necessary shared secret.</p>
+<p>Then symmetric encryption is used to encrypt the actual communication.</p>
+<p>So the basic idea is:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Asymmetric Cryptography + SSL Certificate</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">|</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">| Establish secure connection</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">| and shared secret</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Symmetric Encryption</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">|</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">| Encrypt actual data</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">↓</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">      </span></span><span style="--0:#e1e4e8;--1:#24292e">HTTPS</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="Asymmetric Cryptography + SSL Certificate        |        | Establish secure connection        | and shared secret        ↓Symmetric Encryption        |        | Encrypt actual data        ↓      HTTPS"><div></div></button></div></figure></div>
+<p>This gives us both:</p>
+<p><strong>Identity + Security + Performance</strong></p>
+<p>And this is why when you visit:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">https://example.com</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="https://example.com"><div></div></button></div></figure></div>
+<p>your browser is not just blindly trusting the server.</p>
+<p>It is performing a series of cryptographic checks before trusting the connection.</p>
+<p>So, if we go back to our original problem:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Problem 1:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Data is travelling in plain text</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Solution:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Encryption</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="Problem 1:Data is travelling in plain text        ↓Solution:Encryption"><div></div></button></div></figure></div>
+<p>But then we found another problem:</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Problem 2:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">How do I know I am communicating</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">with the real server?</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8;--1:#24292e">        </span></span><span style="--0:#e1e4e8;--1:#24292e">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">Solution:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#24292e">SSL/TLS Certificate</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="Problem 2:How do I know I am communicatingwith the real server?        ↓Solution:SSL/TLS Certificate"><div></div></button></div></figure></div>
+<p>And that’s the whole idea behind an SSL Certificate.</p>
+<p>SSL Certificate doesn’t let anyone fuck with your web request, which is why I call it the “character certificate” of your web request.</p> </div> </article> </div> <!-- Social Share (Optional) --> </div> </body></html>

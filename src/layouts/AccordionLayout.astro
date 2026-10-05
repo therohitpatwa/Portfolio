@@ -5,7 +5,7 @@ const id = accordionId || title.toLowerCase().replace(/\s+/g, "-");
 ---
 
 <div
-  class="collapse collapse-arrow ease-in-out duration-700 accordion-item"
+  class="collapse accordion-item"
   data-accordion-id={id}
 >
   <input
@@ -27,3 +27,24 @@ const id = accordionId || title.toLowerCase().replace(/\s+/g, "-");
     <slot />
   </div>
 </div>
+
+<style>
+  /* Force accordion open on desktop immediately to prevent flash of closed state */
+  @media (min-width: 768px) {
+    .accordion-item.collapse {
+      overflow: visible;
+      grid-template-rows: auto 1fr !important;
+    }
+    .accordion-item.collapse > .collapse-content {
+      visibility: visible !important;
+      opacity: 1 !important;
+      padding-bottom: 1rem !important;
+    }
+    .accordion-item.collapse > .accordion-checkbox {
+      pointer-events: none;
+    }
+    .accordion-item.collapse > .collapse-title {
+      cursor: default;
+    }
+  }
+</style>

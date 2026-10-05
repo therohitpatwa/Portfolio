@@ -388,21 +388,26 @@ const PDF = "/MyResume.pdf";
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const accordionInputs = document.querySelectorAll<HTMLInputElement>(
-      ".accordion-container .accordion-checkbox",
-    );
-
-    accordionInputs.forEach((input) => {
-      input.addEventListener("change", function () {
-        if (this.checked) {
-          accordionInputs.forEach((otherInput) => {
-            if (otherInput !== this) {
-              otherInput.checked = false;
-            }
-          });
-        }
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordionInputs = document.querySelectorAll(".accordion-container .accordion-checkbox");
+    const isDesktop = window.innerWidth >= 768;
+    if (isDesktop) {
+      // Open and lock all sections on desktop
+      accordionInputs.forEach(input => {
+        input.checked = true;
+        input.disabled = true; // prevent closing
       });
-    });
+    } else {
+      // Keep single-open behavior on mobile
+      accordionInputs.forEach(input => {
+        input.addEventListener("change", function () {
+          if (this.checked) {
+            accordionInputs.forEach(other => {
+              if (other !== this) other.checked = false;
+            });
+          }
+        });
+      });
+    }
   });
 </script>

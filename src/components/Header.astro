@@ -1,38 +1,49 @@
 ---
 import { Icon } from "astro-icon/components";
 import * as about from "../pages/about/about.md";
+import NavBar from "./NavBar.astro";
 ---
 
-<article class="flex flex-col items-center gap-4 w-full">
-  <div
-    class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden"
-  >
-    <img
-      alt="Rohit Patwa - Full Stack Developer Profile Picture"
-      src="/profile.webp"
-      class="grayscale-[50] hover:grayscale-0"
-      width="96"
-      height="96"
-      loading="eager"
-      decoding="async"
-    />
-  </div>
+<header class="w-full mb-8">
+  <NavBar />
+  
+  <!-- Spacer to prevent content from jumping under the fixed nav -->
+  <div class="h-16 mb-4"></div>
 
-  <div class="text-center">
-    <div class="flex justify-center items-center mb-2">
-      <h1
-        class="text-3xl font-extrabold tracking-tight"
-        style="font-family: 'Cinzel', serif;"
-      >
-        {about.frontmatter.name}
-      </h1>
+  <article class="flex flex-row items-center gap-6 w-full">
+    <div
+      class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-full shadow-sm overflow-hidden border-2 border-transparent"
+    >
+      <img
+        alt="Rohit Patwa - Full Stack Developer Profile Picture"
+        src="/profile.webp"
+        class="grayscale-[20] hover:grayscale-0 w-full h-full object-cover"
+        width="128"
+        height="128"
+        loading="eager"
+        decoding="async"
+      />
     </div>
-    <h2 class="text-lg mb-2 text-secondary">
-      {about.frontmatter.designation}
-    </h2>
-    <div class="flex items-center justify-center mt-1">
-      <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-      <p class="text-sm text-secondary">{about.frontmatter.location}</p>
+
+    <div class="flex flex-col text-left">
+      <div class="flex items-center gap-3 mb-2">
+        <h1
+          class="text-3xl md:text-5xl font-medium tracking-tight"
+          style="font-family: 'Cinzel', serif;"
+        >
+          {about.frontmatter.name}
+        </h1>
+      </div>
+      <div class="flex items-center flex-wrap text-sm md:text-lg text-secondary gap-2 font-medium">
+        <span>An Engineer</span>
+        <span>&middot;</span>
+        <span class="flex items-center gap-2">
+          <span>therohitpatwa@gmail.com</span>
+          <button class="flex items-center justify-center rounded cursor-pointer hover:text-primary transition-colors p-1 -ml-1" onclick="navigator.clipboard.writeText('therohitpatwa@gmail.com').then(() => alert('Email copied!'))" aria-label="Copy email address" title="Copy email address">
+            <Icon name="carbon:copy" class="w-4 h-4" />
+          </button>
+        </span>
+      </div>
     </div>
-  </div>
-</article>
+  </article>
+</header>

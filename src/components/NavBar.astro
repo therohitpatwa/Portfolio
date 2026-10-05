@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<!-- Sticky Nav Container (Desktop) -->
+<div class="fixed top-0 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none">
+  <nav class="w-[95vw] max-w-3xl flex items-center justify-start gap-6 py-4 px-4 bg-base-100/70 backdrop-blur-md text-base md:text-lg font-bold pointer-events-auto rounded-b-2xl shadow-sm border-b border-x border-white/5 transition-all duration-300">
+    <a href="/" class="hover:text-primary transition-colors cursor-pointer">Home</a>
+    <a href="/#work" class="hover:text-primary transition-colors cursor-pointer">Work</a>
+    <a href="/projects" class="hover:text-primary transition-colors cursor-pointer">Project</a>
+    <a href="/blogs" class="hover:text-primary transition-colors cursor-pointer">Blog</a>
+    <a href="/#contact" class="hover:text-primary transition-colors cursor-pointer">Contact</a>
+    <div class="ml-auto flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+      <Icon name="carbon:moon" class="w-4 h-4" />
+      <input
+        type="checkbox"
+        data-toggle-theme="lofi,black"
+        data-act-class="ACTIVECLASS"
+        class="toggle toggle-sm bg-secondary"
+      />
+      <Icon name="carbon:light" class="w-4 h-4" />
+    </div>
+  </nav>
+</div>
+
+<!-- Floating Theme Toggle (Mobile Only) -->
+<div class="fixed top-4 right-4 z-50 md:hidden flex items-center gap-1 bg-base-100/70 backdrop-blur-md px-3 py-2 rounded-full shadow-sm border border-white/5 opacity-90">
+  <Icon name="carbon:moon" class="w-4 h-4" />
+  <input
+    type="checkbox"
+    data-toggle-theme="lofi,black"
+    data-act-class="ACTIVECLASS"
+    class="toggle toggle-sm bg-secondary"
+  />
+  <Icon name="carbon:light" class="w-4 h-4" />
+</div>

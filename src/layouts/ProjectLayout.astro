@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import "@fontsource-variable/dm-sans";
+import NavBar from "../components/NavBar.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -82,29 +83,7 @@ const { frontmatter } = Astro.props;
   <body
     class="min-h-screen bg-base-100 flex flex-col relative w-full overflow-x-hidden"
   >
-    <div
-      class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
-    >
-      <div
-        class="w-full max-w-[51rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-between items-center pointer-events-auto"
-      >
-        <a href="/projects" class="btn btn-outline btn-sm">
-          <Icon name="carbon:arrow-left" class="w-4 h-4" />
-          <span>Back to Projects</span>
-        </a>
-
-        <div class="flex items-center">
-          <Icon name="carbon:moon" class="w-4 h-4" />
-          <input
-            type="checkbox"
-            data-toggle-theme="lofi,black"
-            data-act-class="ACTIVECLASS"
-            class="toggle toggle-sm mx-1 bg-secondary"
-          />
-          <Icon name="carbon:light" class="w-4 h-4" />
-        </div>
-      </div>
-    </div>
+    <NavBar />
     <div class="max-w-3xl mx-auto px-4 py-8 pt-20 w-[95vw]">
       <article class="prose prose-lg max-w-none">
         <!-- Project Video -->

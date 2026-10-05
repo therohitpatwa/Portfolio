@@ -5,6 +5,7 @@ import "@fontsource-variable/dm-sans";
 import ParticleBackground from "../components/ParticleBackground.astro";
 import BlogCard from "../components/BlogCard.astro";
 import Footer from "../components/Footer.astro";
+import NavBar from "../components/NavBar.astro";
 import { Icon } from "astro-icon/components";
 
 const blogs = Object.values(
@@ -128,29 +129,7 @@ const sortedTags = FILTER_TAGS.filter((tag) => tagCounts[tag] > 0).map(
     </head>
     <body class="flex flex-col min-h-screen relative">
         <ParticleBackground />
-        <div
-            class="absolute top-0 left-0 right-0 w-full flex justify-center pointer-events-none z-20"
-        >
-            <div
-                class="w-full max-w-[51rem] px-4 md:px-8 pt-4 md:pt-6 flex justify-between items-center pointer-events-auto"
-            >
-                <a href="/" class="btn btn-outline btn-sm">
-                    <Icon name="carbon:arrow-left" class="w-4 h-4" />
-                    <span>Back to Home</span>
-                </a>
-
-                <div class="flex items-center">
-                    <Icon name="carbon:moon" class="w-4 h-4" />
-                    <input
-                        type="checkbox"
-                        data-toggle-theme="lofi,black"
-                        data-act-class="ACTIVECLASS"
-                        class="toggle toggle-sm mx-1 bg-secondary"
-                    />
-                    <Icon name="carbon:light" class="w-4 h-4" />
-                </div>
-            </div>
-        </div>
+        <NavBar />
 
         <main
             class="mx-auto flex-grow max-w-3xl w-[90vw] pt-24 pb-8 relative z-10"
