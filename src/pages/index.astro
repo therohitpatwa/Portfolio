@@ -198,6 +198,7 @@ import { Icon } from "astro-icon/components";
     <div class="relative z-10">
       <Footer />
     </div>
+    <script is:inline src="/oneko.js" data-cat="/oneko.gif"></script>
   </body>
 </html>
 
@@ -297,6 +298,12 @@ import { Icon } from "astro-icon/components";
         rgba(0, 0, 0, 0.5) 90%,
         transparent
       );
+    }
+  }
+
+  @media (max-width: 767px) {
+    #oneko {
+      display: none !important;
     }
   }
 </style>
