@@ -5,4 +5,6 @@ designation: "Full Stack Developer"
 location: Noida Uttar Pradesh, India
 ---
 
-Yup! I'm Full-Stack developer skilled in building scalable web applications using **Java**, the **Spring Framework**, **React** and modern **UI frameworks**. Experienced in developing **RESTful APIs**, managing databases with **MySQL**, deploying production ready apps and improving their visibility through **SEO**.
+Yup! I'm an Engineer who loves to build **Stuff**, get it seen using **SEO**, and share my thoughts and knowledge through **Teaching** and my **Blog**.
+<br>
+Whenever I finish learning one thing, my immediate thought is : **What's next ?**
